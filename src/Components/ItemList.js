@@ -14,7 +14,8 @@ const ItemList = () => {
     
     const response = await fetch('https://api.punkapi.com/v2/beers')
     const responseData = await response.json()
-    setBeers(responseData)   
+    setBeers(responseData)  
+    
   }
 
   useEffect(()=>{

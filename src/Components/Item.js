@@ -30,9 +30,10 @@ const Item = ({data}) => {
   return (
     <Card>
             <h2>{data.name}</h2>
+            <img src={data.image_url} alt={data.name} className='img'/>
             <p>Ibu: {data.ibu}</p>
             <p>Abv: {data.abv}</p>
-            <img src={data.image_url} alt={data.name} className='img'/>
+            
             <button onClick={showModalHandler}>Ver detalle</button>
             {modalShown && <ItemDetail onHide={hideModalHandler} detail={detail}/>}
             
