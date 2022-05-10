@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import CartContext from '../../Context/CartContext'
 
 const Cart = () => {
 
-    const cartItems = [{id: 1, name: 'Buzz', amount: 4},{id: 2, name: 'Trashy Blonde', amount: 1},{id: 3, name: 'Pilsen Lager', amount: 3
-    }]
+    const {cartContext, cart} = useContext(CartContext)
+
+
+ 
 
   return (
   <div>
@@ -13,13 +16,15 @@ const Cart = () => {
         <tr>
             <th>Producto</th>
             <th>Cantidad</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        {cartItems.map((item)=>
+        {cart.map((item)=>
                             <tr key={item.id}>
                                 <td >{item.name}</td>
                                 <td >x{item.amount}</td>
+                                <td ><button onClick={() => {cartContext.removeItem(item.id)}}>Remove</button></td>
                             </tr>
                         )}
         </tbody>

@@ -4,11 +4,12 @@ import Cart from './Components/Cart/Cart';
 
 import ItemList from "./Components/ItemList";
 import Header from "./Components/UI/Header";
+import CartProvider from './Context/CartProvider';
 
 
 function App() {
   return (
-    <div>
+    <CartProvider>
       <Header></Header>
       <Switch>      
         <Route path="/" exact>
@@ -25,7 +26,7 @@ function App() {
       
       
 
-    </div>
+    </CartProvider>
   );
 }
 

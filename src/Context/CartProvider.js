@@ -7,19 +7,17 @@ const CartProvider = (props) => {
     const addItemHandler = (item, amount) => {
         const isInCart = cart.find(product => product.id === item.id)
         if(!isInCart){
-        setCart([...cart,{id: item.id, name: item.name, cantidad: amount}]) 
+        setCart([...cart,{id: item.id, name: item.name, amount: amount}]) 
         }else{
         const cartAux = cart.map((product=>{
             if(product.id === item.id){
-                product.amount = Number(product.amount) + Number(cantidad)
+                product.amount = Number(product.amount) + Number(amount)
             }
             return product
         }))
         setCart(cartAux)
        
     }}
-
-    
 
     const removeItemHandler = (id) => {
         const newCart = cart.filter(item => item.id !== id)
@@ -39,7 +37,7 @@ const CartProvider = (props) => {
     }
 
   return (
-    <CartContext.Provider value={cartContext}>{props.children}</CartContext.Provider>
+    <CartContext.Provider value={{cartContext, cart}}>{props.children}</CartContext.Provider>
   )
 }
 
