@@ -10,16 +10,8 @@ const Input = (props) => {
         setAmount(e.target.value)
     }
     
-
-    const addItemCart = () =>{
-        console.log(props.detail)
-        const onAdd = () =>{
-            cartContext.addItem({id: props.detail.id, name: props.detail.name}, amount)
-
-        }
-        onAdd()
-        
-
+    const addItemCart = () =>{       
+        cartContext.addItem({id: props.detail.id, name: props.detail.name}, amount)
     }
 
   return (
