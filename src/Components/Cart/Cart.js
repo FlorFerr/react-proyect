@@ -12,7 +12,7 @@ const Cart = () => {
   <div>
     <h1>Cart</h1>
 
-    {cart.length == 0 ? <p>No hay productos en el carrito</p> :
+    {cart.length === 0 ? <p>No hay productos en el carrito</p> :
     
     <table>
         <thead>

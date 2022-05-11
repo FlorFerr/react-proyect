@@ -7,7 +7,7 @@ const ItemList = () => {
  
 
   const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage, setItemsPerPage] = useState(10)
+  const itemsPerPage = 10
 
   const pages = []
 
@@ -21,6 +21,14 @@ const ItemList = () => {
 
   const pagesHandler = (e) => {
     setCurrentPage(Number(e.target.id))
+  }
+
+  const inicioHandler = () => {
+    setCurrentPage(pages[0])
+  }
+
+  const finalHandler = () => {
+    setCurrentPage(pages.length)
   }
 
   const fetchBeer = async () =>{
@@ -40,10 +48,13 @@ const ItemList = () => {
      
       
       <ul className='pagination'>
+        <li onClick={inicioHandler}>Inicio</li>
       {pages.map(number => {
         return(
         <li key={number} id={number} onClick={pagesHandler}>{number}</li>)
-      })}</ul>
+      })}
+      <li onClick={finalHandler}>Final</li>
+      </ul>
       
       {
         currentItems.map((beer) => {
