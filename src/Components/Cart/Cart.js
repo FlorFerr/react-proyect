@@ -11,6 +11,9 @@ const Cart = () => {
   return (
   <div>
     <h1>Cart</h1>
+
+    {cart.length == 0 ? <p>No hay productos en el carrito</p> :
+    
     <table>
         <thead>
         <tr>
@@ -28,7 +31,7 @@ const Cart = () => {
                             </tr>
                         )}
         </tbody>
-    </table>
+    </table>}
     </div>
   )
 }

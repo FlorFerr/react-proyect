@@ -7,7 +7,7 @@ Story 1: Main page - Application look and feel
  * Show beer description in a modal
 🤗️  - click beer to open modal
  * Paginate results
-  - show 10 beers per page
+🤗️ - show 10 beers per page
   - quick jump to first / last page
   - remember last viewed page
  * NTH: display spinner while loading images
@@ -28,7 +28,7 @@ Story 2: Implement order page
 🤗️  - Display name and amount of each ordered beer
 🤗️  - Add remove button. This button removes all units of the selected beer
  * NTH: click on ordered beer opens description overview (modal)
- * NTH: click on topbar redirects to home page
+🤗️ NTH: click on topbar redirects to home page
 
 Story 3: Filters and favorites
  * Add beer name filter
