@@ -1,39 +1,39 @@
 import React, { useContext } from 'react'
 import CartContext from '../../Context/CartContext'
+import CartItem from './CartItem'
+
 
 const Cart = () => {
-
+    
     const {cartContext, cart} = useContext(CartContext)
 
-
- 
-
   return (
-  <div>
-    <h1>Cart</h1>
+    <div>
+      <h1>Carrito</h1>
 
-    {cart.length === 0 ? <p>No hay productos en el carrito</p> :
-    
-    <table>
-        <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {cart.map((item)=>
-                            <tr key={item.id}>
-                                <td >{item.name}</td>
-                                <td >x{item.amount}</td>
-                                <td ><button onClick={() => {cartContext.removeItem(item.id)}}>Remove</button></td>
-                            </tr>
-                        )}
+      { cart.length === 0 ? <p>No hay productos en el carrito</p> :
+
+      <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+      {
+        cart.map(product=> {
+          return (
+            <CartItem key={product.id} data={product} onRemove={cartContext.removeItem}></CartItem>
+          )
+        })
+      }
         </tbody>
-    </table>}
+      </table>}
+      
     </div>
-  )
-}
+  
+)}
 
 export default Cart

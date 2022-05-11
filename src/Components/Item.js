@@ -7,15 +7,7 @@ import Input from './UI/Input'
 const Item = ({data}) => {
     const [modalShown, setModalShown] = useState(false)
 
-    const detail = {
-        id: data.id,
-        name: data.name,
-        description: data.description,
-        image: data.image_url,
-        ibu: data.ibu,
-        abv: data.abv,
-        price: data.price
-    }
+
       const hideModalHandler = () =>{
         setModalShown(false)
       }
@@ -31,7 +23,7 @@ const Item = ({data}) => {
             <p>Ibu: {data.ibu}</p>
             <p>Abv: {data.abv}</p> 
             <Input 
-              detail={detail}
+              detail={data}
               input={{id: 'amount ' + data.id,
               type: 'number',
               min: '1',
@@ -39,7 +31,7 @@ const Item = ({data}) => {
               defaultValue: '1',
               max: '5'
             }}></Input>
-            {modalShown && <ItemDetail onHide={hideModalHandler} detail={detail}/>}
+            {modalShown && <ItemDetail onHide={hideModalHandler} detail={data}/>}
     </Card>
   )
 }
