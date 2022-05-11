@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import CartContext from '../../Context/CartContext'
 
 const Header = () => {
+
+  const { cart } = useContext(CartContext)
+
+  let totalCart = cart.reduce((a, b) => ( parseInt(a) + parseInt(b.amount) ), 0);
   return (
     <header className='header'>
         <nav className='navBar'>
@@ -16,7 +21,7 @@ const Header = () => {
               <NavLink to='/'>LOGO</NavLink>
                 
             </div>
-            <div><NavLink to='/cart'><FontAwesomeIcon icon={faCartShopping}/></NavLink></div>
+            <div><NavLink to='/cart'><FontAwesomeIcon icon={faCartShopping}/> {totalCart}</NavLink></div>
         </nav>
     </header>
   )

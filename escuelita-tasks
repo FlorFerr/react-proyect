@@ -8,7 +8,7 @@ Story 1: Main page - Application look and feel
 🤗️  - click beer to open modal
  * Paginate results
 🤗️ - show 10 beers per page
-  - quick jump to first / last page
+🤗️ - quick jump to first / last page
   - remember last viewed page
  * NTH: display spinner while loading images
 
@@ -18,13 +18,13 @@ Story 2: Implement order page
 🤗️  - Any invalid route should redirect to home
  * Display cart in the topbar
 🤗️  - Add a cart icon in the topbar
-  - Show amount of beers in cart (sku, not ordered amount). Must be dynamic and statefull
+🤗️  - Show amount of beers in cart (sku, not ordered amount). Must be dynamic and statefull
 🤗️  - Click on cart icon should redirect to order page
  * Add buttons for adding and removing beers to the cart
   - Show + and - buttons
-  - Display current in cart amount of each beer
+🤗️ - Display current in cart amount of each beer
   - Buttons should add or remove 1 unit
- * Order page summary
+ * Order page summary🤗️
 🤗️  - Display name and amount of each ordered beer
 🤗️  - Add remove button. This button removes all units of the selected beer
  * NTH: click on ordered beer opens description overview (modal)
