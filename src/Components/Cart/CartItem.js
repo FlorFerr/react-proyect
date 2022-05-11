@@ -44,7 +44,9 @@ const CartItem = ({data, onRemove}) => {
             <td  ><button onClick={() => {onRemove(data.id)}}>Remove</button></td>
             
         </tr>   
+        
         {modalCartShown && <ItemDetail onHide={hideModalCartHandler} detail={data}/>}
+       
         </>
   )}
 

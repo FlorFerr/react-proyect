@@ -30,8 +30,13 @@ const Cart = () => {
           )
         })
       }
+      <tr><td><button onClick={cartContext.clearCart}>Vaciar</button></td>
+        </tr>
         </tbody>
-      </table>}
+        
+      </table>
+      }
+      
       
     </div>
   

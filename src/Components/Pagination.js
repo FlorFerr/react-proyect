@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
-const Pagination = ({beers, currentHandler}) => {
+const Pagination = ({beers, pagesHandler}) => {
+  const lastViewedPage = localStorage.getItem('pages')
 
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(lastViewedPage)
   const itemsPerPage = 10
 
   const pages = []
@@ -14,19 +15,33 @@ const Pagination = ({beers, currentHandler}) => {
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
 
-  const pagesHandler = (e) => {
+  const currentPagesHandler = (e) => {
     setCurrentPage(Number(e.target.id))
-    currentHandler(indexOfFirstItem, indexOfLastItem)
+    localStorage.setItem('pages', e.target.id)
+    pagesHandler(indexOfFirstItem, indexOfLastItem)  
+  }
+
+
+
+
+  const inicioHandler = () => {
+    setCurrentPage(pages[0])
+  }
+
+  const finalHandler = () => {
+    setCurrentPage(pages.length)
   }
 
 
   return (
     <div>
         <ul className='pagination'>
+            <li onClick={inicioHandler}>Inicio</li>
             {pages.map(number => {
                 return(
-                <li key={number} id={number} onClick={pagesHandler}>{number}</li>)
+                <li key={number} id={number} onClick={currentPagesHandler}>{number}</li>)
             })}
+            <li onClick={finalHandler}>Final</li>
         </ul>
     </div>
   )
