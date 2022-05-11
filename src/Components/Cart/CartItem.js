@@ -16,9 +16,14 @@ const CartItem = ({data, onRemove}) => {
         
     }
 
-    const increseAmountHandler = () => {
+    const increaseAmountHandler = () => {
         setAmount(amount +1)
         
+    }
+
+    const decreaseAmountHandler = () => {
+        if(amount > 1){
+        setAmount(amount -1)}
     }
 
     console.log(amount)
@@ -31,8 +36,8 @@ const CartItem = ({data, onRemove}) => {
         <tr key={data.id}>
             <td onClick={showModalCartHandler}>{data.name}</td>
             <td >x{amount}</td>
-            <td><button >-</button></td>
-            <td><button onClick={increseAmountHandler}>+</button></td>
+            <td><button onClick={decreaseAmountHandler} disabled={amount <= 1} >-</button></td>
+            <td><button onClick={increaseAmountHandler}>+</button></td>
             <td  ><button onClick={() => {onRemove(data.id)}}>Remove</button></td>
             
         </tr>   
