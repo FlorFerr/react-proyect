@@ -3,10 +3,11 @@ import './ItemList.css'
 import Item from './Item'
 
 const ItemList = () => {
-  const [beers, setBeers] = useState([])
- 
 
-  const [currentPage, setCurrentPage] = useState(1)
+  const lastViewedPage = localStorage.getItem('pages')
+  
+  const [beers, setBeers] = useState([])
+  const [currentPage, setCurrentPage] = useState(lastViewedPage)
   const itemsPerPage = 10
 
   const pages = []
@@ -21,6 +22,7 @@ const ItemList = () => {
 
   const pagesHandler = (e) => {
     setCurrentPage(Number(e.target.id))
+    localStorage.setItem('pages', e.target.id)
   }
 
   const inicioHandler = () => {

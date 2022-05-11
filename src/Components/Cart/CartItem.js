@@ -3,7 +3,11 @@ import ItemDetail from '../ItemDetail'
 
 
 const CartItem = ({data, onRemove}) => {
+
+    
     const [amount, setAmount] = useState(data.amount)
+
+    
 
     const [modalCartShown, setModalCartShown] = useState(false)
 
@@ -26,7 +30,6 @@ const CartItem = ({data, onRemove}) => {
         setAmount(amount -1)}
     }
 
-    console.log(amount)
    
     
 

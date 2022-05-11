@@ -27,12 +27,15 @@ const CartProvider = (props) => {
         setCart([])
     }
 
+    
+
 
 
      const cartContext = {
         items: [],
         addItem: addItemHandler,
         removeItem: removeItemHandler,
+        
         clearCart: clearCartHandler,
     }
 
