@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import CartContext from '../../Context/CartContext'
 import ItemDetail from '../ItemDetail'
 
 
 const CartItem = ({data, onRemove}) => {
-
-    
-    const [amount, setAmount] = useState(data.amount)
-
-    
-
     const [modalCartShown, setModalCartShown] = useState(false)
+
+    const { cart, cartContext} = useContext(CartContext)
 
 
       const hideModalCartHandler = () =>{
@@ -20,26 +17,28 @@ const CartItem = ({data, onRemove}) => {
         
     }
 
+    
     const increaseAmountHandler = () => {
-        setAmount(amount +1)
-        
+        data.amount = Number(data.amount) + 1
+        console.log(cart)
+        cartContext.amountItem(data.id, data.amount)
     }
 
     const decreaseAmountHandler = () => {
-        if(amount > 1){
-        setAmount(amount -1)}
+        if(data.amount > 1){
+        data.amount = Number(data.amount) - 1
+        console.log(cart)
+        cartContext.amountItem(data.id, data.amount)
+      }
+
     }
-
-   
-    
-
     
   return (
       <>
         <tr key={data.id}>
             <td onClick={showModalCartHandler}>{data.name}</td>
-            <td >x{amount}</td>
-            <td><button onClick={decreaseAmountHandler} disabled={amount <= 1} >-</button></td>
+            <td >x{data.amount}</td>
+            <td><button onClick={decreaseAmountHandler}  disabled={data.amount === 1}>-</button></td>
             <td><button onClick={increaseAmountHandler}>+</button></td>
             <td  ><button onClick={() => {onRemove(data.id)}}>Remove</button></td>
             

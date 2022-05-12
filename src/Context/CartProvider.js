@@ -27,6 +27,15 @@ const CartProvider = (props) => {
         setCart([])
     }
 
+    const amountItemHandler = (item, amount) => {
+        const cartAuxiliar = cart.map((product=>{
+            if(product.id === item.id){
+                product.amount = Number(product.amount) + Number(amount)
+            }
+            return product
+        }))
+        setCart(cartAuxiliar)
+    }
     
 
 
@@ -35,7 +44,7 @@ const CartProvider = (props) => {
         items: [],
         addItem: addItemHandler,
         removeItem: removeItemHandler,
-        
+        amountItem: amountItemHandler,        
         clearCart: clearCartHandler,
     }
 
