@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
 
-
-const SearchItem = ({data}) => {
-
+const SearchItem = ({data, onSearchProducts}) => {
     const [searchValue, setSearchValue] = useState('')
-    const [filteredProducts, setFilteredProducts] = useState([])
+    
+    let filteredProducts = []
 
     const changeSearchValueHandler = (e) => {
-        setSearchValue(e.target.value)
-        
+        setSearchValue(e.target.value.toLowerCase())
     }
 
-   
     const onSearchHandler = () => {
-        setFilteredProducts(data.filter(product => product.name.includes(searchValue)))
-        console.log(filteredProducts)
+        filteredProducts = data.filter(product => product.name.toLowerCase().includes(searchValue))
+        onSearchProducts(filteredProducts)
     }
     
-
-
-
-
   return (
     <div>
         <input type='search' onChange={changeSearchValueHandler}></input>
