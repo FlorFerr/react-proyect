@@ -16,7 +16,6 @@ const CartProvider = (props) => {
             return product
         }))
         setCart(cartAux)
-       
     }}
 
     const removeItemHandler = (id) => {
@@ -37,9 +36,6 @@ const CartProvider = (props) => {
         setCart(cartAuxiliar)
     }
     
-
-
-
      const cartContext = {
         items: [],
         addItem: addItemHandler,
@@ -49,7 +45,9 @@ const CartProvider = (props) => {
     }
 
   return (
-    <CartContext.Provider value={{cartContext, cart}}>{props.children}</CartContext.Provider>
+    <CartContext.Provider value={{cartContext, cart}}>
+        {props.children}
+    </CartContext.Provider>
   )
 }
 

@@ -16,6 +16,7 @@ const Header = () => {
 
   }, [cart])
 
+  const totalCartValid = totalCart > 0
   
   return (
     <header className='header'>
@@ -28,7 +29,11 @@ const Header = () => {
               <NavLink to='/'>LOGO</NavLink>
                 
             </div>
-            <div><NavLink to='/cart'><FontAwesomeIcon icon={faCartShopping}/> {totalCart}</NavLink></div>
+            <div>
+              <NavLink to='/cart'>
+                <FontAwesomeIcon icon={faCartShopping}/>  {totalCartValid && totalCart}
+              </NavLink>
+            </div>
         </nav>
     </header>
   )

@@ -1,15 +1,14 @@
 import React, { useContext, useState } from 'react'
 import CartContext from '../../Context/CartContext'
 import ItemDetail from '../ItemDetail'
-
+import './CartItem.css'
 
 const CartItem = ({data, onRemove}) => {
     const [modalCartShown, setModalCartShown] = useState(false)
 
-    const { cart, cartContext} = useContext(CartContext)
+    const { cartContext} = useContext(CartContext)
 
-
-      const hideModalCartHandler = () =>{
+    const hideModalCartHandler = () =>{
         setModalCartShown(false)
       }
     const showModalCartHandler = () => {     
@@ -17,17 +16,14 @@ const CartItem = ({data, onRemove}) => {
         
     }
 
-    
     const increaseAmountHandler = () => {
         data.amount = Number(data.amount) + 1
-        console.log(cart)
         cartContext.amountItem(data.id, data.amount)
     }
 
     const decreaseAmountHandler = () => {
         if(data.amount > 1){
         data.amount = Number(data.amount) - 1
-        console.log(cart)
         cartContext.amountItem(data.id, data.amount)
       }
 

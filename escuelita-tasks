@@ -6,7 +6,7 @@ Story 1: Main page - Application look and feel
   - Display image, name, ibu and abv for each beer in a list
 🤗️ Show beer description in a modal
   - click beer to open modal
-🤗️  Paginate results
+*  Paginate results
   - show 10 beers per page
   - quick jump to first / last page
   - remember last viewed page
@@ -20,10 +20,10 @@ Story 2: Implement order page
   - Add a cart icon in the topbar
   - Show amount of beers in cart (sku, not ordered amount). Must be dynamic and statefull
   - Click on cart icon should redirect to order page
- * Add buttons for adding and removing beers to the cart
-🤗️  - Show + and - buttons
-🤗️  - Display current in cart amount of each beer
-    - Buttons should add or remove 1 unit
+🤗️ Add buttons for adding and removing beers to the cart
+  - Show + and - buttons
+  - Display current in cart amount of each beer
+  - Buttons should add or remove 1 unit
 🤗️ Order page summary
   - Display name and amount of each ordered beer
   - Add remove button. This button removes all units of the selected beer
