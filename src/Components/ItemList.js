@@ -22,16 +22,22 @@ const ItemList = () => {
 
   }
 
-  
+  const filteredItemIsValid = filteredItem.length > 0
+
+  const filteredContent = filteredItem.map((beer) => {
+    return(
+    <Item key={beer.id} data={beer}></Item>)
+  })
+
+  const beersContent = beers.map((beer) => {
+    return(
+    <Item key={beer.id} data={beer}></Item>)
+  })
   
   return (
     <div className='itemList-container'>
       <SearchItem data={beers} onSearchProducts={searchHandler}></SearchItem>
-      {
-        filteredItem.map((beer) => {
-          return(
-          <Item key={beer.id} data={beer}></Item>)
-        })
+      {filteredItemIsValid ? filteredContent : beersContent
       }
     </div>
   )

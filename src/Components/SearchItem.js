@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const SearchItem = ({data, onSearchProducts}) => {
-    const [searchValue, setSearchValue] = useState('')
     
-    let filteredProducts = []
+    
+    
 
     const changeSearchValueHandler = (e) => {
-        setSearchValue(e.target.value.toLowerCase())
-    }
-
-    const onSearchHandler = () => {
-        filteredProducts = data.filter(product => product.name.toLowerCase().includes(searchValue))
+        const  searchValue = (e.target.value.toLowerCase())
+        const filteredProducts = data.filter(product => product.name.toLowerCase().includes(searchValue))
         onSearchProducts(filteredProducts)
     }
+
+
     
   return (
     <div>
-        <input type='search' onChange={changeSearchValueHandler}></input>
-        <button onClick={onSearchHandler}>Buscar</button>
+        <input type='search' onChange={changeSearchValueHandler} placeholder='Buscar'></input>
+        
     </div>
   )
 }
