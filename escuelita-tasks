@@ -31,19 +31,19 @@ Story 2: Implement order page
 🤗️ NTH: click on topbar redirects to home page
 
 Story 3: Filters and favorites
- * Add beer name filter
+🤗️ Add beer name filter
   - Search beers that match the input value
- * Select favourite beers
+* Select favourite beers
   - Add star/heart beside each beer in the list
   - Icon should be always visible (not just in modal)
   - Click to add or remove from favorites
   - Color/fill change when clicking the icon
- * Add favourites filter
+* Add favourites filter
   - Click to toggle display only favourite beers in the list
   - Name filter should only apply to the currently visible list
  * Show no results message
   - whenever the list of beers goes empty, show a message
- * NTH: ibu filter
+* NTH: ibu filter
   - Add a filter to search beers by ibu
   - Add greater / less than selected amount toggle
 

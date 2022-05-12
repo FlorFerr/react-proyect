@@ -3,6 +3,7 @@ import CartContext from './CartContext'
 
 const CartProvider = (props) => {
     const [cart, setCart] = useState([])
+    const [fav, setFav] = useState([])
 
     const addItemHandler = (item, amount) => {
         const isInCart = cart.find(product => product.id === item.id)
@@ -29,11 +30,16 @@ const CartProvider = (props) => {
     const amountItemHandler = (item, amount) => {
         const cartAuxiliar = cart.map((product=>{
             if(product.id === item.id){
-                product.amount = Number(product.amount) + Number(amount)
+                product.amount = Number(product.Switchamount) + Number(amount)
             }
             return product
         }))
         setCart(cartAuxiliar)
+    }
+
+    const addFavHandler = (item) => {
+        setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description}]) 
+        console.log(fav)
     }
     
      const cartContext = {
@@ -45,7 +51,7 @@ const CartProvider = (props) => {
     }
 
   return (
-    <CartContext.Provider value={{cartContext, cart}}>
+    <CartContext.Provider value={{cartContext, cart, addFavHandler}}>
         {props.children}
     </CartContext.Provider>
   )

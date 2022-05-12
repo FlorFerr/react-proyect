@@ -4,8 +4,12 @@ import './Item.css'
 import ItemDetail from './ItemDetail'
 import Input from './UI/Input'
 
+import AddFav from './AddFav'
+
 const Item = ({data}) => {
     const [modalShown, setModalShown] = useState(false)
+
+    
 
 
       const hideModalHandler = () =>{
@@ -15,6 +19,7 @@ const Item = ({data}) => {
         setModalShown(true)
     }
     
+
   return (
     <Card>
             <h2>{data.name}</h2>
@@ -22,6 +27,7 @@ const Item = ({data}) => {
             <img src={data.image_url} alt={data.name} className='img'/></div>
             <p>Ibu: {data.ibu}</p>
             <p>Abv: {data.abv}</p> 
+            
             <Input 
               detail={data}
               input={{id: 'amount ' + data.id,
@@ -31,6 +37,8 @@ const Item = ({data}) => {
               defaultValue: '1',
               max: '5'
             }}></Input>
+
+            <AddFav item={data}/>
             {modalShown && <ItemDetail onHide={hideModalHandler} detail={data}/>}
     </Card>
   )
