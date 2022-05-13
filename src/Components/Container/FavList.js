@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import FavContext from '../../Context/FavContext'
 
 const FavList = () => {
-    const { fav } = useContext(FavContext)
+    const { fav, favContext } = useContext(FavContext)
   return (
     <div>
         {
@@ -10,6 +10,7 @@ const FavList = () => {
                 return (
                 <div key={item.id}>
                     <h2>{item.name}</h2>
+                    <button onClick={() => {favContext.removeItem(item.id)}}>X</button>
                 </div>)
             })
         }

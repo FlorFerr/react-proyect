@@ -5,12 +5,17 @@ const AddFav = ({item}) => {
 
     const { favContext } = useContext(FavContext)
 
-    const favItemsHandler = () => {
+    const addFavItemsHandler = () => {
       favContext.addItem(item)
       }
 
+
+
   return (
-      <button onClick={favItemsHandler}>Agregar a favoritos</button>
+   
+      <button onClick={addFavItemsHandler}>Agregar a favoritos</button>
+      
+      
   )
 }
 
