@@ -1,18 +1,11 @@
 import React from 'react'
 
-const SearchItem = ({data, onSearchProducts}) => {
-    
-    
-    
+const SearchItem = ({onSearch}) => {
 
     const changeSearchValueHandler = (e) => {
-        const  searchValue = (e.target.value.toLowerCase())
-        const filteredProducts = data.filter(product => product.name.toLowerCase().includes(searchValue))
-        onSearchProducts(filteredProducts)
+        onSearch(e.target.value)
     }
 
-
-    
   return (
     <div>
         <input type='search' onChange={changeSearchValueHandler} placeholder='Buscar'></input>

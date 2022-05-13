@@ -7,10 +7,7 @@ import Input from './UI/Input'
 import AddFav from './AddFav'
 
 const Item = ({data}) => {
-    const [modalShown, setModalShown] = useState(false)
-
-    
-
+    const [modalShown, setModalShown] = useState(false) 
 
       const hideModalHandler = () =>{
         setModalShown(false)
@@ -19,7 +16,6 @@ const Item = ({data}) => {
         setModalShown(true)
     }
     
-
   return (
     <Card>
             <h2>{data.name}</h2>

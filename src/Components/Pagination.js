@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Pagination = ({beers, pagesHandler}) => {
+const Pagination = ({ onPruebita}) => {
   const lastViewedPage = localStorage.getItem('pages')
 
   const [currentPage, setCurrentPage] = useState(lastViewedPage)
@@ -8,17 +8,17 @@ const Pagination = ({beers, pagesHandler}) => {
 
   const pages = []
 
-  for(let i = 1; i <= Math.ceil(beers.length / itemsPerPage); i++){
+  for(let i = 1; i <= Math.ceil(325 / itemsPerPage); i++){
     pages.push(i)
   }
 
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  //const indexOfLastItem = currentPage * itemsPerPage
+  //const indexOfFirstItem = indexOfLastItem - itemsPerPage
 
   const currentPagesHandler = (e) => {
     setCurrentPage(Number(e.target.id))
     localStorage.setItem('pages', e.target.id)
-    pagesHandler(indexOfFirstItem, indexOfLastItem)  
+    onPruebita(currentPage, itemsPerPage)
   }
 
 
