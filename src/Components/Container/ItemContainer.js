@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProducts, baseUrl } from '../../Services/Index'
+import FavList from './FavList';
 import ItemList from './ItemList';
 import SearchItem from './SearchItem';
 
@@ -27,6 +28,7 @@ const ItemContainer = () => {
   
   return (
     <div>
+      <FavList></FavList>
         <SearchItem onSearch={onSearch}/>
           {isLoading ? <p>Cargando...</p> : <ItemList data={beers}/>}
     </div>

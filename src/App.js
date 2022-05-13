@@ -3,12 +3,14 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Cart from './Components/Cart/Cart';
 import Header from "./Components/UI/Header";
 import CartProvider from './Context/CartProvider';
+import FavProvider from './Context/FavProvider';
 import ItemContainer from './Components/Container/ItemContainer';
 
 function App() {
  
   return (
     <CartProvider>
+      <FavProvider>
       <Header></Header>
       <Switch>      
         <Route path="/" exact>
@@ -21,6 +23,7 @@ function App() {
           <Redirect to='/' />
         </Route>
       </Switch>
+      </FavProvider>
     </CartProvider>
   );
 }

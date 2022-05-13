@@ -1,13 +1,16 @@
 import React, { useContext } from 'react'
-import CartContext from '../../Context/CartContext'
+import FavContext from '../../Context/FavContext'
 
 const AddFav = ({item}) => {
 
-    const { addFavHandler } = useContext(CartContext)
+    const { favContext } = useContext(FavContext)
+
+    const favItemsHandler = () => {
+      favContext.addItem(item)
+      }
 
   return (
-      <button onClick={()=>{addFavHandler(item)}}>Agregar a favoritos</button>
-    
+      <button onClick={favItemsHandler}>Agregar a favoritos</button>
   )
 }
 
