@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Pagination = ({ onPruebita}) => {
+const Pagination = ({beers}) => {
   const lastViewedPage = localStorage.getItem('pages')
 
   const [currentPage, setCurrentPage] = useState(lastViewedPage)
@@ -8,7 +8,7 @@ const Pagination = ({ onPruebita}) => {
 
   const pages = []
 
-  for(let i = 1; i <= Math.ceil(325 / itemsPerPage); i++){
+  for(let i = 1; i <= Math.ceil(beers.length / itemsPerPage); i++){
     pages.push(i)
   }
 
@@ -18,11 +18,7 @@ const Pagination = ({ onPruebita}) => {
   const currentPagesHandler = (e) => {
     setCurrentPage(Number(e.target.id))
     localStorage.setItem('pages', e.target.id)
-    onPruebita(currentPage, itemsPerPage)
-  }
-
-
-
+    }
 
   const inicioHandler = () => {
     setCurrentPage(pages[0])

@@ -1,6 +1,6 @@
 import React from 'react'
 import AddFav from './AddFav'
-import Modal from './UI/Modal'
+import Modal from '../UI/Modal'
 
 const ItemDetail = ({detail, onHide}) => {
 

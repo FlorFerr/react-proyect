@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import CartContext from '../../Context/CartContext'
-import ItemDetail from '../ItemDetail'
+import ItemDetail from '../Container/ItemDetail'
 import './CartItem.css'
 
 const CartItem = ({data, onRemove}) => {
