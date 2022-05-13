@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export const baseUrl = 'https://api.punkapi.com/v2/beers'
+const baseUrl = 'https://api.punkapi.com/v2/beers'
 
 
-export async function getProducts (url){
+async function getProducts (url){
   try{
     const response = await axios({
       url: `${url}`,
@@ -14,5 +14,7 @@ export async function getProducts (url){
     console.log(e)
   }
 }
+
+export {baseUrl, getProducts}
 
 
