@@ -15,7 +15,7 @@ const ItemContainer = () => {
         const response = await getProducts(`${baseUrl}?beer_name=${valueSearch}`)
           setBeers(response.data)
       }else{
-        const responseProducts = await getProducts(`${baseUrl}?page=${2}&per_page=${3}`)
+        const responseProducts = await getProducts(`${baseUrl}?page=${2}&per_page=${12}`)
           setBeers(responseProducts.data)}
       }
       loadProducts()
