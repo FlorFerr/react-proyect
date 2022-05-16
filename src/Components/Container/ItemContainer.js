@@ -26,7 +26,6 @@ const ItemContainer = () => {
       }else{
         const responseProducts = await getProducts(`${baseUrl}?page=${pagePagination}&per_page=${10}`)
           setBeers(responseProducts.data)}
-          console.log(pagePagination)
       }
       loadProducts()
       setLoading(false)
