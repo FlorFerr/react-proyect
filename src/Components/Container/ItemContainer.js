@@ -11,7 +11,7 @@ const ItemContainer = () => {
   
     useEffect(()=>{
       async function loadProducts (){
-        if(valueSearch.length > 0){
+        if(valueSearch.length){
         const response = await getProducts(`${baseUrl}?beer_name=${valueSearch}`)
           setBeers(response.data)
       }else{

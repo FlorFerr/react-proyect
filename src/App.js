@@ -16,6 +16,9 @@ function App() {
         <Route path="/" exact>
           <ItemContainer />
         </Route>        
+        <Route path="/favorites" exact>
+
+        </Route>        
         <Route path="/cart" >
           <Cart />
         </Route>
