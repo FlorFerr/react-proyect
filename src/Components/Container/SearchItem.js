@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const SearchItem = ({onSearch}) => {
+    const [searchValue, setSearchValue] = useState('')
 
     const changeSearchValueHandler = (e) => {
-        onSearch(e.target.value)
+        setSearchValue(e.target.value)
     }
 
+    const searchBeer =  () =>{
+      onSearch(searchValue)  
+      setSearchValue('')    
+    }
   return (
     <div>
-        <input type='search' onChange={changeSearchValueHandler} placeholder='Buscar'></input>
-        
+        <input type='text' value={searchValue} onChange={changeSearchValueHandler} placeholder='Buscar'></input>
+        <button onClick={searchBeer}>Buscar</button>
     </div>
   )
 }
