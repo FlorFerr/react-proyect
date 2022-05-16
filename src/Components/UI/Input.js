@@ -11,7 +11,7 @@ const Input = (props) => {
     }
     
     const addItemCart = () =>{       
-        cartContext.addItem({id: props.detail.id, name: props.detail.name, image_url: props.detail.image_url, description: props.detail.description}, amount)
+        cartContext.addItem({id: props.detail.id, name: props.detail.name, image_url: props.detail.image_url, description: props.detail.description, ingredients: props.detail.ingredients}, amount)
     }
 
   return (
