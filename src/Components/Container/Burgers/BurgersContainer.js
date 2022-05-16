@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { getProducts, burguerUrl } from '../../../Services/Index'
 import ItemList from '../ItemList'
+import Pagination from '../Pagination'
 import SearchItem from '../SearchItem'
 
 const BurgersContainer = () => {
     const [burguers, setBurguers] = useState([])
    
-
     useEffect(()=>{
         async function loadProducts (){         
             const responseProducts = await getProducts(`${burguerUrl}`)
@@ -30,6 +30,7 @@ const BurgersContainer = () => {
       }
   return (
     <div>
+        <Pagination />
         <SearchItem onSearch={onSearch}/>
         <ItemList data={burguers} />
     </div>
