@@ -1,33 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './Pagination.css'
 
-const Pagination = ({beers}) => {
-  const lastViewedPage = localStorage.getItem('pages')
-
-  const [currentPage, setCurrentPage] = useState(lastViewedPage)
+const Pagination = ({onPaginationChange}) => {
   const itemsPerPage = 10
 
   const pages = []
 
-  for(let i = 1; i <= Math.ceil(beers.length / itemsPerPage); i++){
+  for(let i = 1; i <= Math.ceil(80 / itemsPerPage); i++){
     pages.push(i)
   }
 
-  //const indexOfLastItem = currentPage * itemsPerPage
-  //const indexOfFirstItem = indexOfLastItem - itemsPerPage
-
-  const currentPagesHandler = (e) => {
-    setCurrentPage(Number(e.target.id))
-    localStorage.setItem('pages', e.target.id)
-    }
-
   const inicioHandler = () => {
-    setCurrentPage(pages[0])
+    onPaginationChange(pages[0])
   }
 
   const finalHandler = () => {
-    setCurrentPage(pages.length)
+    onPaginationChange(pages.length)
   }
 
+  const currentPagesHandler = (e) => {
+    onPaginationChange(e.target.id)
+    }
 
   return (
     <div>

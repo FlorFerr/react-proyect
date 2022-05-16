@@ -6,13 +6,3 @@
     
 }
 
-.pagination{
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-}
-.pagination li{
-    margin: 5px;
-    padding: 3px;
-    cursor: pointer;
-}

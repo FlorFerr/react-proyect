@@ -2,12 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { getProducts, baseUrl } from '../../Services/Index'
 import FavList from './FavList';
 import ItemList from './ItemList';
+import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 
 const ItemContainer = () => {
+    const lastViewedPage = localStorage.getItem('pages')
+  
     const [beers, setBeers] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [valueSearch, setValueSearch ] = useState('')
+    const [pagePagination, setPagePagination] = useState(lastViewedPage)
+    
+    const paginationHandler = (page) => {
+      setPagePagination(page) 
+      localStorage.setItem('pages', page)
+      }
   
     useEffect(()=>{
       async function loadProducts (){
@@ -15,12 +24,13 @@ const ItemContainer = () => {
         const response = await getProducts(`${baseUrl}?beer_name=${valueSearch}`)
           setBeers(response.data)
       }else{
-        const responseProducts = await getProducts(`${baseUrl}?page=${2}&per_page=${12}`)
+        const responseProducts = await getProducts(`${baseUrl}?page=${pagePagination}&per_page=${10}`)
           setBeers(responseProducts.data)}
+          console.log(pagePagination)
       }
       loadProducts()
       setLoading(false)
-    },[valueSearch])
+    },[valueSearch, pagePagination])
   
     const onSearch = (value) => {
       setValueSearch(value)
@@ -28,8 +38,9 @@ const ItemContainer = () => {
   
   return (
     <div>
-      <FavList></FavList>
+        <FavList></FavList>
         <SearchItem onSearch={onSearch}/>
+        <Pagination onPaginationChange={paginationHandler}/>
           {isLoading ? <p>Cargando...</p> : <ItemList data={beers}/>}
     </div>
   )
