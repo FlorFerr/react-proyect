@@ -11,6 +11,16 @@ const NavLinks = (props) => {
             </NavLink>
           </li>
           <li onClick={props.onMenuHandler}>
+            <NavLink to="/beers" activeClassName="active">
+              Cervezas
+            </NavLink>
+          </li>
+          <li onClick={props.onMenuHandler}>
+            <NavLink to="/burgers" activeClassName="active">
+              Hamburguesas
+            </NavLink>
+          </li>
+          <li onClick={props.onMenuHandler}>
             <NavLink to="/favorites" activeClassName="active">
               Favoritos
             </NavLink>

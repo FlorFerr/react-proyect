@@ -4,8 +4,9 @@ import Cart from './Components/Cart/Cart';
 import Header from "./Components/UI/Header";
 import CartProvider from './Context/CartProvider';
 import FavProvider from './Context/FavProvider';
-import ItemContainer from './Components/Container/ItemContainer';
 import FavList from './Components/Container/FavList';
+import Beers from './Components/Pages/Beers';
+import Burgers from './Components/Pages/Burgers'
 
 function App() {
  
@@ -14,11 +15,14 @@ function App() {
       <FavProvider>
       <Header></Header>
       <Switch>      
-        <Route path="/" exact>
-          <ItemContainer />
-        </Route>        
+        <Route path="/beers" exact>
+          <Beers />
+        </Route>      
+        <Route path="/burgers" exact>
+          <Burgers />
+        </Route>  
         <Route path="/favorites" exact>
-          <FavList></FavList>
+          <FavList />
         </Route>        
         <Route path="/cart" >
           <Cart />

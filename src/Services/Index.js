@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const beerUrl = 'https://api.punkapi.com/v2/beers'
+const burguerUrl= 'https://my-burger-api.herokuapp.com/burgers'
 
 async function getProducts (url){
   try{
@@ -14,6 +15,6 @@ async function getProducts (url){
   }
 }
 
-export {beerUrl, getProducts}
+export {beerUrl, getProducts, burguerUrl}
 
 

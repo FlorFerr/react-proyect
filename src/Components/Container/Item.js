@@ -21,8 +21,11 @@ const Item = ({data}) => {
             <h2>{data.name}</h2>
             <div onClick={showModalHandler}>
             <img src={data.image_url} alt={data.name} className='img'/></div>
-            <p>Ibu: {data.ibu}</p>
-            <p>Abv: {data.abv}</p> 
+
+            {data.ibu && <p>Ibu: {data.ibu}</p>}
+            {data.abv && <p>Abv: {data.abv}</p> }
+            
+            
             
             <Input 
               detail={data}

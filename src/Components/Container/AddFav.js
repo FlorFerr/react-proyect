@@ -6,34 +6,20 @@ import { HiOutlineHeart } from 'react-icons/hi'
 const AddFav = ({item}) => {
 
   const { favContext, fav } = useContext(FavContext)
-  
-
-
-  const buscarFav = fav.find(ele => ele.id === item.id)
-
+  const buscarFav = fav.find(ele => ele.name === item.name)
   const notValidation = !buscarFav 
   const [isFav, setIsFav] = useState(notValidation)
     
-
     const addFavItemsHandler = () => {
       favContext.addItem(item)
       setIsFav(!isFav)
-
-     
       }
-
-     
-     
-
-
 
   return (
    
       <button onClick={addFavItemsHandler}>
-        
         {!isFav && <HiHeart/>}
         {isFav && <HiOutlineHeart />}
-
       </button>
       
       

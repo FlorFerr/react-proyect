@@ -26,7 +26,7 @@ const Cart = () => {
       {
         cart.map(product=> {
           return (
-            <CartItem key={product.id} data={product} onRemove={cartContext.removeItem}></CartItem>
+            <CartItem key={product.name} data={product} onRemove={cartContext.removeItem}></CartItem>
           )
         })
       }

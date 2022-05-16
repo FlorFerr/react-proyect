@@ -7,11 +7,11 @@ const FavProvider = (props) => {
 
     const addFavHandler = (item) => {     
         let favItems = []  
-        const isInfav = fav.find(product => product.id === item.id)
+        const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
         setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description}]) 
         }else{
-            favItems = fav.filter(element => element.id !== item.id)
+            favItems = fav.filter(element => element.name !== item.name)
             setFav(favItems)
         }        
         
@@ -19,8 +19,8 @@ const FavProvider = (props) => {
     useEffect(()=> {
         localStorageService('favorites', fav)
     }, [fav])
-    const removeFavHandler = (id) => {
-        const favItems = fav.filter(item => item.id !== id)
+    const removeFavHandler = (name) => {
+        const favItems = fav.filter(item => item.name !== name)
         setFav(favItems)
     }
 

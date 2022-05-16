@@ -36,7 +36,7 @@ const CartItem = ({data, onRemove}) => {
             <td >x{data.amount}</td>
             <td><button onClick={decreaseAmountHandler}  disabled={data.amount === 1}>-</button></td>
             <td><button onClick={increaseAmountHandler}>+</button></td>
-            <td  ><button onClick={() => {onRemove(data.id)}}>Remove</button></td>
+            <td  ><button onClick={() => {onRemove(data.name)}}>Remove</button></td>
             
         </tr>   
         

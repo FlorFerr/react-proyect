@@ -23,7 +23,9 @@ const ItemContainer = () => {
     useEffect(()=>{
       async function loadProducts (){         
           const responseProducts = await getProducts(`${beerUrl}${ !valueSearch ? paginationUrl : searchUrl}`)
+
           setBeers(responseProducts.data)
+          
       }
       loadProducts()      
     },[paginationUrl, searchUrl, valueSearch])

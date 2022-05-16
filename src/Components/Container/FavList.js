@@ -6,9 +6,9 @@ const FavList = () => {
 
     const favListContent = fav.map(item => {
         return (
-        <div key={item.id}>
+        <div key={item.name}>
             <h2>{item.name}</h2>
-            <button onClick={() => {favContext.removeItem(item.id)}}>X</button>
+            <button onClick={() => {favContext.removeItem(item.name)}}>X</button>
         </div>)
     })
   return (
