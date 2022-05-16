@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts, baseUrl } from '../../Services/Index'
+import { getProducts, beerUrl } from '../../Services/Index'
 import FavList from './FavList';
 import ItemList from './ItemList';
 import Pagination from './Pagination';
@@ -21,10 +21,10 @@ const ItemContainer = () => {
     useEffect(()=>{
       async function loadProducts (){
         if(valueSearch.length){
-        const response = await getProducts(`${baseUrl}?beer_name=${valueSearch}`)
+        const response = await getProducts(`${beerUrl}?beer_name=${valueSearch}`)
           setBeers(response.data)
       }else{
-        const responseProducts = await getProducts(`${baseUrl}?page=${pagePagination}&per_page=${10}`)
+        const responseProducts = await getProducts(`${beerUrl}?page=${pagePagination}&per_page=${10}`)
           setBeers(responseProducts.data)}
       }
       loadProducts()

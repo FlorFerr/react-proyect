@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FavContext from './FavContext'
+import { localStorageService } from '../Services/localStorage';
 
 const FavProvider = (props) => {
-    const [fav, setFav] = useState([])
+    const [fav, setFav] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
 
     const addFavHandler = (item) => {     
         let favItems = []  
@@ -13,8 +14,11 @@ const FavProvider = (props) => {
             favItems = fav.filter(element => element.id !== item.id)
             setFav(favItems)
         }        
+        
     }
-    
+    useEffect(()=> {
+        localStorageService('favorites', fav)
+    }, [fav])
     const removeFavHandler = (id) => {
         const favItems = fav.filter(item => item.id !== id)
         setFav(favItems)

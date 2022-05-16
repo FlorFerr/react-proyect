@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'https://api.punkapi.com/v2/beers'
-
+const beerUrl = 'https://api.punkapi.com/v2/beers'
 
 async function getProducts (url){
   try{
@@ -15,6 +14,6 @@ async function getProducts (url){
   }
 }
 
-export {baseUrl, getProducts}
+export {beerUrl, getProducts}
 
 

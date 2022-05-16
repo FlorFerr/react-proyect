@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CartContext from './CartContext'
+import { localStorageService } from '../Services/localStorage'
 
 const CartProvider = (props) => {
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
     
     const addItemHandler = (item, amount) => {
         const isInCart = cart.find(product => product.id === item.id)
@@ -45,6 +46,10 @@ const CartProvider = (props) => {
         amountItem: amountItemHandler,        
         clearCart: clearCartHandler,
     }
+
+    useEffect(()=> {
+        localStorageService('cart', cart)
+    }, [cart])
 
   return (
     <CartContext.Provider value={{cartContext, cart}}>
