@@ -18,6 +18,11 @@ const ItemContainer = () => {
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
       }
+      
+      const onSearch = (value) => {
+        setValueSearch(value)
+        setNoResultaSearch(false)
+      }
 
       const paginationUrl = `?page=${pagePagination}&per_page=${10}`
       const searchUrl = `?beer_name=${valueSearch}`
@@ -32,11 +37,6 @@ const ItemContainer = () => {
       }
       loadProducts()      
     },[paginationUrl, searchUrl, valueSearch])
-  
-    const onSearch = (value) => {
-      setValueSearch(value)
-      setNoResultaSearch(false)
-    }
   
   return (
     <div>

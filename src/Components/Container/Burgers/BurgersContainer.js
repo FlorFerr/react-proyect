@@ -5,7 +5,6 @@ import Pagination from '../Pagination'
 import SearchItem from '../SearchItem'
 
 const BurgersContainer = () => {
-
     const lastViewedPage = localStorage.getItem('pageBurger')
 
     const [burgers, setBurgers] = useState([])
@@ -16,11 +15,14 @@ const BurgersContainer = () => {
       localStorage.setItem('pageBurger', page)
       }
 
-      const paginationUrl = `?_page=${pagePagination}&_limit=${10}`
-   
+      const onSearch = (value) => {
+        const burgersFiltered = burgers.find(ele => ele.name === value)
+        console.log(burgersFiltered)
+      }
+
     useEffect(()=>{
         async function loadProducts (){         
-            const responseProducts = await getProducts(`${burgerUrl}${paginationUrl}`)
+            const responseProducts = await getProducts(`${burgerUrl}?_page=${pagePagination}&_limit=${10}`)
               
             const trasformData = responseProducts.data.map((product) => {
                 return {
@@ -33,12 +35,8 @@ const BurgersContainer = () => {
             setBurgers(trasformData) 
         }
         loadProducts()      
-      },[paginationUrl])
+      },[pagePagination])
 
-      const onSearch = (value) => {
-        const burgersFiltered = burgers.find(ele => ele.name === value)
-        console.log(burgersFiltered)
-      }
   return (
     <div>
         <Pagination length={27} onPaginationChange={paginationHandler}/>
