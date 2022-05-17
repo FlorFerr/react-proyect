@@ -16,7 +16,7 @@ const BurgersContainer = () => {
                   id: product.id,
                   name: product.name,
                   ingredients: product.ingredients,
-                  image_url: 'http://assets.stickpng.com/thumbs/5882488ae81acb96424ffaaf.png'
+                  image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png'
                 }
             }) 
             setBurguers(trasformData) 

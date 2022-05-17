@@ -1,12 +1,12 @@
 Story 1: Main page - Application look and feel
- * Implement a topbar that must be always visible, even if the user scrolls down
+🤗️ Implement a topbar that must be always visible, even if the user scrolls down
   - Topbar should have the bar's name in the center
 🤗️ Display beer's information
   - Get beer's data from api: https://punkapi.com/documentation/v2
   - Display image, name, ibu and abv for each beer in a list
 🤗️ Show beer description in a modal
   - click beer to open modal
-*  Paginate results
+🤗️  Paginate results
   - show 10 beers per page
   - quick jump to first / last page
   - remember last viewed page
@@ -33,35 +33,35 @@ Story 2: Implement order page
 Story 3: Filters and favorites
 🤗️ Add beer name filter
   - Search beers that match the input value
-* Select favourite beers
+🤗️ Select favourite beers
   - Add star/heart beside each beer in the list
   - Icon should be always visible (not just in modal)
   - Click to add or remove from favorites
   - Color/fill change when clicking the icon
-* Add favourites filter
+🤗️ Add favourites filter
   - Click to toggle display only favourite beers in the list
   - Name filter should only apply to the currently visible list
- * Show no results message
+🤗️ Show no results message
   - whenever the list of beers goes empty, show a message
 * NTH: ibu filter
   - Add a filter to search beers by ibu
   - Add greater / less than selected amount toggle
 
 Story 4: Don't drink with an empty stomach
- * Add burguer menu in the topbar
+🤗️ Add burguer menu in the topbar
   - click to open menu
   - show mask while menu is open
   - click on mask closes the menu
   - entries: beers page / burguers page / order page
- * Implement burguers page
+🤗️ Implement burguers page
   - list burguers similarly to beers page: https://my-burger-api.herokuapp.com/
   - click over burguer to display ingredients in modal
- * Allow ordering burguers
+🤗️ Allow ordering burguers
   - show + and - buttons
   - display current ordered amount for the selected burguer
   - use the same cart for burguers and beers. Adding a burguer modifies the total amount of products in cart
   - include ordered burguers in order page
- * Allow favorite burguers
+🤗️ Allow favorite burguers
   - show star/heart icon to select as favorite. Always visible
  * Add favorite and name filters
  * Add burguers paginator
@@ -83,5 +83,5 @@ Story 6: Error handling
  * Show message if user or password are not correct
  * Colour inputs if no data provided
   - applies to login and filter inputs
- * Disable removal button when no items in cart
+🤗️ Disable removal button when no items in cart
  * Disable or hide next / prev page buttons for pager when not available

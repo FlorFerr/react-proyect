@@ -15,6 +15,8 @@ const AddFav = ({item}) => {
       setIsFav(!isFav)
       }
 
+     
+
   return (
    
       <button onClick={addFavItemsHandler}>
