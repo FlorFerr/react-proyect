@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import { getProducts, burguerUrl } from '../../../Services/Index'
+import { getProducts, burgerUrl } from '../../../Services/Index'
 import ItemList from '../ItemList'
 import Pagination from '../Pagination'
 import SearchItem from '../SearchItem'
 
 const BurgersContainer = () => {
-    const [burguers, setBurguers] = useState([])
+
+    const lastViewedPage = localStorage.getItem('pageBurger')
+
+    const [burgers, setBurgers] = useState([])
+    const [pagePagination, setPagePagination] = useState(lastViewedPage || 1)
+
+    const paginationHandler = (page) => {
+      setPagePagination(page) 
+      localStorage.setItem('pageBurger', page)
+      }
+
+      const paginationUrl = `?_page=${pagePagination}&_limit=${10}`
    
     useEffect(()=>{
         async function loadProducts (){         
-            const responseProducts = await getProducts(`${burguerUrl}`)
+            const responseProducts = await getProducts(`${burgerUrl}${paginationUrl}`)
               
             const trasformData = responseProducts.data.map((product) => {
                 return {
@@ -19,20 +30,20 @@ const BurgersContainer = () => {
                   image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png'
                 }
             }) 
-            setBurguers(trasformData) 
+            setBurgers(trasformData) 
         }
         loadProducts()      
-      },[])
+      },[paginationUrl])
 
       const onSearch = (value) => {
-        const burguersFiltered = burguers.find(ele => ele.name === value)
-        console.log(burguersFiltered)
+        const burgersFiltered = burgers.find(ele => ele.name === value)
+        console.log(burgersFiltered)
       }
   return (
     <div>
-        <Pagination />
+        <Pagination length={27} onPaginationChange={paginationHandler}/>
         <SearchItem onSearch={onSearch}/>
-        <ItemList data={burguers} />
+        <ItemList data={burgers} />
     </div>
   )
 }

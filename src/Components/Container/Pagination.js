@@ -1,12 +1,12 @@
 import React from 'react'
 import './Pagination.css'
 
-const Pagination = ({onPaginationChange}) => {
+const Pagination = ({onPaginationChange, length,}) => {
   const itemsPerPage = 10
 
   const pages = []
 
-  for(let i = 1; i <= Math.ceil(80 / itemsPerPage); i++){
+  for(let i = 1; i <= Math.ceil(length / itemsPerPage); i++){
     pages.push(i)
   }
 

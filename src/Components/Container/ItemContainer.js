@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 
 const ItemContainer = () => {
-    const lastViewedPage = localStorage.getItem('page')
+    const lastViewedPage = localStorage.getItem('pageBeer')
   
     const [beers, setBeers] = useState([])
     const [valueSearch, setValueSearch ] = useState('')
@@ -15,7 +15,7 @@ const ItemContainer = () => {
 
     const paginationHandler = (page) => {
       setPagePagination(page) 
-      localStorage.setItem('page', page)
+      localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
       }
 
@@ -42,7 +42,7 @@ const ItemContainer = () => {
     <div>
         <Link to='favorites'><button>Favoritos</button></Link>
         <SearchItem onSearch={onSearch} />
-        <Pagination onPaginationChange={paginationHandler}/>
+        <Pagination onPaginationChange={paginationHandler} length={80}/>
         {noResultSearch && <p>No hay resultados</p>  }
         <ItemList data={beers}/>
     </div>
