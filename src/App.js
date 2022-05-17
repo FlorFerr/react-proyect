@@ -7,6 +7,7 @@ import FavProvider from './Context/FavProvider';
 import FavList from './Components/Container/FavList';
 import Beers from './Components/Pages/Beers';
 import Burgers from './Components/Pages/Burgers'
+import Login from './Components/Pages/Login';
 
 function App() {
  
@@ -26,6 +27,9 @@ function App() {
         </Route>        
         <Route path="/cart" >
           <Cart />
+        </Route>
+        <Route path="/login" >
+          <Login />
         </Route>
         <Route path="*" >
           <Redirect to='/' />

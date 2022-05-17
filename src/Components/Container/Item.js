@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Card from '../UI/Card'
-import './Item.css'
+
 import ItemDetail from './ItemDetail'
 import Input from '../UI/Input'
 

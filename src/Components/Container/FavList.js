@@ -8,6 +8,7 @@ const FavList = () => {
         return (
         <div key={item.name}>
             <h2>{item.name}</h2>
+            <img src={item.image_url} alt={item.name} className='img-detail'/>
             <button onClick={() => {favContext.removeItem(item.name)}}>X</button>
         </div>)
     })
