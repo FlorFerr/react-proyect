@@ -1,8 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import FavContext from '../../Context/FavContext'
+import SearchItem from './SearchItem'
 
 const FavList = () => {
+  const [valueSearch, setValueSearch ] = useState('')
+  
     const { fav, favContext } = useContext(FavContext)
+
+    const onSearch = (value) => {
+      setValueSearch(value)
+    }
 
     const favListContent = fav.map(item => {
         return (
@@ -14,6 +21,7 @@ const FavList = () => {
     })
   return (
     <div>
+      <SearchItem ></SearchItem>
        {fav.length > 0 ? favListContent : <p>No hay favoritos</p>}
     </div>
   )
