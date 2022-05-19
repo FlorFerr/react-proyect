@@ -75,12 +75,10 @@ const ItemContainer = () => {
             if(responseProducts.data.length === 0){
               setNoResultaSearch(true)            
             }
-            console.log(responseProducts.data)
-
           }
       }
       loadProducts()      
-    },[paginationUrl, searchUrl, valueSearch, filterUrl, ibuValue, ibuFilter])
+    },[paginationUrl, searchUrl, valueSearch, filterUrl, ibuFilter])
   
   return (
     <div>
