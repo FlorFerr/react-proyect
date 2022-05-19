@@ -11,10 +11,9 @@ const AddFav = ({item}) => {
   const [isFav, setIsFav] = useState(false)
 
   useEffect(() => {
-    const iconFavHandler = () => {
+    
       setIsFav(iconState)
-    }
-    iconFavHandler()
+  
   },[iconState])
   
   const addFavItemsHandler = () => {

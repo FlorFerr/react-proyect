@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SearchItem = ({onSearch}) => {
+const SearchItem = ({onSearch, value}) => {
   
     const changeSearchValueHandler = (e) => {
         onSearch(e.target.value) 
@@ -8,7 +8,7 @@ const SearchItem = ({onSearch}) => {
 
   return (
     <div>
-        <input type='text' onChange={changeSearchValueHandler} placeholder='Buscar'></input>
+        <input type='text' value={value} onChange={changeSearchValueHandler} placeholder='Buscar'></input>
    
     </div>
   )

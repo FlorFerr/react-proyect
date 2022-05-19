@@ -17,6 +17,7 @@ const ItemContainer = () => {
       setPagePagination(page) 
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
+      setValueSearch('')
       }
       
       const onSearch = (value) => {
@@ -41,7 +42,7 @@ const ItemContainer = () => {
   return (
     <div>
         <Link to='favorites'><button>Favoritos</button></Link>
-        <SearchItem onSearch={onSearch} />
+        <SearchItem onSearch={onSearch} value={valueSearch}/>
         <Pagination onPaginationChange={paginationHandler} length={80}/>
         {noResultSearch && <p>No hay resultados</p>  }
         <ItemList data={beers}/>
