@@ -41,6 +41,8 @@ const ItemContainer = () => {
       const onSearch = (value) => {
         setValueSearch(value)
         setNoResultaSearch(false)
+        setIbuFilter(false)
+        setIbuValue('')
       }
 
       const paginationUrl = `?page=${pagePagination}&per_page=${10}`
@@ -60,14 +62,14 @@ const ItemContainer = () => {
               id: product.id,
               name: product.name,
               description: product.description,
-              image_url: product.image_url,
+              image_url: product.image_url ? product.image_url : 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Botella-de-cerveza.png/800px-Botella-de-cerveza.png',
               ibu: product.ibu,
               abv: product.abv,
               category: 'beer'
             }
         })
           setBeers(trasformData)
-          if(ibuFilter){
+          if(ibuFilter && !valueSearch){
             const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
             setBeers(responseProducts.data)
             if(responseProducts.data.length === 0){
