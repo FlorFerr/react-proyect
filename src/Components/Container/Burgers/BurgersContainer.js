@@ -39,7 +39,8 @@ const BurgersContainer = () => {
                   id: product.id,
                   name: product.name,
                   ingredients: product.ingredients,
-                  image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png'
+                  image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png',
+                  category: 'burger'
                 }
             })
 
@@ -62,7 +63,7 @@ const BurgersContainer = () => {
     <div>
         <Pagination length={27} onPaginationChange={paginationHandler}/>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
-        {noResultSearch && <p>NO results</p>}
+        {noResultSearch && <p>No hay coincidencia</p>}
         <ItemList data={burgers} />
     </div>
   )

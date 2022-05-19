@@ -4,6 +4,7 @@ import { getProducts, beerUrl } from '../../Services/Index'
 import ItemList from './ItemList';
 import Pagination from './Pagination';
 import SearchItem from './SearchItem';
+import Filter from './Filter';
 
 const ItemContainer = () => {
     const lastViewedPage = localStorage.getItem('pageBeer')
@@ -11,13 +12,30 @@ const ItemContainer = () => {
     const [beers, setBeers] = useState([])
     const [valueSearch, setValueSearch ] = useState('')
     const [pagePagination, setPagePagination] = useState(lastViewedPage || 1)
+    const [ibuValue, setIbuValue] = useState('')
+    const [ibuParam, setIbuParam] = useState('') 
+    const [ibuFilter, setIbuFilter] = useState(false)
     const [noResultSearch, setNoResultaSearch] = useState(false)
+
+
+    const ibuHandler = (ibu) => {
+      setIbuValue(ibu)
+      setIbuFilter(false)
+    }
+
+    const ibuParamHandler = (param) =>{
+      setIbuParam(param)
+      setIbuFilter(true)
+      setNoResultaSearch(false)
+    }
 
     const paginationHandler = (page) => {
       setPagePagination(page) 
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
       setValueSearch('')
+      setIbuFilter(false)
+      setIbuValue('')
       }
       
       const onSearch = (value) => {
@@ -27,24 +45,48 @@ const ItemContainer = () => {
 
       const paginationUrl = `?page=${pagePagination}&per_page=${10}`
       const searchUrl = `?beer_name=${valueSearch}`
+      const filterUrl = `?ibu_${ibuParam}=${ibuValue}`
   
     useEffect(()=>{
-      async function loadProducts (){         
-          const responseProducts = await getProducts(`${beerUrl}${ !valueSearch ? paginationUrl : searchUrl}`)
+      async function loadProducts (){  
+           
+
+          const responseProducts = await getProducts(`${beerUrl}${!valueSearch ? paginationUrl : searchUrl}`)
           if(responseProducts.data.length === 0){
             setNoResultaSearch(true)            
           }
-          setBeers(responseProducts.data)
+          const trasformData = responseProducts.data.map((product) => {
+            return {
+              id: product.id,
+              name: product.name,
+              description: product.description,
+              image_url: product.image_url,
+              ibu: product.ibu,
+              abv: product.abv,
+              category: 'beer'
+            }
+        })
+          setBeers(trasformData)
+          if(ibuFilter){
+            const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
+            setBeers(responseProducts.data)
+            if(responseProducts.data.length === 0){
+              setNoResultaSearch(true)            
+            }
+            console.log(responseProducts.data)
+
+          }
       }
       loadProducts()      
-    },[paginationUrl, searchUrl, valueSearch])
+    },[paginationUrl, searchUrl, valueSearch, filterUrl, ibuValue, ibuFilter])
   
   return (
     <div>
+      <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <Link to='favorites'><button>Favoritos</button></Link>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
         <Pagination onPaginationChange={paginationHandler} length={80}/>
-        {noResultSearch && <p>No hay resultados</p>  }
+        {noResultSearch && <p>No hay coincidencia</p>  }
         <ItemList data={beers}/>
     </div>
   )
