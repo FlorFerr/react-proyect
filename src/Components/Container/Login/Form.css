@@ -44,7 +44,7 @@
     flex: 1;
   }
   
-  button {
+  .btn-form {
     font: inherit;
     background-color: #240370;
     color: white;
@@ -54,15 +54,15 @@
     cursor: pointer;
   }
   
-  button:hover,
-  button:active {
+  .btn-form:hover,
+  .btn-form:active {
     background-color: #33059e;
     border-color: #33059e;
   }
   
-  button:disabled,
-  button:disabled:hover,
-  button:disabled:active {
+  .btn-form:disabled,
+  .btn-form:disabled:hover,
+  .btn-form:disabled:active {
     background-color: #ccc;
     color: #292929;
     border-color: #ccc;
@@ -72,7 +72,7 @@
     text-align: right;
   }
   
-  .form-actions button {
+  .form-actions  .btn-form {
     margin-left: 1rem;
   }
   

@@ -66,7 +66,7 @@ const Form = ({ user, onLogin, logStatus}) => {
               {!enteredPassword && passwordTouched && <p className='error-text'>La clave debe tener más de 5 caracteres</p>}
           </div>
           <div className="form-actions">
-            <button type='submit' disabled={!formIsValid}>Submit</button>
+            <button className='btn-form' type='submit' disabled={!formIsValid}>Iniciar sesión</button>
             {!formIsValid && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
           </div>
           </form>
@@ -74,7 +74,7 @@ const Form = ({ user, onLogin, logStatus}) => {
         {logStatus && 
           <div>
             <h2>Ya iniciaste sesión</h2>
-            <button type='submit' onClick={logoutHandler}>Cerrar sesión</button>
+            <button className='btn-form' type='submit' onClick={logoutHandler}>Cerrar sesión</button>
           </div>
         }
     </div>
