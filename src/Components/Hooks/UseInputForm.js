@@ -6,6 +6,7 @@ const UseInputForm = (validateValue) => {
 
     const inputIsValid = validateValue(enteredValue)
     const hasError = !inputIsValid && isTouched
+    const touched = isTouched
 
     const valueChangeHandler = (e) => {
         setEnteredValue(e.target.value)
@@ -23,6 +24,7 @@ const UseInputForm = (validateValue) => {
   return {
       value: enteredValue, 
       hasError, 
+      touched,
       isValid: inputIsValid,
       valueChangeHandler, 
       inputBlurHandler,

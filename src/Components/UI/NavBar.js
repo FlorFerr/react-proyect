@@ -7,7 +7,7 @@ import CartContext from "../../Context/CartContext";
 import NavLinks from './NavLinks'
 import './NavBar.css'
 
-const NavBar = () => {
+const NavBar = ({userLogin, logStatus}) => {
   const [totalCart, setTotalCart] = useState(0);
   const [open, setOpen] = useState(false)
 
@@ -34,7 +34,7 @@ const NavBar = () => {
     <nav className="navBar">
       <div>
         {open ? menuClose : menuOpen}        
-        {open && <NavLinks onMenuHandler={closeMenu}/>}
+        {open && <NavLinks onMenuHandler={closeMenu} onLogOut={userLogin} logStatus={logStatus}/>}
       </div>
 
         

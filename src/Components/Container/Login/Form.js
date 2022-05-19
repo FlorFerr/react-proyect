@@ -1,57 +1,82 @@
-import React from 'react'
-import UseInputForm from '../../Hooks/UseInputForm'
+import { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import './Form.css'
 
-const Form = () => {
-    const { 
-        value: enteredEmail,
-        isValid: enteredEmailIsValid,
-        hasError: emailInputHasError, 
-        valueChangeHandler: emailChangeHandler,
-        inputBlurHandler: emailBlurHandler,
-        reset: resetEmailInput
-      } = UseInputForm(value => value.trim() !== '')
+const Form = ({ user, onLogin, logStatus}) => {
+    const [enteredEmail, setEnteredEmail] = useState('')
+    const [enteredPassword, setEnteredPassword] = useState('')
+    const [emailTouched, setEmailTouched] = useState(false)
+    const [passwordTouched, setPasswordTouched] = useState(false)
+    const [formIsValid, setFormIsValid] = useState(false)
+
+    const history = useHistory()
     
-      const { 
-        value: enteredPassword,
-        isValid: enteredPasswordIsValid,
-        hasError: passwordInputHasError, 
-        valueChangeHandler: passwordChangeHandler,
-        inputBlurHandler: passwordBlurHandler,
-        reset: resetPasswordInput
-      } = UseInputForm(value => value.length > 6)
+      const emailChangeHandler = (e) => {
+        setEnteredEmail(e.target.value)
+        setFormIsValid(true)
+      }
+    
+      const passwordChangeHandler = (e) => {
+        setEnteredPassword(e.target.value)
+        setFormIsValid(true)
+      }
+    
+      const emailBlurHandler = () => {
+        setEmailTouched(true);
+      }
+    
+      const passwordBlurHandler= () => {
+        setPasswordTouched(true);
+      }
 
-    let formIsValid = false
-    if(enteredEmailIsValid && enteredPasswordIsValid){
-        formIsValid = true
-    }
-
-    const formSubmitHandler = (e) => {
+      const formSubmitHandler = (e) => {
         e.preventDefault()
-        if(!enteredEmailIsValid){
-            return
+        setEmailTouched(true)
+        setPasswordTouched(true)    
+        if(enteredEmail === user.email && enteredPassword === user.password ) {
+          setFormIsValid(true);
+          onLogin(true);
+          history.push('/');
+        } else {
+          setFormIsValid(false);
+          return;
         }
-        resetEmailInput()
-        resetPasswordInput()
-    }
+        setEnteredEmail('')
+        setEnteredPassword('')
+        setEmailTouched(false)
+        setPasswordTouched(false)
+      }
+    
+      const logoutHandler = () => {
+        onLogin(false)
+      }
 
   return (
     <div>
-        <form className='form-container' onSubmit={formSubmitHandler}>
-            <div className={emailInputHasError ? 'form-control invalid' : 'form-control'}>
-                <label htmlFor='email'>Your Email</label>
-                <input  type='email' id='email' onChange={emailChangeHandler} value={enteredEmail} onBlur={emailBlurHandler}/>
-                {emailInputHasError && <p className='error-text'>El campo no puede estar vacío</p>}
-            </div>
-            <div className={passwordInputHasError ? 'form-control invalid' : 'form-control'}>
-                <label htmlFor='password'>Your Password</label>
-                <input  type='password' id='password' onChange={passwordChangeHandler} value={enteredPassword} onBlur={passwordBlurHandler}/>
-                {passwordInputHasError && <p className='error-text'>La clave debe tener más de 5 caracteres</p>}
-            </div>
-            <div className="form-actions">
-            <button disabled={!formIsValid}>Submit</button>
-            </div>
-        </form>
+        {!logStatus &&
+          <form className='form-container' onSubmit={formSubmitHandler}>
+          <div className={!enteredEmail && emailTouched ? 'form-control invalid' : 'form-control'}>
+              <label htmlFor='email'>Your Email</label>
+              <input  type='email' id='email' onChange={emailChangeHandler} value={enteredEmail} onBlur={emailBlurHandler}/>
+              {!enteredEmail && emailTouched  && <p className='error-text'>El campo no puede estar vacío</p>}
+          </div>
+          <div className={!enteredPassword && passwordTouched  ? 'form-control invalid' : 'form-control'}>
+              <label htmlFor='password'>Your Password</label>
+              <input  type='password' id='password' onChange={passwordChangeHandler} value={enteredPassword} onBlur={passwordBlurHandler}/>
+              {!enteredPassword && passwordTouched && <p className='error-text'>La clave debe tener más de 5 caracteres</p>}
+          </div>
+          <div className="form-actions">
+            <button type='submit' disabled={!formIsValid}>Submit</button>
+            {!formIsValid && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
+          </div>
+          </form>
+        }
+        {logStatus && 
+          <div>
+            <h2>Ya iniciaste sesión</h2>
+            <button type='submit' onClick={logoutHandler}>Cerrar sesión</button>
+          </div>
+        }
     </div>
   )
 }
