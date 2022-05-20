@@ -5,11 +5,10 @@ import SearchItem from './SearchItem'
 
 const FavList = () => {
     const [valueSearch, setValueSearch ] = useState('')
+    const [search, setSearch] = useState([])    
+    const [showCategory, setShowCategory] = useState(false)
+    const [categoryParam, setCategoryParam] = useState('')    
     const [noResultSearch, setNoResultaSearch] = useState(false)
-    const [categoriaShow, setCategoriaShow] = useState(false)
-    const [categoryFiltered, setCategoryFiltered] = useState([])
-    const [cate, setCate] = useState('')
-    const [search, setSearch] = useState([])
 
     const { fav } = useContext(FavContext)
 
@@ -23,24 +22,19 @@ const FavList = () => {
       if(search.length === 0){
         setNoResultaSearch(true)
       }
-      if(categoriaShow){        
-         setSearch(fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()) && ele.category === cate))
-         
+      if(showCategory){        
+         setSearch(fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()) && ele.category === categoryParam))
       }
-    },[categoriaShow, categoryFiltered, valueSearch, fav, search.length, cate])
+    },[showCategory, valueSearch, fav, search.length, categoryParam])
 
-    let categoria = []
-
-    const categoriaHandler = (cat) => {
-      setCategoriaShow(true)
-      setCate(cat)
-      categoria = fav.filter(ele => ele.category === cat)
-      setCategoryFiltered(categoria)
+    const categoriaHandler = (category) => {
+      setShowCategory(true)
+      setCategoryParam(category)
       setValueSearch('')
     }
 
     const allItemsHandler = ()=>{
-      setCategoriaShow(false)
+      setShowCategory(false)
     }
 
   return (
@@ -56,12 +50,12 @@ const FavList = () => {
           )
         })
        }      
-       {categoriaShow && !valueSearch && search.map(item=> {
+       {showCategory && !valueSearch && search.map(item=> {
          return(
            <Item key={item.name} data={item} />
          )
        })}
-       {!categoriaShow && !valueSearch && 
+       {!showCategory && !valueSearch && 
         fav.map((item) =>{
           return(
             <Item key={item.name} data={item}/>
