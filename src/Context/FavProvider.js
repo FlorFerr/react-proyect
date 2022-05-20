@@ -16,9 +16,11 @@ const FavProvider = (props) => {
             setFav(favItems)
         }        
     }
+
     useEffect(()=> {
         localStorageService('favorites', fav)
     }, [fav])
+    
     const removeFavHandler = (name) => {
         const favItems = fav.filter(item => item.name !== name)
         setFav(favItems)

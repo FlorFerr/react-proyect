@@ -51,8 +51,7 @@ const ItemContainer = () => {
   
     useEffect(()=>{
       async function loadProducts (){  
-           
-
+        
           const responseProducts = await getProducts(`${beerUrl}${!valueSearch ? paginationUrl : searchUrl}`)
           if(responseProducts.data.length === 0){
             setNoResultaSearch(true)            
