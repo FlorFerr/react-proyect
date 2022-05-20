@@ -21,7 +21,7 @@ const Input = (props) => {
         <label htmlFor={props.input.id}>{props.label}</label>
         <input className='input' {...props.input} onChange={changeAmountHandler}/>
       </div>
-      <button className='add-button' type='button' onClick={addItemCart}>Agregar</button>
+      <button className='add-button' type='button' onClick={addItemCart}>Comprar</button>
     </div>
   )
 }

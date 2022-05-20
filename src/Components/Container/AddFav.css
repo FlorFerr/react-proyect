@@ -1,9 +1,10 @@
 .favItem{
     align-self: flex-end;
     padding: 0.5rem 1rem;
-    
+    cursor: pointer;
 }
 
 .favItem-detail{
     align-self: flex-start;
+    cursor: pointer;
 }

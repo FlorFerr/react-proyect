@@ -10,16 +10,24 @@
     top: 60px;
     right: 0;
     width: 100%;
-    background-color: #181818;
-    border-top: 2px solid #df7d7d;
+    background-color: #005B5F;
+    border-top: 2px solid #FFE4E5;
 }
 
 .navBar ul li{
     padding-left: 5%;
+    padding-top: 0.5rem;
 }
 .navBar div a{
     text-decoration: none;
     list-style: none;
     margin: 0;
     padding: 0;
+    color: #FFE4E5;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navBar ul li:hover{
+    font-size: large;
 }

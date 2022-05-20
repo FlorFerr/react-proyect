@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import FavContext from '../../Context/FavContext'
 import Item from './Item'
 import SearchItem from './SearchItem'
+import './FavList.css'
 
 const FavList = () => {
     const [valueSearch, setValueSearch ] = useState('')
@@ -40,11 +41,14 @@ const FavList = () => {
   return (
     <div>
       {fav.length === 0 ? <p>No hay favoritos</p> :
-      <div>
+      <div className='fav-container'>
+        <div className='fav-controls'>
         <button onClick={allItemsHandler}>Todos</button>
         <button onClick={() =>{categoriaHandler('beer')}}>Cervezas</button>
         <button onClick={() =>{categoriaHandler('burger')}}>Hamburguesas</button>
         <SearchItem onSearch={onSearch} value={valueSearch}></SearchItem>
+        </div>
+        <div className='favList-container'>
         {valueSearch && 
           search.map((item) =>{
             return(
@@ -66,6 +70,7 @@ const FavList = () => {
         }
         {showCategory && search.length === 0 && !valueSearch &&  <p>No hay resultados </p>}
         {valueSearch && noResultSearch && <p>No hay coincidencia</p>}
+       </div>
        </div>}
     </div>
   )

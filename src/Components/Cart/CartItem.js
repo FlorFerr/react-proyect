@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import CartContext from '../../Context/CartContext'
 import ItemDetail from '../Container/ItemDetail'
+import { IoTrashOutline } from 'react-icons/io5'
 import './CartItem.css'
 
 const CartItem = ({data, onRemove}) => {
@@ -36,7 +37,7 @@ const CartItem = ({data, onRemove}) => {
             <td >x{data.amount}</td>
             <td><button onClick={decreaseAmountHandler}  disabled={data.amount === 1}>-</button></td>
             <td><button onClick={increaseAmountHandler}>+</button></td>
-            <td  ><button onClick={() => {onRemove(data.name)}}>Remove</button></td>
+            <td  ><button onClick={() => {onRemove(data.name)}}><IoTrashOutline></IoTrashOutline></button></td>
             
         </tr>   
         
