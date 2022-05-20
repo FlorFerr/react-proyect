@@ -6,6 +6,8 @@ import SearchItem from './SearchItem'
 const FavList = () => {
     const [valueSearch, setValueSearch ] = useState('')
     const [noResultSearch, setNoResultaSearch] = useState(false)
+    const [categoriaShow, setCategoriaShow] = useState(false)
+    const [favFiltered, setFavFitered] = useState([])
 
     const { fav } = useContext(FavContext)
 
@@ -13,7 +15,7 @@ const FavList = () => {
       setValueSearch(value)
       setNoResultaSearch(false)
     }
-
+    
     const favFilter = fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()))
 
     useEffect(()=>{
@@ -22,19 +24,32 @@ const FavList = () => {
       }
     },[favFilter])
 
+    let categoria = []
+
+    const categoriaHandler = (cat) => {
+      setCategoriaShow(true)
+      categoria = fav.filter(ele => ele.category === cat)
+      setFavFitered(categoria)
+    }
+
+    const allItemsHandler = ()=>{
+      setCategoriaShow(false)
+    }
+
   return (
     <div>
-      <button>Cervezas</button>
-      <button>Hamburguesas</button>
-      <SearchItem onSearch={onSearch}></SearchItem>
-       {valueSearch && 
+      <button onClick={allItemsHandler}>Todos</button>
+      <button onClick={() =>{categoriaHandler('beer')}}>Cervezas</button>
+      <button onClick={() =>{categoriaHandler('burger')}}>Hamburguesas</button>
+      {!categoriaShow && <SearchItem onSearch={onSearch}></SearchItem>}
+       {!categoriaShow && valueSearch && 
         favFilter.map((item) =>{
           return(
             <FavItem key={item.name} item={item}/>
           )
         })
        }
-       {!valueSearch && 
+       {!categoriaShow && !valueSearch && 
         fav.map((item) =>{
           return(
             <FavItem key={item.name} item={item}/>
@@ -42,6 +57,11 @@ const FavList = () => {
         })
        }
        {valueSearch && noResultSearch && <p>No hay coincidencia</p>}
+       {categoriaShow && favFiltered.map(item=> {
+         return(
+           <FavItem key={item.name} item={item} />
+         )
+       })}
     </div>
   )
 }
