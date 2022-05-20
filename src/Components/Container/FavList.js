@@ -39,30 +39,34 @@ const FavList = () => {
 
   return (
     <div>
-      <button onClick={allItemsHandler}>Todos</button>
-      <button onClick={() =>{categoriaHandler('beer')}}>Cervezas</button>
-      <button onClick={() =>{categoriaHandler('burger')}}>Hamburguesas</button>
-      <SearchItem onSearch={onSearch} value={valueSearch}></SearchItem>
-       {valueSearch && 
-        search.map((item) =>{
+      {fav.length === 0 ? <p>No hay favoritos</p> :
+      <div>
+        <button onClick={allItemsHandler}>Todos</button>
+        <button onClick={() =>{categoriaHandler('beer')}}>Cervezas</button>
+        <button onClick={() =>{categoriaHandler('burger')}}>Hamburguesas</button>
+        <SearchItem onSearch={onSearch} value={valueSearch}></SearchItem>
+        {valueSearch && 
+          search.map((item) =>{
+            return(
+              <Item key={item.name} data={item}/>
+            )
+          })
+        }      
+        {showCategory && !valueSearch && search.map(item=> {
           return(
-            <Item key={item.name} data={item}/>
+            <Item key={item.name} data={item} />
           )
-        })
-       }      
-       {showCategory && !valueSearch && search.map(item=> {
-         return(
-           <Item key={item.name} data={item} />
-         )
-       })}
-       {!showCategory && !valueSearch && 
-        fav.map((item) =>{
-          return(
-            <Item key={item.name} data={item}/>
-          )
-        })
-       }
-       {valueSearch && noResultSearch && <p>No hay coincidencia</p>}
+        })}
+        {!showCategory && !valueSearch && 
+          fav.map((item) =>{
+            return(
+              <Item key={item.name} data={item}/>
+            )
+          })
+        }
+        {showCategory && search.length === 0 && <p>No hay resultados </p>}
+        {valueSearch && noResultSearch && <p>No hay coincidencia</p>}
+       </div>}
     </div>
   )
 }
