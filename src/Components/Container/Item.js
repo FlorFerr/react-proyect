@@ -5,6 +5,7 @@ import ItemDetail from './ItemDetail'
 import Input from '../UI/Input'
 
 import AddFav from './AddFav'
+import './Item.css'
 
 const Item = ({data}) => {
     const [modalShown, setModalShown] = useState(false) 
@@ -18,24 +19,31 @@ const Item = ({data}) => {
     
   return (
     <Card>
-            <h2>{data.name}</h2>
-            <div onClick={showModalHandler}>
-            <img src={data.image_url} alt={data.name} className='img'/></div>
-            {data.ibu && <p>Ibu: {data.ibu}</p>}
-            {data.abv && <p>Abv: {data.abv}</p> }
+      <div onClick={showModalHandler}>
+        <img src={data.image_url} alt={data.name} className='img'/>
+        <h4>{data.name}</h4>
+        <div className='data-beer'>
+          {data.ibu && 
+            <p>Ibu<br/>{data.ibu}</p> 
+          }
+          {data.abv && 
+            <p>Abv <br/>{data.abv}</p> 
+        }
+        </div>
+      </div>
             
-            <Input 
-              detail={data}
-              input={{id: 'amount ' + data.id,
-              type: 'number',
-              min: '1',
-              step: '1',
-              defaultValue: '1',
-              max: '5'
-            }}></Input>
+      <Input 
+        detail={data}
+        input={{id: 'amount ' + data.id,
+        type: 'number',
+        min: '1',
+        step: '1',
+        defaultValue: '1',
+        max: '5'
+      }}></Input>
 
-            <AddFav item={data}/>
-            {modalShown && <ItemDetail onHide={hideModalHandler} detail={data}/>}
+      <AddFav item={data}/>
+      {modalShown && <ItemDetail onHide={hideModalHandler} detail={data}/>}
     </Card>
   )
 }

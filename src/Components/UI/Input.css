@@ -1,0 +1,25 @@
+.input{
+    text-align: center;
+}
+
+.add-button{
+    border-radius: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    font-weight: 700;
+    background-color: #005B5F;
+    border: 2px solid #005B5F;
+    cursor: pointer;
+    width: 190px;
+    max-width: 190px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-size: .8rem;
+    color: #F9F6F6;
+}
+.add-button:hover{
+    color: #005B5F;
+    background-color: #F9F6F6;
+}

@@ -1,0 +1,17 @@
+.data-beer{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-transform: uppercase;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    font-weight: 700;
+ 
+}
+.data-beer p{
+    padding: 0 0.5rem;
+    text-align: center;
+    
+
+}
