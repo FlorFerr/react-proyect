@@ -1,5 +1,17 @@
+.item-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 15rem;
+}
+
+.item-title, .img{
+    margin: 0.5rem;
+}
+
 .data-beer{
-    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -7,11 +19,10 @@
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     font-weight: 700;
- 
+    margin: 1rem;
 }
 .data-beer p{
     padding: 0 0.5rem;
     text-align: center;
-    
-
 }
+

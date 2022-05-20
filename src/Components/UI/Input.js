@@ -16,8 +16,8 @@ const Input = (props) => {
     }
 
   return (
-    <div>
-      <div>
+    <div className='count-container'>
+      <div className='input-container'>
         <label htmlFor={props.input.id}>{props.label}</label>
         <input className='input' {...props.input} onChange={changeAmountHandler}/>
       </div>

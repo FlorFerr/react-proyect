@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import FavContext from '../../Context/FavContext'
 import { HiHeart } from 'react-icons/hi'
 import { HiOutlineHeart } from 'react-icons/hi'
+import './AddFav.css'
 
-const AddFav = ({item}) => {
+const AddFav = ({item, clase}) => {
 
   const { favContext, fav } = useContext(FavContext)
   const iconState = fav.find(ele => ele.name === item.name)
@@ -22,10 +23,10 @@ const AddFav = ({item}) => {
   }
   
   return (
-      <button onClick={addFavItemsHandler}>
-        {isFav && <HiHeart/>}
-        {!isFav && <HiOutlineHeart />}
-      </button>
+      <div className={clase} onClick={addFavItemsHandler}>
+        {isFav && <HiHeart size='30px'/>}
+        {!isFav && <HiOutlineHeart size='30px'/>}
+      </div>
   )
 }
 

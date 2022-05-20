@@ -19,18 +19,15 @@ const Item = ({data}) => {
     
   return (
     <Card>
-      <AddFav item={data}/>
-      <div onClick={showModalHandler}>
+      <AddFav item={data} clase={'favItem'}/>
+      <div className='item-container' onClick={showModalHandler}>
         <img src={data.image_url} alt={data.name} className='img'/>
-        <h4>{data.name}</h4>
-        <div className='data-beer'>
-          {data.ibu && 
-            <p>Ibu<br/>{data.ibu}</p> 
-          }
-          {data.abv && 
+        <h4 className='item-title'>{data.name}</h4>
+        {data.ibu && data.abv && 
+        <div className='data-beer'>          
+            <p>Ibu<br/>{data.ibu}</p>          
             <p>Abv <br/>{data.abv}</p> 
-        }
-        </div>
+        </div>}
       </div>
             
       <Input 

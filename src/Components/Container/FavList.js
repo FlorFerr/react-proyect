@@ -64,7 +64,7 @@ const FavList = () => {
             )
           })
         }
-        {showCategory && search.length === 0 && <p>No hay resultados </p>}
+        {showCategory && search.length === 0 && !valueSearch &&  <p>No hay resultados </p>}
         {valueSearch && noResultSearch && <p>No hay coincidencia</p>}
        </div>}
     </div>

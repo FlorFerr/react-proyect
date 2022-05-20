@@ -10,7 +10,7 @@ Story 1: Main page - Application look and feel
   - show 10 beers per page
   - quick jump to first / last page
   - remember last viewed page
- * NTH: display spinner while loading images
+🤗️ NTH: display spinner while loading images
 
 Story 2: Implement order page
 🤗️ Configure router
