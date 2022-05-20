@@ -38,50 +38,50 @@ Story 3: Filters and favorites
   - Icon should be always visible (not just in modal)
   - Click to add or remove from favorites
   - Color/fill change when clicking the icon
- * Add favourites filter
+🤗️ Add favourites filter
   - Click to toggle display only favourite beers in the list
   - Name filter should only apply to the currently visible list
- * Show no results message
+🤗️ Show no results message
   - whenever the list of beers goes empty, show a message
- * NTH: ibu filter
+🤗️ NTH: ibu filter
   - Add a filter to search beers by ibu
   - Add greater / less than selected amount toggle
 
 Story 4: Don't drink with an empty stomach
- * Add burguer menu in the topbar
+🤗️ Add burguer menu in the topbar
   - click to open menu
   - show mask while menu is open
   - click on mask closes the menu
   - entries: beers page / burguers page / order page
- * Implement burguers page
+🤗️ Implement burguers page
   - list burguers similarly to beers page: https://my-burger-api.herokuapp.com/
   - click over burguer to display ingredients in modal
- * Allow ordering burguers
+🤗️ Allow ordering burguers
   - show + and - buttons
   - display current ordered amount for the selected burguer
   - use the same cart for burguers and beers. Adding a burguer modifies the total amount of products in cart
   - include ordered burguers in order page
- * Allow favorite burguers
+🤗️ Allow favorite burguers
   - show star/heart icon to select as favorite. Always visible
- * Add favorite and name filters
- * Add burguers paginator
- * Show no resuls message
+🤗️ Add favorite and name filters
+🤗️ Add burguers paginator
+🤗️ Show no resuls message
 
 Story 5: Login page
- * Implement login page
+🤗️ Implement login page
   - add route for login page
   - this route can be accessed without athorization
- * Restrict other routes
+🤗️ Restrict other routes
   - all other routes must check for logged in user
- * Implement basic user - password login
- * Add logout option in menu
+🤗️ Implement basic user - password login
+🤗️ Add logout option in menu
 
 Story 6: Error handling
  * Implement connection error page
   - show this error when user goes offline
- * Redirect to login if no user data
- * Show message if user or password are not correct
- * Colour inputs if no data provided
+🤗️ Redirect to login if no user data
+🤗️ Show message if user or password are not correct
+🤗️ Colour inputs if no data provided
   - applies to login and filter inputs
- * Disable removal button when no items in cart
+🤗️ Disable removal button when no items in cart
  * Disable or hide next / prev page buttons for pager when not available

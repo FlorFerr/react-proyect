@@ -8,7 +8,7 @@ import AddFav from './AddFav'
 import './Item.css'
 
 const Item = ({data}) => {
-    const [modalShown, setModalShown] = useState(false) 
+      const [modalShown, setModalShown] = useState(false) 
 
       const hideModalHandler = () =>{
         setModalShown(false)
@@ -19,6 +19,7 @@ const Item = ({data}) => {
     
   return (
     <Card>
+      <AddFav item={data}/>
       <div onClick={showModalHandler}>
         <img src={data.image_url} alt={data.name} className='img'/>
         <h4>{data.name}</h4>
@@ -41,8 +42,6 @@ const Item = ({data}) => {
         defaultValue: '1',
         max: '5'
       }}></Input>
-
-      <AddFav item={data}/>
       {modalShown && <ItemDetail onHide={hideModalHandler} detail={data}/>}
     </Card>
   )

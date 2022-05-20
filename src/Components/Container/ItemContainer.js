@@ -5,18 +5,20 @@ import ItemList from './ItemList';
 import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
+import LoadingSpinner from '../UI/LoadingSpinner';
+import './ItemContainer.css'
 
 const ItemContainer = () => {
     const lastViewedPage = localStorage.getItem('pageBeer')
   
     const [beers, setBeers] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const [valueSearch, setValueSearch ] = useState('')
     const [pagePagination, setPagePagination] = useState(lastViewedPage || 1)
     const [ibuValue, setIbuValue] = useState('')
     const [ibuParam, setIbuParam] = useState('') 
     const [ibuFilter, setIbuFilter] = useState(false)
     const [noResultSearch, setNoResultaSearch] = useState(false)
-
 
     const ibuHandler = (ibu) => {
       setIbuValue(ibu)
@@ -62,19 +64,34 @@ const ItemContainer = () => {
               name: product.name,
               description: product.description,
               image_url: product.image_url ? product.image_url : 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Botella-de-cerveza.png/800px-Botella-de-cerveza.png',
-              ibu: product.ibu,
+              ibu: product.ibu ? product.ibu : 'S/D',
               abv: product.abv,
               category: 'beer'
             }
         })
+          
           setBeers(trasformData)
           if(ibuFilter && !valueSearch){
             const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
-            setBeers(responseProducts.data)
+            const trasformData = responseProducts.data.map((product) => {
+              return {
+                id: product.id,
+                name: product.name,
+                description: product.description,
+                image_url: product.image_url ? product.image_url : 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Botella-de-cerveza.png/800px-Botella-de-cerveza.png',
+                ibu: product.ibu ? product.ibu : 'S/D',
+                abv: product.abv,
+                category: 'beer'
+              }
+          })
+            
+            
+            setBeers(trasformData)
             if(responseProducts.data.length === 0){
               setNoResultaSearch(true)            
             }
           }
+          setIsLoading(false)
       }
       loadProducts()      
     },[paginationUrl, searchUrl, valueSearch, filterUrl, ibuFilter])
@@ -85,7 +102,8 @@ const ItemContainer = () => {
         <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
         <Pagination onPaginationChange={paginationHandler} length={80}/>
-        {noResultSearch && <p>No hay coincidencia</p>  }
+        {noResultSearch && <p>No hay coincidencia</p>}
+        {isLoading && <div className='loading'><LoadingSpinner /></div>}
         <ItemList data={beers}/>
     </div>
   )
