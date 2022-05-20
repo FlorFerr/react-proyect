@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { getProducts, burgerUrl } from '../../../Services/Index'
 import ItemList from '../ItemList'
 import Pagination from '../Pagination'
@@ -61,6 +62,7 @@ const BurgersContainer = () => {
 
   return (
     <div>
+        <Link to='favorites'><button>Favoritos</button></Link>
         <Pagination length={27} onPaginationChange={paginationHandler}/>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
         {noResultSearch && <p>No hay coincidencia</p>}
