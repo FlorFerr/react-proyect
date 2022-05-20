@@ -81,8 +81,8 @@ const ItemContainer = () => {
   
   return (
     <div>
-      <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <Link to='favorites'><button>Favoritos</button></Link>
+        <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
         <Pagination onPaginationChange={paginationHandler} length={80}/>
         {noResultSearch && <p>No hay coincidencia</p>  }
