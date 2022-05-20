@@ -8,6 +8,7 @@ const FavList = () => {
     const [noResultSearch, setNoResultaSearch] = useState(false)
     const [categoriaShow, setCategoriaShow] = useState(false)
     const [categoryFiltered, setCategoryFiltered] = useState([])
+    const [cate, setCate] = useState('')
     const [search, setSearch] = useState([])
 
     const { fav } = useContext(FavContext)
@@ -23,15 +24,16 @@ const FavList = () => {
         setNoResultaSearch(true)
       }
       if(categoriaShow){        
-         setSearch(categoryFiltered.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase())))
+         setSearch(fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()) && ele.category === cate))
          
       }
-    },[categoriaShow, categoryFiltered, valueSearch, fav, search.length])
+    },[categoriaShow, categoryFiltered, valueSearch, fav, search.length, cate])
 
     let categoria = []
 
     const categoriaHandler = (cat) => {
       setCategoriaShow(true)
+      setCate(cat)
       categoria = fav.filter(ele => ele.category === cat)
       setCategoryFiltered(categoria)
       setValueSearch('')
@@ -54,7 +56,7 @@ const FavList = () => {
           )
         })
        }      
-       {categoriaShow && !valueSearch && categoryFiltered.map(item=> {
+       {categoriaShow && !valueSearch && search.map(item=> {
          return(
            <Item key={item.name} data={item} />
          )
