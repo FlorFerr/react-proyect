@@ -101,7 +101,7 @@ const ItemContainer = () => {
         <Link to='favorites'><button>Favoritos</button></Link>
         <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
-        <Pagination onPaginationChange={paginationHandler} length={80}/>
+        <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
         {noResultSearch && <p>No hay coincidencia</p>}
         {isLoading && <div className='loading'><LoadingSpinner /></div>}
         <ItemList data={beers}/>

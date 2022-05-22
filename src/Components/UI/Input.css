@@ -30,4 +30,6 @@
 .input{
     text-align: center;
     background-color: transparent;
+
+    border: 1px solid black;
 }

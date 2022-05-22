@@ -9,7 +9,7 @@ const FavProvider = (props) => {
         let favItems = []  
         const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
-        setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category}])
+        setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category, ibu: item.ibu, abv: item.abv}])
        
         }else{
             favItems = fav.filter(element => element.name !== item.name)
