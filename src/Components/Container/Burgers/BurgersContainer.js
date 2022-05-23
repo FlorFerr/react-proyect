@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { getProducts, burgerUrl } from '../../../Services/Index'
 import ItemList from '../ItemList'
 import Pagination from '../Pagination'
 import SearchItem from '../SearchItem'
 import LoadingSpinner from '../../UI/LoadingSpinner'
+import './BurgersContainer.css'
 
 const BurgersContainer = () => {
     const lastViewedPage = localStorage.getItem('pageBurger')
@@ -63,13 +63,19 @@ const BurgersContainer = () => {
       },[pagePagination, valueSearch, noResultSearch])
 
   return (
-    <div>
+    <div className='burgers-container'>
+            <h1>Hamburguesas</h1>
+
      
-        <Link to='favorites'><button>Favoritos</button></Link>
-        <Pagination length={27} onPaginationChange={paginationHandler}/>
+        <div className='page-container'>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
+          <Pagination length={27} onPaginationChange={paginationHandler}/>
+          
+        </div>
         {noResultSearch && <p>No hay coincidencia</p>}
-        {isLoading && <div className='loading'><LoadingSpinner /></div>}
+       
+          {isLoading && <div className='loading'><LoadingSpinner /></div>}
+      
         <ItemList data={burgers} />
     </div>
   )

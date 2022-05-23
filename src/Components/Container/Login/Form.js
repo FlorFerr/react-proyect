@@ -52,7 +52,7 @@ const Form = ({ user, onLogin, logStatus}) => {
       }
 
   return (
-    <div>
+    <div className='login-container'>
         {!logStatus &&
           <form className='form-container' onSubmit={formSubmitHandler}>
           <div className={!enteredEmail && emailTouched ? 'form-control invalid' : 'form-control'}>
