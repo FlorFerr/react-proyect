@@ -22,3 +22,13 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.pagination-btn:disabled,
+.pagination-btn:disabled:hover,
+  .pagination-btn:disabled:active {
+    
+    background-color: red;
+    color: gray;
+    border-color: #ccc;
+    cursor:not-allowed;
+  }

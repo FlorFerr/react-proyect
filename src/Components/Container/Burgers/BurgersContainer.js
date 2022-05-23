@@ -4,6 +4,7 @@ import ItemList from '../ItemList'
 import Pagination from '../Pagination'
 import SearchItem from '../SearchItem'
 import LoadingSpinner from '../../UI/LoadingSpinner'
+import burgerImg from '../../../Images/burger.png'
 import './BurgersContainer.css'
 
 const BurgersContainer = () => {
@@ -31,7 +32,6 @@ const BurgersContainer = () => {
         async function loadProducts (){   
           let responseProducts = []
            
-          
             if(valueSearch){
                 responseProducts = await getProducts(`${burgerUrl}`)
             }else{
@@ -42,7 +42,7 @@ const BurgersContainer = () => {
                   id: product.id,
                   name: product.name,
                   ingredients: product.ingredients,
-                  image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png',
+                  image_url: burgerImg,
                   category: 'burger'
                 }
             })

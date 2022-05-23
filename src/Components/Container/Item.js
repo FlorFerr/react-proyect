@@ -31,7 +31,7 @@ const Item = ({data}) => {
       </div>
             
       <Input 
-        detail={data}
+        data={data}
         input={{id: 'amount ' + data.id,
         type: 'number',
         min: '1',
