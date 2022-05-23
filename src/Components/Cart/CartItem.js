@@ -32,12 +32,12 @@ const CartItem = ({data, onRemove}) => {
     
   return (
         <div className='itemCart-container' key={data.id}>
-          <div className='itemCart-img_container'>
+          <div className='itemCart-img_container' onClick={showModalCartHandler}>
           <img className='itemCart-img' src={data.image_url} alt="" />
           </div>
-          <div className='itemCart-detail'>
+          <div className='itemCart-detail' onClick={showModalCartHandler}>
             <div className='itemCart-detail_principal'>             
-              <h3 className='itemCart-name' onClick={showModalCartHandler}>{data.name}</h3>              
+              <h3 className='itemCart-name' >{data.name}</h3>              
               <div className='amountHandler-container'>
                 <button onClick={decreaseAmountHandler}  disabled={data.amount === 1}><AiOutlineMinus/></button>
                 <p >x{data.amount}</p>

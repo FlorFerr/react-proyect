@@ -72,7 +72,7 @@ const BurgersContainer = () => {
           <Pagination length={27} onPaginationChange={paginationHandler}/>
           
         </div>
-        {noResultSearch && <p>No hay coincidencia</p>}
+        {noResultSearch && <p>No hay resultados</p>}
        
           {isLoading && <div className='loading'><LoadingSpinner /></div>}
       

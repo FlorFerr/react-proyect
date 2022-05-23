@@ -113,7 +113,7 @@ const ItemContainer = () => {
         <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
         
       </div>
-      {noResultSearch && <p>No hay coincidencia</p>}
+      {noResultSearch && <p>No hay resultados</p>}
       <ItemList data={beers}/>
       
       {isLoading && <div className='loading'><LoadingSpinner /></div>}

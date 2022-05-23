@@ -9,26 +9,23 @@
     margin: 3px;
     padding: 3px;
     cursor: pointer;
+    
  
 }
 
 .pageActive{
-    color: red;
+    font-weight: bold;
+    color: #005B5F;
     background-color: transparent;
 }
 
 .pagination-btn{
+    
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.pagination-btn:disabled,
-.pagination-btn:disabled:hover,
-  .pagination-btn:disabled:active {
-    
-    background-color: red;
-    color: gray;
-    border-color: #ccc;
-    cursor:not-allowed;
+.pagination-btn:disabled{
+    color: #ccc;
   }
