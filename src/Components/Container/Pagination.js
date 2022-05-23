@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
 import './Pagination.css'
 
 const Pagination = ({onPaginationChange, length, valuePage}) => {
@@ -32,6 +33,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   const currentPagesHandler = (e) => {
     onPaginationChange(e.target.id)
     setCurrentPage(Number(e.target.id))
+
     }
 
     const prevHandler = () =>{
@@ -50,6 +52,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
         setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
         setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
       }
+
     }
 
   return (
@@ -57,7 +60,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
         <ul className='pagination'>
             <li onClick={inicioHandler}>Inicio</li>
             <li onClick={prevHandler}>
-              <button disabled={currentPage === 1}>Prev</button></li>
+              <button className='pagination-btn' disabled={currentPage === 1}><GrFormPrevious size='20px'/></button></li>
             {pages.map(number => {
                 if(number < maxPageNumberLimit +1 && number > minPageNumberLimit){
                   return(
@@ -66,7 +69,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
                 
             })}
             <li onClick={nextHandler}>
-              <button disabled={Number(currentPage) === pages.length}>Next</button></li>
+              <button className='pagination-btn' disabled={Number(currentPage) === pages.length}><GrFormNext size='20px'/></button></li>
             <li onClick={finalHandler}>Final</li>
         </ul>
     </div>

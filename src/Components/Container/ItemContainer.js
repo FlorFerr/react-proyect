@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
 import { getProducts, beerUrl } from '../../Services/Index'
 import ItemList from './ItemList';
 import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
 import LoadingSpinner from '../UI/LoadingSpinner';
+import beerImg from '../../Images/Carrousel.png'
 import './ItemContainer.css'
 
 const ItemContainer = () => {
@@ -98,13 +98,26 @@ const ItemContainer = () => {
   
   return (
     <div>
-        <Link to='favorites'><button>Favoritos</button></Link>
+        <img className='img-portada' src={beerImg} alt='beer walpaper'/>
+
+    
+    <div className='beers-container'>
+      
+      <h1>Cervezas</h1>
+
+      <div className='page-container'>
+      
         <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
+        
         <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
-        {noResultSearch && <p>No hay coincidencia</p>}
-        {isLoading && <div className='loading'><LoadingSpinner /></div>}
-        <ItemList data={beers}/>
+        
+      </div>
+      {noResultSearch && <p>No hay coincidencia</p>}
+      <ItemList data={beers}/>
+      
+      {isLoading && <div className='loading'><LoadingSpinner /></div>}
+    </div>
     </div>
   )
 }

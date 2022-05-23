@@ -2,13 +2,23 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
 }
 .pagination li{
-    margin: 5px;
+    margin: 3px;
     padding: 3px;
-    border: 1px solid black;
     cursor: pointer;
+ 
 }
+
 .pageActive{
-    background-color: yellow;
+    color: red;
+    background-color: transparent;
+}
+
+.pagination-btn{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }

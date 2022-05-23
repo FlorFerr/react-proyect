@@ -1,0 +1,31 @@
+.ibuFilter-container{
+    display: flex;
+    align-items: center;
+}
+
+.ibuFilter-btn{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    
+}
+
+.ibuFilter-input{
+    border-radius: 10px;
+    width: 80px;
+    border: 1px solid #eaeaea;
+    font-size: 0.8rem;
+    line-height: 1.36364;
+    outline: none;
+    min-height: 36px;
+    padding: 8px 15px;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .ibuFilter-container{
+        align-self: flex-start;
+        width: 100%;
+    }
+  }

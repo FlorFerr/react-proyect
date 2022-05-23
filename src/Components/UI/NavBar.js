@@ -43,7 +43,7 @@ const NavBar = ({userLogin, logStatus}) => {
         </div>
         <div>
           <NavLink to="/cart">
-            <BsCart size='35px'/> {totalCartValid && totalCart}
+            <BsCart size='30px'/> {totalCartValid && totalCart}
           </NavLink>
         </div>
       </nav>

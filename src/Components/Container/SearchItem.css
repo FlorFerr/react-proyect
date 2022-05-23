@@ -1,0 +1,18 @@
+.search-input{
+    border-radius: 10px;
+    width: 20rem;
+    border: 1px solid #eaeaea;
+    font-size: 0.8rem;
+    line-height: 1.36364;
+    outline: none;
+    min-height: 36px;
+    padding: 8px 15px;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .search-input{
+        
+        width: 100%;
+    }
+  }
