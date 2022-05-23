@@ -63,6 +63,7 @@ const BurgersContainer = () => {
       },[pagePagination, valueSearch, noResultSearch])
 
   return (
+    <>
     <div className='burgers-container'>
             <h1>Hamburguesas</h1>
 
@@ -74,10 +75,11 @@ const BurgersContainer = () => {
         </div>
         {noResultSearch && <p>No hay resultados</p>}
        
-          {isLoading && <div className='loading'><LoadingSpinner /></div>}
+          
       
         <ItemList data={burgers} />
     </div>
+    {isLoading && <div className='loading'><LoadingSpinner /></div>}</>
   )
 }
 

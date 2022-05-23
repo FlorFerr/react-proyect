@@ -1,16 +1,18 @@
 .itemDetail-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 5px;
     justify-content: center;
     padding: 0.5rem;
-    margin: 00.5rem;
+    margin: 0.5rem;
 }
-
-
 
 .img-detail{
     width: auto;
     height: 150px;
 }
+.item-flex ul li{
+    list-style: inside;
+    text-transform: capitalize;
 
+}

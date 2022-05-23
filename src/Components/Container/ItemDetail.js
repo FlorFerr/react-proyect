@@ -7,12 +7,14 @@ const ItemDetail = ({detail, onHide}) => {
   return (
     <Modal onClose={onHide}>
       <AddFav item={detail} clase={'favItem-detail'}/>
+      <h3 className='item.detail_name'>{detail.name}</h3>
       <div className='itemDetail-container'>
         <div className='item-flex'>
-       <img className='img-detail' src={detail.image_url} alt={detail.name} />
+        <img className='img-detail' src={detail.image_url} alt={detail.name} />
        </div>
+      
        <div className='item-flex'>
-        <h3>{detail.name}</h3>
+        
         {detail.description ? <p>{detail.description}</p> :
         <ul>{detail.ingredients.map(ingrediente => {
           return(

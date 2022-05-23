@@ -106,18 +106,21 @@ const ItemContainer = () => {
       <h1>Cervezas</h1>
 
       <div className='page-container'>
+        
       
         <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
         
         <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
         
+        
       </div>
       {noResultSearch && <p>No hay resultados</p>}
       <ItemList data={beers}/>
       
-      {isLoading && <div className='loading'><LoadingSpinner /></div>}
+      
     </div>
+    {isLoading && <div className='loading'><LoadingSpinner /></div>}
     </div>
   )
 }

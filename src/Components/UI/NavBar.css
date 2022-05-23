@@ -25,9 +25,16 @@
     padding: 0;
     color: #FF8945;
     font-weight: 400;
-    text-transform: uppercase;
+    font-size: 20px;
+    text-transform: capitalize;
 }
 
 .navBar ul li:hover{
-    font-size: large;
+    font-weight: bolder;
+}
+
+.navBar-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }

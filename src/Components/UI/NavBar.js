@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
 import { IoIosMenu } from 'react-icons/io'
 import { MdClose } from 'react-icons/md'
+import { HiHeart } from "react-icons/hi";
 import CartContext from "../../Context/CartContext";
 import NavLinks from './NavLinks'
 import './NavBar.css'
@@ -41,10 +42,14 @@ const NavBar = ({userLogin, logStatus}) => {
         <div>
           <NavLink to="/">LOGO</NavLink>
         </div>
-        <div>
+        <div className="navBar-icons">
+        <NavLink to="/favorites">
+            <HiHeart size='30px'/> 
+          </NavLink>
           <NavLink to="/cart">
             <BsCart size='30px'/> {totalCartValid && totalCart}
           </NavLink>
+          
         </div>
       </nav>
   )
