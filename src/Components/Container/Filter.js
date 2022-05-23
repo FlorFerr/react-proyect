@@ -17,9 +17,12 @@ const Filter = ({onFilter, value, onParam}) => {
     }
   return (
     <div className='ibuFilter-container'>
-        <button className='ibuFilter-btn' onClick={onLessHandler}><AiOutlineMinus /></button>
-        <input className='ibuFilter-input' type="number" placeholder='Ibu' onChange={onFilterHandler} value={value}/>
-        <button className='ibuFilter-btn' onClick={onGreaterHandler}><AiOutlinePlus /></button>
+        <p className='ibuFilter-title'>Filtrar por IBU:</p>
+        <div>
+            <button className='ibuFilter-btn' onClick={onLessHandler}><AiOutlineMinus /></button>
+            <input className='ibuFilter-input' type="number" placeholder='Ibu' onChange={onFilterHandler} value={value}/>
+            <button className='ibuFilter-btn' onClick={onGreaterHandler}><AiOutlinePlus /></button>
+        </div>
     </div>
   )
 }

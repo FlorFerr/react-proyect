@@ -18,26 +18,23 @@ const Cart = () => {
   return (
     <div className='cart-container'>
       <h1>Carrito</h1>
-     
         {order ? <p>Compra realizada!</p> :
          <div>
-      
-      {cart.length === 0 ? <p>No hay productos en el carrito</p> :
-      <div className='table-container'>
-        {
-          cart.map(product=> {
-            return (
-              <CartItem key={product.name} data={product} onRemove={cartContext.removeItem}></CartItem>
-            )
-          })
+          {cart.length === 0 ? <p>No hay productos en el carrito</p> :
+          <div className='table-container'>
+            {
+              cart.map(product=> {
+                return (
+                  <CartItem key={product.name} data={product} onRemove={cartContext.removeItem}></CartItem>
+                )
+              })
+            }
+            <button onClick={cartContext.clearCart}>Vaciar carrito</button>
+            <button onClick={orderHandler}>Comprar</button>
+          </div>
         }
-        <button onClick={cartContext.clearCart}>Vaciar carrito</button>
-        <button onClick={orderHandler}>Comprar</button>
-      </div>
-      }
       </div>}
     </div>
-  
 )}
 
 export default Cart

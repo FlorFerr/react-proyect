@@ -8,6 +8,7 @@ const SearchItem = ({onSearch, value}) => {
 
   return (
     <div className='search-container'>
+        <p className='search-title'>Filtrar por nombre:</p>
         <input className='search-input' type='text' value={value} onChange={changeSearchValueHandler} placeholder='Buscar...'></input>
    
     </div>
