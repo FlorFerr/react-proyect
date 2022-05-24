@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './Pagination.css';
 
-const Pagination = ({onPaginationChange, length, valuePage}) => {
+const Pagination = ({onPaginationChange, valuePage}) => {
 
   const lastMaxPage = localStorage.getItem('maxPage')
   const lastMinPage = localStorage.getItem('minPage')
-
 
   const [currentPage, setCurrentPage] = useState(Number(valuePage) || 1)
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState( Number(lastMaxPage) || 5)
@@ -15,7 +14,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   const pageNumberLimit = 5
   const pages = []
 
-  for(let i = 1; i <= Math.ceil(length / itemsPerPage); i++){
+  for(let i = 1; i <= Math.ceil(325 / itemsPerPage); i++){
     pages.push(i)
   }
 

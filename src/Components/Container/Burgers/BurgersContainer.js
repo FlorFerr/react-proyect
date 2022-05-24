@@ -3,7 +3,7 @@ import { getProducts, burgerUrl } from '../../../Services/Index';
 import BurgerImg from '../../../Images/burger.png';
 import ItemList from '../ItemList';
 import LoadingSpinner from '../../UI/LoadingSpinner';
-import Pagination from '../Pagination';
+import BurgersPagination from './BurgersPagination';
 import SearchItem from '../SearchItem';
 import './BurgersContainer.css';
 
@@ -68,7 +68,7 @@ const BurgersContainer = () => {
             <h1>Hamburguesas</h1>
         <div className='page-container'>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
-          <Pagination length={27} onPaginationChange={paginationHandler}/>
+          <BurgersPagination onPaginationChange={paginationHandler} valuePage={lastViewedPage}/>
         </div>
         {noResultSearch && <p>No hay resultados</p>}
         <ItemList data={burgers} />

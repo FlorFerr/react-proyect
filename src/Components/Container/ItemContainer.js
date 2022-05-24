@@ -32,7 +32,7 @@ const ItemContainer = () => {
       setNoResultaSearch(false)
     }
 
-    const paginationHandler = (page) => {
+    const paginationHandler = (page, max, min) => {
       setPagePagination(page) 
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
@@ -102,7 +102,7 @@ const ItemContainer = () => {
         <div className='page-container'>
           <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
           <SearchItem onSearch={onSearch} value={valueSearch}/>
-          <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
+          <Pagination onPaginationChange={paginationHandler} valuePage={lastViewedPage}/>
         </div>
         {noResultSearch && <p>No hay resultados</p>}
         <ItemList data={beers}/>
