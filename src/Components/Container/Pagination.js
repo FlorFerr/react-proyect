@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Pagination.css';
 
 const Pagination = ({onPaginationChange, length, valuePage}) => {
 
+  const lastMaxPage = localStorage.getItem('maxPage')
+  const lastMinPage = localStorage.getItem('minPage')
+
+
   const [currentPage, setCurrentPage] = useState(Number(valuePage) || 1)
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5)
-  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0)
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState( Number(lastMaxPage) || 5)
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(Number(lastMinPage) || 0)
 
   const itemsPerPage = 10
   const pageNumberLimit = 5
@@ -14,6 +18,11 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   for(let i = 1; i <= Math.ceil(length / itemsPerPage); i++){
     pages.push(i)
   }
+
+  useEffect(() => {
+    localStorage.setItem('maxPage', maxPageNumberLimit)
+    localStorage.setItem('minPage', minPageNumberLimit)
+  }, [currentPage, maxPageNumberLimit, minPageNumberLimit])
 
   const inicioHandler = () => {
     onPaginationChange(pages[0])
@@ -42,6 +51,8 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
         setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
         setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
       }
+
+      
       
     }
     const nextHandler = () =>{
