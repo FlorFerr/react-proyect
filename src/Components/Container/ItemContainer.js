@@ -5,7 +5,7 @@ import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import beerImg from '../../Images/Carrousel.png'
+import beerImg from '../../Images/beer.png'
 import './ItemContainer.css'
 
 const ItemContainer = () => {
@@ -23,6 +23,7 @@ const ItemContainer = () => {
     const ibuHandler = (ibu) => {
       setIbuValue(ibu)
       setIbuFilter(false)
+      setNoResultaSearch(false)
     }
 
     const ibuParamHandler = (param) =>{
@@ -69,7 +70,6 @@ const ItemContainer = () => {
               category: 'beer'
             }
         })
-          
           setBeers(trasformData)
           if(ibuFilter && !valueSearch){
             const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
@@ -84,8 +84,6 @@ const ItemContainer = () => {
                 category: 'beer'
               }
           })
-            
-            
             setBeers(trasformData)
             if(responseProducts.data.length === 0){
               setNoResultaSearch(true)            
@@ -99,27 +97,16 @@ const ItemContainer = () => {
   return (
     <div>
         <img className='img-portada' src={beerImg} alt='beer walpaper'/>
-
-    
-    <div className='beers-container'>
-      
-      <h1>Cervezas</h1>
-
-      <div className='page-container'>
-        
-      
-        <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
-        <SearchItem onSearch={onSearch} value={valueSearch}/>
-        
-        <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
-        
-        
+      <div className='beers-container'>
+        <h1>Cervezas</h1>
+        <div className='page-container'>
+          <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
+          <SearchItem onSearch={onSearch} value={valueSearch}/>
+          <Pagination onPaginationChange={paginationHandler} length={325} valuePage={lastViewedPage}/>
+        </div>
+        {noResultSearch && <p>No hay resultados</p>}
+        <ItemList data={beers}/>
       </div>
-      {noResultSearch && <p>No hay resultados</p>}
-      <ItemList data={beers}/>
-      
-      
-    </div>
     {isLoading && <div className='loading'><LoadingSpinner /></div>}
     </div>
   )

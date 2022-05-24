@@ -7,7 +7,7 @@
 }
 .navBar ul{
     position: absolute;
-    top: 60px;
+    top: 80px;
     right: 0;
     width: 100%;
     background-color: #005B5F;
@@ -37,4 +37,9 @@
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+}
+
+.logoImg{
+    height: 80px;
+    width: auto;
 }

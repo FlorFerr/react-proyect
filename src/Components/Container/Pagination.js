@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Pagination.css'
+import './Pagination.css';
 
 const Pagination = ({onPaginationChange, length, valuePage}) => {
 
@@ -32,7 +32,6 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   const currentPagesHandler = (e) => {
     onPaginationChange(e.target.id)
     setCurrentPage(Number(e.target.id))
-
     }
 
     const prevHandler = () =>{
@@ -52,8 +51,6 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
         setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit)
         setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
       }
-      
-
     }
 
   return (
@@ -67,7 +64,6 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
                   return(
                     <li className={number === currentPage ? 'pageActive' : null} key={number} id={number} onClick={currentPagesHandler}>{number}</li>)
                 }
-                
             })}
             <li onClick={nextHandler}>
               <button className='pagination-btn' disabled={currentPage === pages.length}>&gt;	</button></li>
@@ -77,4 +73,4 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   )
 }
 
-export default Pagination
+export default Pagination;

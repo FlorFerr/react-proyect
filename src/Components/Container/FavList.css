@@ -48,8 +48,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
+
 .fav-noResults{
     text-align: center;
     margin: 5rem;
@@ -88,10 +88,6 @@
         align-items: stretch;
     }
     .fav-noResults{
-       
         margin: 1rem;
-        
     }
-
-   
   }

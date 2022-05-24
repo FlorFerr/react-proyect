@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
-import CartContext from '../../Context/CartContext'
-import ItemDetail from '../Container/ItemDetail'
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineCloseCircle } from 'react-icons/ai'
-import './CartItem.css'
+import React, { useContext, useState } from 'react';
+import CartContext from '../../Context/CartContext';
+import ItemDetail from '../Container/ItemDetail';
+import { AiOutlineMinus, AiOutlinePlus, AiOutlineCloseCircle } from 'react-icons/ai';
+import './CartItem.css';
 
 const CartItem = ({data, onRemove}) => {
     const [modalCartShown, setModalCartShown] = useState(false)
@@ -14,7 +14,6 @@ const CartItem = ({data, onRemove}) => {
       }
     const showModalCartHandler = () => {     
         setModalCartShown(true)
-        
     }
 
     const increaseAmountHandler = () => {
@@ -27,7 +26,6 @@ const CartItem = ({data, onRemove}) => {
         data.amount = Number(data.amount) - 1
         cartContext.amountItem(data.id, data.amount)
       }
-
     }
     
   return (

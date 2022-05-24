@@ -63,6 +63,7 @@
 .itemCart-btn_remove{
     background-color: transparent;
     border: 0;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

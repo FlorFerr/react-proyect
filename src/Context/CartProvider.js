@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import CartContext from './CartContext'
-import { localStorageService } from '../Services/localStorage'
+import React, { useState, useEffect } from 'react';
+import { localStorageService } from '../Services/localStorage';
+import CartContext from './CartContext';
 
 const CartProvider = (props) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
@@ -36,10 +36,8 @@ const CartProvider = (props) => {
         }))
         setCart(cartAuxiliar)
     }
-
     
-    
-     const cartContext = {
+    const cartContext = {
         items: [],
         addItem: addItemHandler,
         removeItem: removeItemHandler,

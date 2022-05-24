@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import Card from '../UI/Card'
-
-import ItemDetail from './ItemDetail'
-import Input from '../UI/Input'
-
-import AddFav from './AddFav'
-import './Item.css'
+import React, { useState } from 'react';
+import AddFav from './AddFav';
+import Card from '../UI/Card';
+import Input from '../UI/Input';
+import ItemDetail from './ItemDetail';
+import './Item.css';
 
 const Item = ({data}) => {
       const [modalShown, setModalShown] = useState(false) 
@@ -13,9 +11,9 @@ const Item = ({data}) => {
       const hideModalHandler = () =>{
         setModalShown(false)
       }
-    const showModalHandler = () => {     
-        setModalShown(true)
-    }
+      const showModalHandler = () => {     
+          setModalShown(true)
+      }
     
   return (
     <Card>

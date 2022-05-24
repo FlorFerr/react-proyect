@@ -78,9 +78,7 @@
     background-color: #F9F6F6;
   }
   
-  .btn-form:disabled,
-  .btn-form:disabled:hover,
-  .btn-form:disabled:active {
+  .btn-form:disabled {
     background-color: #ccc;
     color: #292929;
     border-color: #ccc;

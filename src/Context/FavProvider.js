@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import FavContext from './FavContext'
+import React, { useEffect, useState } from 'react';
 import { localStorageService } from '../Services/localStorage';
+import FavContext from './FavContext';
 
 const FavProvider = (props) => {
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
@@ -10,7 +10,6 @@ const FavProvider = (props) => {
         const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
         setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category, ibu: item.ibu, abv: item.abv}])
-       
         }else{
             favItems = fav.filter(element => element.name !== item.name)
             setFav(favItems)
@@ -33,7 +32,7 @@ const FavProvider = (props) => {
     }
     
   return (
-    <FavContext.Provider value={{favContext, fav}}>
+    <FavContext.Provider value={{ favContext, fav }}>
         {props.children}
     </FavContext.Provider>
   )

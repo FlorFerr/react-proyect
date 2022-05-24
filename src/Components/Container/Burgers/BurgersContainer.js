@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { getProducts, burgerUrl } from '../../../Services/Index'
-import ItemList from '../ItemList'
-import Pagination from '../Pagination'
-import SearchItem from '../SearchItem'
-import LoadingSpinner from '../../UI/LoadingSpinner'
-import burgerImg from '../../../Images/burger.png'
-import './BurgersContainer.css'
+import React, { useState, useEffect } from 'react';
+import { getProducts, burgerUrl } from '../../../Services/Index';
+import BurgerImg from '../../../Images/burger.png';
+import ItemList from '../ItemList';
+import LoadingSpinner from '../../UI/LoadingSpinner';
+import Pagination from '../Pagination';
+import SearchItem from '../SearchItem';
+import './BurgersContainer.css';
 
 const BurgersContainer = () => {
     const lastViewedPage = localStorage.getItem('pageBurger')
@@ -42,7 +42,7 @@ const BurgersContainer = () => {
                   id: product.id,
                   name: product.name,
                   ingredients: product.ingredients,
-                  image_url: burgerImg,
+                  image_url: BurgerImg,
                   category: 'burger'
                 }
             })
@@ -66,17 +66,11 @@ const BurgersContainer = () => {
     <>
     <div className='burgers-container'>
             <h1>Hamburguesas</h1>
-
-     
         <div className='page-container'>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
           <Pagination length={27} onPaginationChange={paginationHandler}/>
-          
         </div>
         {noResultSearch && <p>No hay resultados</p>}
-       
-          
-      
         <ItemList data={burgers} />
     </div>
     {isLoading && <div className='loading'><LoadingSpinner /></div>}</>

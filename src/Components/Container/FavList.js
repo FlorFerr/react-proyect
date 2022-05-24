@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import FavContext from '../../Context/FavContext'
-import Item from './Item'
-import SearchItem from './SearchItem'
-import { GrLinkPrevious } from 'react-icons/gr'
-import './FavList.css'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import FavContext from '../../Context/FavContext';
+import Item from './Item';
+import SearchItem from './SearchItem';
+import { GrLinkPrevious } from 'react-icons/gr';
+import './FavList.css';
 
 const FavList = () => {
     const [valueSearch, setValueSearch ] = useState('')

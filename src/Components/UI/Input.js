@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
-import CartContext from '../../Context/CartContext'
-import './Input.css'
+import React, { useContext, useState } from 'react';
+import CartContext from '../../Context/CartContext';
+import './Input.css';
 
 const Input = (props) => {
     const [amount, setAmount] = useState(1)

@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { BsCart } from "react-icons/bs";
-import { IoIosMenu } from 'react-icons/io'
-import { MdClose } from 'react-icons/md'
-import { HiHeart } from "react-icons/hi";
-import CartContext from "../../Context/CartContext";
-import NavLinks from './NavLinks'
+import React, { useContext, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import CartContext from '../../Context/CartContext';
+import LogoImg from '../../Images/logo.png';
+import NavLinks from './NavLinks';
+import { BsCart } from 'react-icons/bs';
+import { IoIosMenu } from 'react-icons/io';
+import { MdClose } from 'react-icons/md';
+import { HiHeart } from 'react-icons/hi';
 import './NavBar.css'
 
 const NavBar = ({userLogin, logStatus}) => {
@@ -32,25 +33,23 @@ const NavBar = ({userLogin, logStatus}) => {
   const menuClose = <MdClose size='30px' cursor='pointer' onClick={menuHandler}/>
 
   return (
-    <nav className="navBar">
+    <nav className='navBar'>
       <div>
         {open ? menuClose : menuOpen}        
         {open && <NavLinks onMenuHandler={closeMenu} onLogOut={userLogin} logStatus={logStatus}/>}
       </div>
-
         
-        <div>
-          <NavLink to="/">LOGO</NavLink>
-        </div>
-        <div className="navBar-icons">
-        <NavLink to="/favorites">
-            <HiHeart size='30px'/> 
-          </NavLink>
-          <NavLink to="/cart">
-            <BsCart size='30px'/> {totalCartValid && totalCart}
-          </NavLink>
-          
-        </div>
+      <div>
+        <NavLink to='/beers'><img src={LogoImg} alt='logo' className='logoImg'/></NavLink>
+      </div>
+      <div className='navBar-icons'>
+        <NavLink to='/favorites'>
+          <HiHeart size='30px'/> 
+        </NavLink>
+        <NavLink to='/cart'>
+          <BsCart size='30px'/> {totalCartValid && totalCart}
+        </NavLink>
+      </div>
       </nav>
   )
 }

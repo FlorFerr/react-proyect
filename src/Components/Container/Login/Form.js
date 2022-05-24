@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import './Form.css'
+import './Form.css';
 
 const Form = ({ user, onLogin, logStatus}) => {
     const [enteredEmail, setEnteredEmail] = useState('')
@@ -65,7 +65,7 @@ const Form = ({ user, onLogin, logStatus}) => {
               <input  type='password' id='password' onChange={passwordChangeHandler} value={enteredPassword} onBlur={passwordBlurHandler}/>
               {!enteredPassword && passwordTouched && <p className='error-text'>La clave debe tener más de 5 caracteres</p>}
           </div>
-          <div className="form-actions">
+          <div className='form-actions'>
             <button className='btn-form' type='submit' disabled={!formIsValid}>Iniciar sesión</button>
             {!formIsValid && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
           </div>

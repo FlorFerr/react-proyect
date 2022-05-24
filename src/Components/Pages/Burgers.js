@@ -1,11 +1,9 @@
-import React from 'react'
-import BurgersContainer from '../Container/Burgers/BurgersContainer'
+import React from 'react';
+import BurgersContainer from '../Container/Burgers/BurgersContainer';
 
 const Burgers = () => {
-  return (
-    <div>
-        <BurgersContainer />
-    </div>
+  return (    
+    <BurgersContainer />
   )
 }
 

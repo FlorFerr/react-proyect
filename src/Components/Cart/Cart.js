@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
-import CartContext from '../../Context/CartContext'
-import CartItem from './CartItem'
-import './CartItem.css'
-
+import React, { useContext, useState } from 'react';
+import CartContext from '../../Context/CartContext';
+import CartItem from './CartItem';
+import './CartItem.css';
 
 const Cart = () => {
   const [order, setOrder] = useState(false)
@@ -14,7 +13,6 @@ const Cart = () => {
       cartContext.clearCart()
     }
     
-
   return (
     <div className='cart-container'>
       <h1>Carrito</h1>
