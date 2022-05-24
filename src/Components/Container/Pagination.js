@@ -56,7 +56,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
   return (
     <div>
         <ul className='pagination'>
-            <li onClick={inicioHandler}>Inicio</li>
+            <li onClick={inicioHandler}><button className='pagination-btn' disabled={currentPage === 1} >&lt;&lt;</button></li>
             <li onClick={prevHandler}>
               <button className='pagination-btn' disabled={currentPage === 1}>&lt;</button></li>
             {pages.map(number => {
@@ -67,7 +67,7 @@ const Pagination = ({onPaginationChange, length, valuePage}) => {
             })}
             <li onClick={nextHandler}>
               <button className='pagination-btn' disabled={currentPage === pages.length}>&gt;	</button></li>
-            <li onClick={finalHandler}>Final</li>
+            <li onClick={finalHandler}><button className='pagination-btn' disabled={currentPage === pages.length}>&gt;&gt;</button></li>
         </ul>
     </div>
   )
