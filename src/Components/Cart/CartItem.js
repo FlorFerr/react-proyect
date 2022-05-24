@@ -7,13 +7,17 @@ import './CartItem.css';
 const CartItem = ({data, onRemove}) => {
     const [modalCartShown, setModalCartShown] = useState(false)
 
+    const body = document.getElementById('body')
+
     const { cartContext} = useContext(CartContext)
 
     const hideModalCartHandler = () =>{
         setModalCartShown(false)
+        body.classList.remove('noScroll')
       }
     const showModalCartHandler = () => {     
         setModalCartShown(true)
+        body.classList.add('noScroll')  
     }
 
     const increaseAmountHandler = () => {

@@ -5,7 +5,7 @@ import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import beerImg from '../../Images/beer.png'
+import BeerImg from '../../Images/beer.png'
 import './ItemContainer.css'
 
 const ItemContainer = () => {
@@ -96,7 +96,7 @@ const ItemContainer = () => {
   
   return (
     <div>
-        <img className='img-portada' src={beerImg} alt='beer walpaper'/>
+        <img className='img-portada' src={BeerImg} alt='beer walpaper'/>
       <div className='beers-container'>
         <h1>Cervezas</h1>
         <div className='page-container'>
