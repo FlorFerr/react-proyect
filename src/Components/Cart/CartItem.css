@@ -147,4 +147,9 @@
         width: auto;
         max-width: 100px;
     }
+
+    .cart-btn_clear, .cart-btn_confirm{
+        margin: 0.5rem;
+    }
+
   }

@@ -5,14 +5,19 @@ import Input from '../UI/Input';
 import ItemDetail from './ItemDetail';
 import './Item.css';
 
+const body = document.getElementById('body')
+
 const Item = ({data}) => {
       const [modalShown, setModalShown] = useState(false) 
 
       const hideModalHandler = () =>{
         setModalShown(false)
+        body.classList.remove('noScroll')
+       
       }
       const showModalHandler = () => {     
-          setModalShown(true)
+        setModalShown(true)
+        body.classList.add('noScroll')          
       }
     
   return (

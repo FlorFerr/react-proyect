@@ -18,6 +18,7 @@
 
 @media (max-width: 768px) {
     .itemDetail-container{
+        margin: 0.5rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
