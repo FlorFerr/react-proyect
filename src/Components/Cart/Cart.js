@@ -27,8 +27,8 @@ const Cart = () => {
                 )
               })
             }
-            <button onClick={cartContext.clearCart}>Vaciar carrito</button>
-            <button onClick={orderHandler}>Comprar</button>
+            <button className='cart-btn_clear' onClick={cartContext.clearCart}>Vaciar carrito</button>
+            <button className='cart-btn_confirm' onClick={orderHandler}>Comprar</button>
           </div>
         }
       </div>}

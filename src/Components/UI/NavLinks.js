@@ -27,7 +27,7 @@ const NavLinks = ({onMenuHandler, onLogOut, logStatus}) => {
           </li>
           <li onClick={onMenuHandler}>
             {
-              logStatus && <button onClick={onLogOut}>Cerrar sesión</button>
+              logStatus && <button className='navBar-btn_logout' onClick={onLogOut}>Cerrar sesión</button>
             }
           </li>
         </ul>
