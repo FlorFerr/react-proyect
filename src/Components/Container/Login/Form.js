@@ -8,17 +8,18 @@ const Form = ({ user, onLogin, logStatus}) => {
     const [emailTouched, setEmailTouched] = useState(false)
     const [passwordTouched, setPasswordTouched] = useState(false)
     const [formIsValid, setFormIsValid] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(true)
 
     const history = useHistory()
     
       const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value)
-        setFormIsValid(true)
+        setBtnDisabled(false)
       }
     
       const passwordChangeHandler = (e) => {
         setEnteredPassword(e.target.value)
-        setFormIsValid(true)
+        setBtnDisabled(false)
       }
     
       const emailBlurHandler = () => {
@@ -34,11 +35,14 @@ const Form = ({ user, onLogin, logStatus}) => {
         setEmailTouched(true)
         setPasswordTouched(true)    
         if(enteredEmail === user.email && enteredPassword === user.password ) {
-          setFormIsValid(true);
-          onLogin(true);
-          history.push('/');
+          setFormIsValid(true)
+          setBtnDisabled(true)
+          onLogin(true)
+          history.push('/')
+          
         } else {
-          setFormIsValid(false);
+          setFormIsValid(false)
+          setBtnDisabled(true)
           return;
         }
         setEnteredEmail('')
@@ -66,8 +70,8 @@ const Form = ({ user, onLogin, logStatus}) => {
               {!enteredPassword && passwordTouched && <p className='error-text'>La clave debe tener más de 5 caracteres</p>}
           </div>
           <div className='form-actions'>
-            <button className='btn-form' type='submit' disabled={!formIsValid}>Iniciar sesión</button>
-            {!formIsValid && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
+            <button className='btn-form' type='submit' disabled={btnDisabled}>Iniciar sesión</button>
+            {!formIsValid && emailTouched && passwordTouched && btnDisabled && <p className='error-text'>Usuario o password incorrectos</p>}
           </div>
           </form>
         }
