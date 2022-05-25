@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getProducts, burgerUrl } from '../../../Services/Index';
 import BurgerImg from '../../../Images/burger.png';
+import BurgersImg from '../../../Images/burgers.png'
 import ItemList from '../ItemList';
 import LoadingSpinner from '../../UI/LoadingSpinner';
 import BurgersPagination from './BurgersPagination';
@@ -63,8 +64,11 @@ const BurgersContainer = () => {
       },[pagePagination, valueSearch, noResultSearch])
 
   return (
-    <>
-    <div className='burgers-container'>
+    
+    <div >
+      <img className='img-portada' src={BurgersImg} alt='burgers walpaper'/>
+
+      <div className='burgers-container'>
             <h1>Hamburguesas</h1>
         <div className='page-container'>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
@@ -72,8 +76,9 @@ const BurgersContainer = () => {
         </div>
         {noResultSearch && <p>No hay resultados</p>}
         <ItemList data={burgers} />
+      </div>
+      {isLoading && <div className='loading'><LoadingSpinner /></div>}
     </div>
-    {isLoading && <div className='loading'><LoadingSpinner /></div>}</>
   )
 }
 

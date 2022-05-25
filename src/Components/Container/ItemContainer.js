@@ -5,7 +5,7 @@ import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import BeerImg from '../../Images/beer.png'
+import BeerImg from '../../Images/beers.png'
 import './ItemContainer.css'
 
 const ItemContainer = () => {
