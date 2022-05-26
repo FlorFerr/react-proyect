@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
 import { getProducts, beerUrl } from '../../Services/Index'
 import ItemList from './ItemList';
 import Pagination from './Pagination';
 import SearchItem from './SearchItem';
 import Filter from './Filter';
 import LoadingSpinner from '../UI/LoadingSpinner';
+import BeerImg from '../../Images/beers.png'
 import './ItemContainer.css'
 
 const ItemContainer = () => {
@@ -23,6 +23,7 @@ const ItemContainer = () => {
     const ibuHandler = (ibu) => {
       setIbuValue(ibu)
       setIbuFilter(false)
+      setNoResultaSearch(false)
     }
 
     const ibuParamHandler = (param) =>{
@@ -31,7 +32,7 @@ const ItemContainer = () => {
       setNoResultaSearch(false)
     }
 
-    const paginationHandler = (page) => {
+    const paginationHandler = (page, max, min) => {
       setPagePagination(page) 
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
@@ -69,7 +70,6 @@ const ItemContainer = () => {
               category: 'beer'
             }
         })
-          
           setBeers(trasformData)
           if(ibuFilter && !valueSearch){
             const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
@@ -84,8 +84,6 @@ const ItemContainer = () => {
                 category: 'beer'
               }
           })
-            
-            
             setBeers(trasformData)
             if(responseProducts.data.length === 0){
               setNoResultaSearch(true)            
@@ -98,13 +96,18 @@ const ItemContainer = () => {
   
   return (
     <div>
-        <Link to='favorites'><button>Favoritos</button></Link>
-        <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
-        <SearchItem onSearch={onSearch} value={valueSearch}/>
-        <Pagination onPaginationChange={paginationHandler} length={80}/>
-        {noResultSearch && <p>No hay coincidencia</p>}
-        {isLoading && <div className='loading'><LoadingSpinner /></div>}
+        <img className='img-portada' src={BeerImg} alt='beer walpaper'/>
+      <div className='beers-container'>
+        <h1>Cervezas</h1>
+        <div className='page-container'>
+          <Filter onFilter={ibuHandler} value={ibuValue} onParam={ibuParamHandler}></Filter>
+          <SearchItem onSearch={onSearch} value={valueSearch}/>
+          <Pagination onPaginationChange={paginationHandler} valuePage={lastViewedPage}/>
+        </div>
+        {noResultSearch && <p>No hay resultados</p>}
         <ItemList data={beers}/>
+      </div>
+    {isLoading && <div className='loading'><LoadingSpinner /></div>}
     </div>
   )
 }

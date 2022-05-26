@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import FavContext from '../../Context/FavContext'
-import { HiHeart } from 'react-icons/hi'
-import { HiOutlineHeart } from 'react-icons/hi'
-import './AddFav.css'
+import React, { useContext, useEffect, useState } from 'react';
+import FavContext from '../../Context/FavContext';
+import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
+import './AddFav.css';
 
 const AddFav = ({item, clase}) => {
 

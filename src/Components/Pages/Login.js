@@ -1,5 +1,5 @@
-import React from 'react'
-import Form from '../Container/Login/Form'
+import React from 'react';
+import Form from '../Container/Login/Form';
 
 const Login = ({ userLogin, logStatus }) => {
 

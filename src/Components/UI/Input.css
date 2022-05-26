@@ -28,6 +28,13 @@
     padding: 0.5rem;
 }
 .input{
+    border-radius: 10px;
+    width: 3.5rem;
+    border: 1px solid #eaeaea;
+    font-size: 0.8rem;
+    outline: none;
+    min-height: 36px;
+    padding: 4px ;
+    color: #000;
     text-align: center;
-    background-color: transparent;
 }

@@ -5,6 +5,12 @@
 }
 
 .favItem-detail{
-    align-self: flex-start;
+    align-self: flex-end;
+    padding: 0rem 1rem;
     cursor: pointer;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
 }

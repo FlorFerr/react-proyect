@@ -7,7 +7,7 @@
 }
 .navBar ul{
     position: absolute;
-    top: 60px;
+    top: 80px;
     right: 0;
     width: 100%;
     background-color: #005B5F;
@@ -23,11 +23,46 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    color: #FFE4E5;
-    font-weight: 700;
-    text-transform: uppercase;
+    color: #FF8945;
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: capitalize;
 }
 
 .navBar ul li:hover{
-    font-size: large;
+    font-weight: bolder;
+}
+
+.navBar-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.logoImg{
+    height: 80px;
+    width: auto;
+}
+
+.navBar-btn_logout{ 
+    margin-bottom: 1rem ;
+    border-radius: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: 700;
+    background-color: #FF8945;
+    border: 2px solid #FF8945;
+    cursor: pointer;
+    width: 190px;
+    max-width: 190px;
+    line-height: 1;
+    letter-spacing: .02em;
+    font-size: .8rem;
+    color: #F9F6F6;
+}
+    
+.navBar-btn_logout:hover{
+    color: #FF8945;
+    background-color: #005B5F;
 }

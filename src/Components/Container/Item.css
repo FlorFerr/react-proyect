@@ -26,3 +26,6 @@
     text-align: center;
 }
 
+.noScroll{
+    overflow: hidden;
+}

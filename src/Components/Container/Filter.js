@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import './Filter.css';
 
 const Filter = ({onFilter, value, onParam}) => {
 
@@ -14,10 +16,13 @@ const Filter = ({onFilter, value, onParam}) => {
         onParam('gt')
     }
   return (
-    <div>
-        <button onClick={onLessHandler}>MENOR</button>
-        <input type="number" placeholder='Ibu' onChange={onFilterHandler} value={value}/>
-        <button onClick={onGreaterHandler}>MAYOR</button>
+    <div className='ibuFilter-container'>
+        <p className='ibuFilter-title'>Filtrar por IBU:</p>
+        <div>
+            <button className='ibuFilter-btn' onClick={onLessHandler}><AiOutlineMinus /></button>
+            <input className='ibuFilter-input' type='number' placeholder='Ibu' onChange={onFilterHandler} value={value}/>
+            <button className='ibuFilter-btn' onClick={onGreaterHandler}><AiOutlinePlus /></button>
+        </div>
     </div>
   )
 }

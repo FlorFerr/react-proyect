@@ -1,6 +1,27 @@
 .itemDetail-container{
-    display: flex;
-    flex-direction: row;
-    
-    justify-content: center;
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
 }
+
+.img-detail{
+    width: auto;
+    height: 150px;
+}
+.item-flex ul li{
+    list-style: inside;
+    text-transform: capitalize;
+   
+}
+
+@media (max-width: 768px) {
+    .itemDetail-container{
+        margin: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+    }
+  }

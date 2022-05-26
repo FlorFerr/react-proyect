@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './SearchItem.css';
 
 const SearchItem = ({onSearch, value}) => {
   
@@ -7,9 +8,9 @@ const SearchItem = ({onSearch, value}) => {
     }
 
   return (
-    <div>
-        <input type='text' value={value} onChange={changeSearchValueHandler} placeholder='Buscar'></input>
-   
+    <div className='search-container'>
+        <p className='search-title'>Filtrar por nombre:</p>
+        <input className='search-input' type='text' value={value} onChange={changeSearchValueHandler} placeholder='Buscar...'></input>
     </div>
   )
 }

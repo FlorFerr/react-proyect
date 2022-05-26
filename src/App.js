@@ -1,12 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom'
-import Cart from './Components/Cart/Cart';
-import Header from "./Components/UI/Header";
-import CartProvider from './Context/CartProvider';
-import FavProvider from './Context/FavProvider';
-import FavList from './Components/Container/FavList';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Beers from './Components/Pages/Beers';
-import Burgers from './Components/Pages/Burgers'
+import Burgers from './Components/Pages/Burgers';
+import Cart from './Components/Cart/Cart';
+import CartProvider from './Context/CartProvider';
+import Favorites from './Components/Pages/Favorites';
+import FavProvider from './Context/FavProvider';
+import Header from './Components/UI/Header';
 import Login from './Components/Pages/Login';
 
 function App() {
@@ -44,7 +44,7 @@ function App() {
               <Cart />
             </Route>
             <Route path='/favorites'>
-              <FavList />
+              <Favorites />
             </Route>
             <Route path='*'>
               <Redirect to='/beers'/>

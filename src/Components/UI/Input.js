@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
-import CartContext from '../../Context/CartContext'
-import './Input.css'
+import React, { useContext, useState } from 'react';
+import CartContext from '../../Context/CartContext';
+import './Input.css';
 
 const Input = (props) => {
     const [amount, setAmount] = useState(1)
@@ -12,7 +12,7 @@ const Input = (props) => {
     }
     
     const addItemCart = () =>{       
-        cartContext.addItem({id: props.detail.id, name: props.detail.name, image_url: props.detail.image_url, description: props.detail.description, ingredients: props.detail.ingredients}, amount)
+        cartContext.addItem({id: props.data.id, name: props.data.name, image_url: props.data.image_url, description: props.data.description, ingredients: props.data.ingredients}, amount)
     }
 
   return (

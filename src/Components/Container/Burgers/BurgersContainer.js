@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { getProducts, burgerUrl } from '../../../Services/Index'
-import ItemList from '../ItemList'
-import Pagination from '../Pagination'
-import SearchItem from '../SearchItem'
-import LoadingSpinner from '../../UI/LoadingSpinner'
+import React, { useState, useEffect } from 'react';
+import { getProducts, burgerUrl } from '../../../Services/Index';
+import BurgerImg from '../../../Images/burger.png';
+import BurgersImg from '../../../Images/burgers.png'
+import ItemList from '../ItemList';
+import LoadingSpinner from '../../UI/LoadingSpinner';
+import BurgersPagination from './BurgersPagination';
+import SearchItem from '../SearchItem';
+import './BurgersContainer.css';
 
 const BurgersContainer = () => {
     const lastViewedPage = localStorage.getItem('pageBurger')
@@ -31,7 +33,6 @@ const BurgersContainer = () => {
         async function loadProducts (){   
           let responseProducts = []
            
-          
             if(valueSearch){
                 responseProducts = await getProducts(`${burgerUrl}`)
             }else{
@@ -42,7 +43,7 @@ const BurgersContainer = () => {
                   id: product.id,
                   name: product.name,
                   ingredients: product.ingredients,
-                  image_url: 'https://www.pngplay.com/wp-content/uploads/2/Burger-PNG-Photo-Image.png',
+                  image_url: BurgerImg,
                   category: 'burger'
                 }
             })
@@ -63,14 +64,20 @@ const BurgersContainer = () => {
       },[pagePagination, valueSearch, noResultSearch])
 
   return (
-    <div>
-     
-        <Link to='favorites'><button>Favoritos</button></Link>
-        <Pagination length={27} onPaginationChange={paginationHandler}/>
+    
+    <div >
+      <img className='img-portada' src={BurgersImg} alt='burgers walpaper'/>
+
+      <div className='burgers-container'>
+            <h1>Hamburguesas</h1>
+        <div className='page-container'>
         <SearchItem onSearch={onSearch} value={valueSearch}/>
-        {noResultSearch && <p>No hay coincidencia</p>}
-        {isLoading && <div className='loading'><LoadingSpinner /></div>}
+          <BurgersPagination onPaginationChange={paginationHandler} valuePage={lastViewedPage}/>
+        </div>
+        {noResultSearch && <p>No hay resultados</p>}
         <ItemList data={burgers} />
+      </div>
+      {isLoading && <div className='loading'><LoadingSpinner /></div>}
     </div>
   )
 }

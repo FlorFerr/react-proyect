@@ -1,12 +1,7 @@
-.img-portada{
-  width: 100%;
-}
-
-.beers-container{
+.burgers-container{
   margin: 0.5rem 5rem;
   padding: 0.5rem 2rem;
   text-align: center;
-  min-height: 90vh;
 }
 
 .loading {
@@ -21,14 +16,15 @@
   .page-container{
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: 1rem;
     padding: 0.5rem;
+
   }
 
   @media (max-width: 768px) {
-    .beers-container{
+    .burgers-container{
       margin: 0.5rem;
       padding: 0.5rem;
     }

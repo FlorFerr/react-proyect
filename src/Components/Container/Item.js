@@ -1,21 +1,26 @@
-import React, { useState } from 'react'
-import Card from '../UI/Card'
+import React, { useState } from 'react';
+import AddFav from './AddFav';
+import Card from '../UI/Card';
+import Input from '../UI/Input';
+import ItemDetail from './ItemDetail';
+import './Item.css';
 
-import ItemDetail from './ItemDetail'
-import Input from '../UI/Input'
-
-import AddFav from './AddFav'
-import './Item.css'
+const body = document.getElementById('body')
 
 const Item = ({data}) => {
       const [modalShown, setModalShown] = useState(false) 
 
       const hideModalHandler = () =>{
         setModalShown(false)
+        body.classList.remove('noScroll')
+        
+       
       }
-    const showModalHandler = () => {     
+      const showModalHandler = () => {     
         setModalShown(true)
-    }
+        body.classList.add('noScroll')      
+      
+      }
     
   return (
     <Card>
@@ -31,7 +36,7 @@ const Item = ({data}) => {
       </div>
             
       <Input 
-        detail={data}
+        data={data}
         input={{id: 'amount ' + data.id,
         type: 'number',
         min: '1',

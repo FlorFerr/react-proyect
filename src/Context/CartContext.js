@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
 const CartContext = createContext(
     {items: [],
@@ -8,6 +8,5 @@ const CartContext = createContext(
     clearCart: (items) =>{}
     }
 )
-
 
 export default CartContext
