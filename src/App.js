@@ -47,7 +47,7 @@ function App() {
               <FavList />
             </Route>
             <Route path='*'>
-              <Redirect to='/'/>
+              <Redirect to='/beers'/>
             </Route>
           </Switch>
         )}  
