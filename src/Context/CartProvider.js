@@ -9,13 +9,14 @@ const CartProvider = (props) => {
     const addItemHandler = (item, amount) => {
         const isInCart = cart.find(product => product.name === item.name)
         if(!isInCart){
-        setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount}]) 
+        setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount, category: item.category}]) 
+        console.log(cart)
     
 
         axios.post('http://localhost:8080/api/users/1/cart', {
             id_cart: item.id,
             name: item.name,
-            category: "beer",
+            category: item.category,
             amount: amount
           })
           .then(function (response) {
@@ -30,7 +31,7 @@ const CartProvider = (props) => {
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
 
-                axios.put(`http://localhost:8080/api/users/cart?amount=${product.amount}&idCart=${product.id}`)
+                axios.put(`http://localhost:8080/api/users/cart?amount=${product.amount}&name=${product.name}`)
 
             }
             return product
