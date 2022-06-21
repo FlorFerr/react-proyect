@@ -12,6 +12,8 @@ const Form = ({ user, onLogin, logStatus}) => {
 
     const history = useHistory()
     
+    const userFound = user.find(element => element.email === enteredEmail && element.password === enteredPassword);
+
       const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value)
         setBtnDisabled(false)
@@ -34,7 +36,7 @@ const Form = ({ user, onLogin, logStatus}) => {
         e.preventDefault()
         setEmailTouched(true)
         setPasswordTouched(true)    
-        if(enteredEmail === user.email && enteredPassword === user.password ) {
+        if(userFound) {
           setFormIsValid(true)
           setBtnDisabled(true)
           onLogin(true)
