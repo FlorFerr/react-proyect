@@ -9,7 +9,7 @@ const Login = ({ userLogin, logStatus }) => {
 
   useEffect(()=>{
     async function loadProducts (){   
-        let responseProducts = await getProducts(`http://localhost:8080/api/users`)
+        let responseProducts = await getProducts(`http://localhost:8080/api/users`, 'GET')
      
         const trasformData = responseProducts.data.map((product) => {
             return {

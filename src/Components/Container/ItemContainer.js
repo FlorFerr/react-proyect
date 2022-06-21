@@ -55,7 +55,7 @@ const ItemContainer = () => {
     useEffect(()=>{
       async function loadProducts (){  
         
-          const responseProducts = await getProducts(`${beerUrl}${!valueSearch ? paginationUrl : searchUrl}`)
+          const responseProducts = await getProducts(`${beerUrl}${!valueSearch ? paginationUrl : searchUrl}`, 'GET')
           if(responseProducts.data.length === 0){
             setNoResultaSearch(true)            
           }
@@ -72,7 +72,7 @@ const ItemContainer = () => {
         })
           setBeers(trasformData)
           if(ibuFilter && !valueSearch){
-            const responseProducts = await getProducts(`${beerUrl}${filterUrl}`)
+            const responseProducts = await getProducts(`${beerUrl}${filterUrl}`, 'GET')
             const trasformData = responseProducts.data.map((product) => {
               return {
                 id: product.id,

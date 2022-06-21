@@ -34,9 +34,9 @@ const BurgersContainer = () => {
           let responseProducts = []
            
             if(valueSearch){
-                responseProducts = await getProducts(`${burgerUrl}`)
+                responseProducts = await getProducts(`${burgerUrl}`, 'GET')
             }else{
-              responseProducts = await getProducts(`${burgerUrl}?_page=${pagePagination}&_limit=${10}`)
+              responseProducts = await getProducts(`${burgerUrl}?_page=${pagePagination}&_limit=${10}`, 'GET')
             }
             const trasformData = responseProducts.data.map((product) => {
                 return {
