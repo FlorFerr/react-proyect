@@ -49,9 +49,12 @@ const CartProvider = (props) => {
     const amountItemHandler = (item, amount) => {
         const cartAuxiliar = cart.map((product=>{
             if(product.id === item.id){
-                product.amount = Number(product.Switchamount) + Number(amount)
+                product.amount = Number(product.amount) + Number(amount)
+
             }
             return product
+           
+
         }))
         setCart(cartAuxiliar)
     }

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import CartContext from '../../Context/CartContext';
 import ItemDetail from '../Container/ItemDetail';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineCloseCircle } from 'react-icons/ai';
@@ -23,12 +24,16 @@ const CartItem = ({data, onRemove}) => {
     const increaseAmountHandler = () => {
         data.amount = Number(data.amount) + 1
         cartContext.amountItem(data.id, data.amount)
+        axios.put(`http://localhost:8080/api/users/cart?amount=${data.amount}&idCart=${data.id}`)
+
     }
 
     const decreaseAmountHandler = () => {
         if(data.amount > 1){
         data.amount = Number(data.amount) - 1
         cartContext.amountItem(data.id, data.amount)
+        axios.put(`http://localhost:8080/api/users/cart?amount=${data.amount}&idCart=${data.id}`)
+
       }
     }
     
