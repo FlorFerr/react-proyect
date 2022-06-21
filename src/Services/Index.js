@@ -15,4 +15,6 @@ async function getProducts (url, method){
   }
 }
 
+
+
 export { beerUrl, burgerUrl, getProducts }
