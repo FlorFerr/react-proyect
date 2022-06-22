@@ -9,6 +9,7 @@
 
 .item-title, .img{
     margin: 0.5rem;
+    text-transform: capitalize;
 }
 
 .data-beer{

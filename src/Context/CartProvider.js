@@ -41,6 +41,8 @@ const CartProvider = (props) => {
 
     const removeItemHandler = (name) => {
         const newCart = cart.filter(item => item.name !== name)
+        axios.delete(`http://localhost:8080/api/users/cart?name=${name}`)
+
         setCart(newCart)
     }
     const clearCartHandler = () => {
@@ -70,6 +72,17 @@ const CartProvider = (props) => {
 
     useEffect(()=> {
         localStorageService('cart', cart)
+        
+        axios.get('http://localhost:8080/api/users/1/cart')
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+
+
     }, [cart])
 
   return (
