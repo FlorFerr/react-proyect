@@ -41,7 +41,7 @@ const CartProvider = (props) => {
 
     const removeItemHandler = (name) => {
         const newCart = cart.filter(item => item.name !== name)
-        axios.delete(`http://localhost:8080/api/users/cart?name=${name}`)
+        axios.delete(`http://localhost:8080/api/users/1/cart?name=${name}`)
 
         setCart(newCart)
     }
