@@ -3,6 +3,7 @@ import FavContext from '../../Context/FavContext';
 import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import './AddFav.css';
 
+
 const AddFav = ({item, clase}) => {
 
   const { favContext, fav } = useContext(FavContext)
@@ -18,6 +19,7 @@ const AddFav = ({item, clase}) => {
   
   const addFavItemsHandler = () => {
     favContext.addItem(item)
+    
     setIsFav(prevState => !prevState)
   }
   

@@ -13,7 +13,7 @@ const CartProvider = (props) => {
         
     
 
-        axios.post('http://localhost:8080/api/users/1/cart', {
+        axios.post('http://localhost:8080/api/users/cart?userId=1', {
             id_cart: item.id,
             name: item.name,
             category: item.category,
@@ -31,7 +31,7 @@ const CartProvider = (props) => {
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
 
-                axios.put(`http://localhost:8080/api/users/1/cart?amount=${product.amount}&name=${product.name}`)
+                axios.put(`http://localhost:8080/api/users/cart?userId=1&amount=${product.amount}&name=${product.name}`)
 
             }
             return product
@@ -41,13 +41,13 @@ const CartProvider = (props) => {
 
     const removeItemHandler = (name) => {
         const newCart = cart.filter(item => item.name !== name)
-        axios.delete(`http://localhost:8080/api/users/1/cart?name=${name}`)
+        axios.delete(`http://localhost:8080/api/users/cart?userId=1&name=${name}`)
 
         setCart(newCart)
     }
     const clearCartHandler = () => {
 
-        axios.delete(`http://localhost:8080/api/users/1/cart/deleteAll`)
+        axios.delete(`http://localhost:8080/api/users/cart/deleteAll?userId=1`)
         setCart([])
     }
 
@@ -75,12 +75,7 @@ const CartProvider = (props) => {
     useEffect(()=> {
         localStorageService('cart', cart)
         
-        axios.get('http://localhost:8080/api/users/1/cart')
-          .then(function (response) {
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+      
         
 
 
