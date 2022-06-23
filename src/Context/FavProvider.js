@@ -5,26 +5,26 @@ import FavContext from './FavContext';
 
 const FavProvider = ({userId, children}) => {
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
-        
+
     const addFavHandler = (item) => {     
         let favItems = []  
         const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
         setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category, ibu: item.ibu, abv: item.abv}])
-        axios.post(`http://localhost:8080/api/users/favorites?userId=${userId}&name=${item.name}`, {
+        axios.post(`http://localhost:8080/api/users/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`, {
             idProductFav: item.id,
             name: item.name,
             category: item.category
           })
           .then(function (response) {
-            
+            console.log("Producto agregado a favoritos")
           })
           .catch(function (error) {
-            
+            console.log("El producto está en favoritos")
           });
         }else{
             favItems = fav.filter(element => element.name !== item.name)
-            axios.delete(`http://localhost:8080/api/users/favorites?userId=${userId}&name=${item.name}`)
+            axios.delete(`http://localhost:8080/api/users/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`)
             setFav(favItems)
         }        
     }
