@@ -17,10 +17,8 @@ const FavProvider = ({userId, children}) => {
             category: item.category
           })
           .then(function (response) {
-            console.log("Producto agregado a favoritos")
           })
           .catch(function (error) {
-            console.log("El producto está en favoritos")
           });
         }else{
             favItems = fav.filter(element => element.name !== item.name)
