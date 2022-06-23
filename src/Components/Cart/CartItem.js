@@ -52,7 +52,7 @@ const CartItem = ({data, onRemove}) => {
                 <button onClick={increaseAmountHandler}><AiOutlinePlus /></button>
               </div>
             </div> 
-            <button className='itemCart-btn_remove' onClick={() => {onRemove(data.name)}}><AiOutlineCloseCircle fontSize='20px'/></button>
+            <button className='itemCart-btn_remove' onClick={() => {onRemove(data.name, data.id, data.category)}}><AiOutlineCloseCircle fontSize='20px'/></button>
           </div>
             {modalCartShown && <ItemDetail onHide={hideModalCartHandler} detail={data}/>}
         </div>    

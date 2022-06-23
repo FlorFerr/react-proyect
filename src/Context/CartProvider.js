@@ -39,9 +39,9 @@ const CartProvider = ({ userId, children }) => {
         setCart(cartAux)
     }}
 
-    const removeItemHandler = (name) => {
+    const removeItemHandler = (name, id, category) => {
         const newCart = cart.filter(item => item.name !== name)
-        axios.delete(`http://localhost:8080/api/users/cart?userId=${userId}&name=${name}`)
+        axios.delete(`http://localhost:8080/api/users/cart?userId=${userId}&idCart=${id}&category=${category}`)
 
         setCart(newCart)
     }
