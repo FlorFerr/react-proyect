@@ -10,7 +10,8 @@ const CartItem = ({data, onRemove}) => {
 
     const body = document.getElementById('body')
 
-    const { cartContext} = useContext(CartContext)
+    const { cartContext, userId} = useContext(CartContext)
+  
 
     const hideModalCartHandler = () =>{
         setModalCartShown(false)
@@ -24,7 +25,7 @@ const CartItem = ({data, onRemove}) => {
     const increaseAmountHandler = () => {
         data.amount = Number(data.amount) + 1
         cartContext.amountItem(data.id, data.amount)
-        axios.put(`http://localhost:8080/api/users/cart?userId=1&amount=${data.amount}&name=${data.name}`)
+        axios.put(`http://localhost:8080/api/users/cart?userId=${userId}&amount=${data.amount}&name=${data.name}`)
 
     }
 
@@ -32,7 +33,7 @@ const CartItem = ({data, onRemove}) => {
         if(data.amount > 1){
         data.amount = Number(data.amount) - 1
         cartContext.amountItem(data.id, data.amount)
-        axios.put(`http://localhost:8080/api/users/cart?userId=1&amount=${data.amount}&name=${data.name}`)
+        axios.put(`http://localhost:8080/api/users/cart?userId=${userId}&amount=${data.amount}&name=${data.name}`)
 
       }
     }

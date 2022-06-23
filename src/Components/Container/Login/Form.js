@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './Form.css';
+import { useEffect } from 'react';
 
-const Form = ({ user, onLogin, logStatus}) => {
+const Form = ({ onLogin, logStatus}) => {
+    const [userStatus, setUserStatus] = useState('')
+    const [userId, setUserId] = useState('')
     const [enteredEmail, setEnteredEmail] = useState('')
     const [enteredPassword, setEnteredPassword] = useState('')
     const [emailTouched, setEmailTouched] = useState(false)
@@ -11,8 +15,21 @@ const Form = ({ user, onLogin, logStatus}) => {
     const [btnDisabled, setBtnDisabled] = useState(true)
 
     const history = useHistory()
+
+    useEffect(()=>{
+      axios.post('http://localhost:8080/api/login', {
+        email: enteredEmail,
+        pass: enteredPassword
+      })
+      .then(function (response) {
+        setUserId(response.data)
+        setUserStatus(response.status)
+      })
+      .catch(function (error) {
+        setUserStatus(error.response.status)
+      })
+    },[enteredEmail, enteredPassword])
     
-    const userFound = user.find(element => element.email === enteredEmail && element.password === enteredPassword);
 
       const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value)
@@ -36,10 +53,10 @@ const Form = ({ user, onLogin, logStatus}) => {
         e.preventDefault()
         setEmailTouched(true)
         setPasswordTouched(true)    
-        if(userFound) {
+        if(userStatus === 200) {
           setFormIsValid(true)
           setBtnDisabled(true)
-          onLogin(true)
+          onLogin(true, userId)
           history.push('/')
           
         } else {

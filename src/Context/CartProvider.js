@@ -3,7 +3,7 @@ import { localStorageService } from '../Services/localStorage';
 import CartContext from './CartContext';
 import axios from 'axios';
 
-const CartProvider = (props) => {
+const CartProvider = ({ userId, children }) => {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
     
     const addItemHandler = (item, amount) => {
@@ -13,7 +13,7 @@ const CartProvider = (props) => {
         
     
 
-        axios.post('http://localhost:8080/api/users/cart?userId=1', {
+        axios.post(`http://localhost:8080/api/users/cart?userId=${userId}`, {
             id_cart: item.id,
             name: item.name,
             category: item.category,
@@ -31,7 +31,7 @@ const CartProvider = (props) => {
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
 
-                axios.put(`http://localhost:8080/api/users/cart?userId=1&amount=${product.amount}&name=${product.name}`)
+                axios.put(`http://localhost:8080/api/users/cart?userId=${userId}&amount=${product.amount}&name=${product.name}`)
 
             }
             return product
@@ -41,13 +41,13 @@ const CartProvider = (props) => {
 
     const removeItemHandler = (name) => {
         const newCart = cart.filter(item => item.name !== name)
-        axios.delete(`http://localhost:8080/api/users/cart?userId=1&name=${name}`)
+        axios.delete(`http://localhost:8080/api/users/cart?userId=${userId}&name=${name}`)
 
         setCart(newCart)
     }
     const clearCartHandler = () => {
 
-        axios.delete(`http://localhost:8080/api/users/cart/deleteAll?userId=1`)
+        axios.delete(`http://localhost:8080/api/users/cart/deleteAll?userId=${userId}`)
         setCart([])
     }
 
@@ -55,7 +55,6 @@ const CartProvider = (props) => {
         const cartAuxiliar = cart.map((product=>{
             if(product.id === item.id){
                 product.amount = Number(product.amount) + Number(amount)
-
             }
             return product
            
@@ -74,16 +73,11 @@ const CartProvider = (props) => {
 
     useEffect(()=> {
         localStorageService('cart', cart)
-        
-      
-        
-
-
     }, [cart])
 
   return (
-    <CartContext.Provider value={{cartContext, cart}}>
-        {props.children}
+    <CartContext.Provider value={{cartContext, cart, userId}}>
+        {children}
     </CartContext.Provider>
   )
 }

@@ -11,9 +11,11 @@ import Login from './Components/Pages/Login';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem('isLoggedIn')) || false)
+  const [userId, setUserId] = useState('')
 
-  function loginHandler(logStatus) {
+  function loginHandler(logStatus, userId) {
     setIsLoggedIn(logStatus);
+    setUserId(userId)
   }
 
   useEffect(()=>{
@@ -21,7 +23,7 @@ function App() {
   }, [isLoggedIn])
 
   return (
-    <CartProvider>
+    <CartProvider userId={userId}>
       <FavProvider>
       <Header userLogin={loginHandler} logStatus={isLoggedIn}/>
       <Switch>
