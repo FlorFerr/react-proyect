@@ -11,10 +11,10 @@ const FavProvider = ({userId, children}) => {
         const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
         setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category, ibu: item.ibu, abv: item.abv}])
-        axios.post(`http://localhost:8080/api/users/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`, {
-            idProductFav: item.id,
-            name: item.name,
-            category: item.category
+        axios.post(`http://localhost:8080/api/favorites?userId=${userId}&idFav=${item.id}&category=${item.category}`, {
+            idFav: item.id,
+            category: item.category,
+            userId: userId
           })
           .then(function (response) {
           })
@@ -22,7 +22,7 @@ const FavProvider = ({userId, children}) => {
           });
         }else{
             favItems = fav.filter(element => element.name !== item.name)
-            axios.delete(`http://localhost:8080/api/users/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`)
+            axios.delete(`http://localhost:8080/api/favorites?userId=${userId}&idFav=${item.id}&category=${item.category}`)
             setFav(favItems)
         }        
     }

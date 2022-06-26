@@ -55,10 +55,8 @@ const BurgersContainer = () => {
             }else{
               setNoResultaSearch(false)
             }
-
             setIsLoading(false)
         }
-      
         loadProducts()    
           
       },[pagePagination, valueSearch, noResultSearch])

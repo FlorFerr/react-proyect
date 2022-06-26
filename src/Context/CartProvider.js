@@ -10,14 +10,12 @@ const CartProvider = ({ userId, children }) => {
         const isInCart = cart.find(product => product.name === item.name)
         if(!isInCart){
         setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount, category: item.category}]) 
-        
-    
 
-        axios.post(`http://localhost:8080/api/users/cart?userId=${userId}`, {
-            id_cart: item.id,
-            name: item.name,
+        axios.post(`http://localhost:8080/api/cart?userId=${userId}&idCart=${item.id}&category=${item.category}`, {
+            idCart: item.id,
             category: item.category,
-            amount: amount
+            quantity: amount,
+            userId: userId
           })
           .then(function (response) {
             
@@ -30,9 +28,7 @@ const CartProvider = ({ userId, children }) => {
         const cartAux = cart.map((product=>{
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
-
-                axios.put(`http://localhost:8080/api/users/cart?userId=${userId}&amount=${product.amount}&name=${product.name}`)
-
+                axios.put(`http://localhost:8080/api/cart?userId=${userId}&quantity=${product.amount}&idCart=${product.id}&category=${item.category}`)
             }
             return product
         }))
@@ -41,13 +37,11 @@ const CartProvider = ({ userId, children }) => {
 
     const removeItemHandler = (name, id, category) => {
         const newCart = cart.filter(item => item.name !== name)
-        axios.delete(`http://localhost:8080/api/users/cart?userId=${userId}&idCart=${id}&category=${category}`)
-
+        axios.delete(`http://localhost:8080/api/cart?userId=${userId}&idCart=${id}&category=${category}`)
         setCart(newCart)
     }
     const clearCartHandler = () => {
-
-        axios.delete(`http://localhost:8080/api/users/cart/deleteAll?userId=${userId}`)
+        axios.delete(`http://localhost:8080/api/cart/deletecart?userId=${userId}`)
         setCart([])
     }
 
@@ -57,8 +51,6 @@ const CartProvider = ({ userId, children }) => {
                 product.amount = Number(product.amount) + Number(amount)
             }
             return product
-           
-
         }))
         setCart(cartAuxiliar)
     }
