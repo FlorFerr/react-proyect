@@ -22,7 +22,7 @@ const FavProvider = ({userId, children}) => {
           });
         }else{
             favItems = fav.filter(element => element.name !== item.name)
-            axios.delete(`http://localhost:8080/api/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`)
+            axios.delete(`http://localhost:8080/api/favorites?userId=${userId}&idFav=${item.id}&category=${item.category}`)
             setFav(favItems)
         }        
     }
