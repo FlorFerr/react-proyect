@@ -5,7 +5,7 @@ import './Form.css';
 import { useEffect } from 'react';
 
 const Form = ({ onLogin, logStatus}) => {
-    const [userStatus, setUserStatus] = useState('')
+    const [userStatus, setUserStatus] = useState(true)
     const [userId, setUserId] = useState('')
     const [enteredEmail, setEnteredEmail] = useState('')
     const [enteredPassword, setEnteredPassword] = useState('')
@@ -13,9 +13,10 @@ const Form = ({ onLogin, logStatus}) => {
     const [passwordTouched, setPasswordTouched] = useState(false)
     const [formIsValid, setFormIsValid] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(true)
+    const [login, setLogin] = useState(false)
 
     const history = useHistory()
-
+  
     useEffect(()=>{
       axios.post('http://localhost:8080/api/login', {
         email: enteredEmail,
@@ -23,12 +24,12 @@ const Form = ({ onLogin, logStatus}) => {
       })
       .then(function (response) {
         setUserId(response.data)
-        setUserStatus(response.status)
+        setUserStatus(true)
       })
       .catch(function (error) {
-        setUserStatus(error.response.status)
+        setUserStatus(false)
       })
-    },[enteredEmail, enteredPassword])
+    },[login])
     
 
       const emailChangeHandler = (e) => {
@@ -50,10 +51,11 @@ const Form = ({ onLogin, logStatus}) => {
       }
 
       const formSubmitHandler = (e) => {
+        setLogin(true)
         e.preventDefault()
         setEmailTouched(true)
-        setPasswordTouched(true)    
-        if(userStatus === 200) {
+        setPasswordTouched(true)  
+        if(userStatus) {
           setFormIsValid(true)
           setBtnDisabled(true)
           onLogin(true, userId)
