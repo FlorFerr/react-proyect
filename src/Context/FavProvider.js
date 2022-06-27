@@ -11,11 +11,10 @@ const FavProvider = ({userId, children}) => {
         const isInfav = fav.find(product => product.name === item.name)
         if(!isInfav){
         setFav([...fav,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, category: item.category, ibu: item.ibu, abv: item.abv}])
-        axios.post(`http://localhost:8080/api/favorites?userId=${userId}&idProductFav=${item.id}&category=${item.category}`, {
-            idProductFav: item.id,
-            name: item.name,
+        axios.post(`http://localhost:8080/api/favorites?userId=${userId}&idFav=${item.id}&category=${item.category}`, {
+            idFav: item.id,
             category: item.category,
-            userId: 1
+            userId: userId
           })
           .then(function (response) {
           })

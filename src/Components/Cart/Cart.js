@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import CartContext from '../../Context/CartContext';
 import CartItem from './CartItem';
 import './CartItem.css';
@@ -6,10 +7,11 @@ import './CartItem.css';
 const Cart = () => {
   const [order, setOrder] = useState(false)
     
-    const {cartContext, cart} = useContext(CartContext)
+    const {cartContext, cart, userId} = useContext(CartContext)
 
     const orderHandler = () => {
       setOrder(true)
+      axios.post(`http://localhost:8080/api/order?userId=${userId}`)
       cartContext.clearCart()
     }
     
