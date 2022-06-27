@@ -10,14 +10,12 @@ const CartProvider = ({ userId, children }) => {
         const isInCart = cart.find(product => product.name === item.name)
         if(!isInCart){
         setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount, category: item.category}]) 
-        
-    
-
-        axios.post(`http://localhost:8080/api/users/cart?userId=${userId}`, {
+        axios.post(`http://localhost:8080/api/cart?userId=${userId}`, {
             id_cart: item.id,
             name: item.name,
             category: item.category,
-            amount: amount
+            amount: amount,
+            userId: 1
           })
           .then(function (response) {
             
