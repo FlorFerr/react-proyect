@@ -2,36 +2,40 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './Form.css';
-import { useEffect } from 'react';
 
 const Form = ({ onLogin, logStatus}) => {
-    const [userStatus, setUserStatus] = useState(true)
+    const [userStatus, setUserStatus] = useState(false)
     const [userId, setUserId] = useState('')
     const [enteredEmail, setEnteredEmail] = useState('')
     const [enteredPassword, setEnteredPassword] = useState('')
     const [emailTouched, setEmailTouched] = useState(false)
     const [passwordTouched, setPasswordTouched] = useState(false)
-    const [formIsValid, setFormIsValid] = useState(false)
-    const [btnDisabled, setBtnDisabled] = useState(true)
-    const [login, setLogin] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(false)
 
     const history = useHistory()
   
-    useEffect(()=>{
+    const sendRequest = () => {
       axios.post('http://localhost:8080/api/login', {
         email: enteredEmail,
         pass: enteredPassword
       })
       .then(function (response) {
         setUserId(response.data)
-        setUserStatus(true)
+        if(response.status === 200){
+          setBtnDisabled(false)
+          onLogin(true, userId)
+          history.push('/')
+        }
       })
-      .catch(function (error) {
+      .catch(function (response) {
         setUserStatus(false)
+        setBtnDisabled(true)
+  
+        
+        
       })
-    },[login])
-    
-
+    }
+   
       const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value)
         setBtnDisabled(false)
@@ -51,21 +55,14 @@ const Form = ({ onLogin, logStatus}) => {
       }
 
       const formSubmitHandler = (e) => {
-        setLogin(true)
+        sendRequest()
         e.preventDefault()
         setEmailTouched(true)
         setPasswordTouched(true)  
-        if(userStatus) {
-          setFormIsValid(true)
-          setBtnDisabled(true)
-          onLogin(true, userId)
-          history.push('/')
-          
-        } else {
-          setFormIsValid(false)
-          setBtnDisabled(true)
-          return;
-        }
+        if(!userStatus) {
+        setBtnDisabled(true)
+        return;
+        } 
         setEnteredEmail('')
         setEnteredPassword('')
         setEmailTouched(false)
@@ -92,7 +89,7 @@ const Form = ({ onLogin, logStatus}) => {
           </div>
           <div className='form-actions'>
             <button className='btn-form' type='submit' disabled={btnDisabled}>Iniciar sesión</button>
-            {!formIsValid && emailTouched && passwordTouched && btnDisabled && <p className='error-text'>Usuario o password incorrectos</p>}
+            {btnDisabled && !userStatus && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
           </div>
           </form>
         }
