@@ -5,7 +5,6 @@ import './Form.css';
 
 const Form = ({ onLogin, logStatus}) => {
     const [userStatus, setUserStatus] = useState(false)
-    const [userId, setUserId] = useState('')
     const [enteredEmail, setEnteredEmail] = useState('')
     const [enteredPassword, setEnteredPassword] = useState('')
     const [emailTouched, setEmailTouched] = useState(false)
@@ -13,6 +12,7 @@ const Form = ({ onLogin, logStatus}) => {
     const [btnDisabled, setBtnDisabled] = useState(false)
 
     const history = useHistory()
+    let userId = 0;
   
     const sendRequest = () => {
       axios.post('http://localhost:8080/api/login', {
@@ -20,22 +20,25 @@ const Form = ({ onLogin, logStatus}) => {
         pass: enteredPassword
       })
       .then(function (response) {
-        setUserId(response.data)
+
+        userId = (response.data)
+        onLogin(true, userId)
+        console.log(userId)
         if(response.status === 200){
           setBtnDisabled(false)
-          onLogin(true, userId)
+          
+
+          
           history.push('/')
         }
       })
       .catch(function (response) {
         setUserStatus(false)
         setBtnDisabled(true)
-  
-        
-        
       })
     }
    
+ 
       const emailChangeHandler = (e) => {
         setEnteredEmail(e.target.value)
         setBtnDisabled(false)
@@ -56,6 +59,8 @@ const Form = ({ onLogin, logStatus}) => {
 
       const formSubmitHandler = (e) => {
         sendRequest()
+        
+        
         e.preventDefault()
         setEmailTouched(true)
         setPasswordTouched(true)  

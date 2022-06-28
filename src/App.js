@@ -13,6 +13,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem('isLoggedIn')) || false)
   const [userId, setUserId] = useState('')
 
+  console.log(userId)
   function loginHandler(logStatus, userId) {
     setIsLoggedIn(logStatus);
     setUserId(userId)
