@@ -20,15 +20,12 @@ const Form = ({ onLogin, logStatus}) => {
         pass: enteredPassword
       })
       .then(function (response) {
+        console.log(response.data.id)
 
-        userId = (response.data)
+        userId = (response.data.id)
         onLogin(true, userId)
-        console.log(userId)
         if(response.status === 200){
           setBtnDisabled(false)
-          
-
-          
           history.push('/')
         }
       })

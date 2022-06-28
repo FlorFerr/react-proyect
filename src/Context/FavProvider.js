@@ -19,6 +19,7 @@ const FavProvider = ({userId, children}) => {
           .then(function (response) {
           })
           .catch(function (error) {
+            console.log(error)
           });
         }else{
             favItems = fav.filter(element => element.name !== item.name)

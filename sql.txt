@@ -1,0 +1,39 @@
+CREATE DATABASE backproyect;
+USE backproyect;
+
+CREATE TABLE user(
+id INT AUTO_INCREMENT,
+email varchar(30),
+pass varchar(15),
+primary key(id)
+);
+
+CREATE TABLE fav(
+id_fav int primary key auto_increment,
+id_product_fav int,
+name varchar(500),
+category varchar(10),
+user_id int references user(id)
+);
+
+CREATE TABLE cart(
+id int primary key auto_increment,
+id_cart int,
+name varchar(500),
+category varchar(10),
+amount int,
+user_id int references user(id)
+);
+
+CREATE TABLE orden(
+id int primary key auto_increment,
+id_order int,
+name varchar(500),
+category varchar(10),
+amount int,
+user_id int references user(id)
+);
+
+alter table fav add foreign key(user_id) references user(id);
+alter table cart add foreign key(user_id) references user(id);
+alter table orden add foreign key(user_id) references user (id);

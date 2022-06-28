@@ -43,7 +43,7 @@ const CartProvider = ({ userId, children }) => {
         setCart(newCart)
     }
     const clearCartHandler = () => {
-        axios.delete(`http://localhost:8080/api/cart/deletecart?userId=${userId}`)
+        axios.delete(`http://localhost:8080/api/cart/deletecart/${userId}`)
         setCart([])
     }
 
