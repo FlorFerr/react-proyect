@@ -20,8 +20,6 @@ const Form = ({ onLogin, logStatus}) => {
         pass: enteredPassword
       })
       .then(function (response) {
-        console.log(response.data.id)
-
         userId = (response.data.id)
         onLogin(true, userId)
         if(response.status === 200){

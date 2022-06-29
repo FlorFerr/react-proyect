@@ -25,14 +25,14 @@ const CartItem = ({data, onRemove}) => {
     const increaseAmountHandler = () => {
         data.amount = Number(data.amount) + 1
         cartContext.amountItem(data.id, data.amount)
-        axios.put(`http://localhost:8080/api/cart?userId=${userId}&quantity=${data.amount}&idCart=${data.id}&category=${data.category}`)
+        axios.put(`http://localhost:8080/api/cart/${userId}?quantity=${data.amount}&productId=${data.id}&category=${data.category}`)
     }
 
     const decreaseAmountHandler = () => {
         if(data.amount > 1){
         data.amount = Number(data.amount) - 1
         cartContext.amountItem(data.id, data.amount)
-        axios.put(`http://localhost:8080/api/cart?userId=${userId}&quantity=${data.amount}&idCart=${data.id}&category=${data.category}`)
+        axios.put(`http://localhost:8080/api/cart/${userId}?quantity=${data.amount}&productId=${data.id}&category=${data.category}`)
       }
     }
     

@@ -11,7 +11,7 @@ const Cart = () => {
 
     const orderHandler = () => {
       setOrder(true)
-      axios.post(`http://localhost:8080/api/order?userId=${userId}`)
+      axios.post(`http://localhost:8080/api/order/${userId}`, cart)
       cartContext.clearCart()
     }
     
