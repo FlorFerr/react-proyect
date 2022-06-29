@@ -45,7 +45,7 @@ const FavProvider = ({userId, children}) => {
     }
     
   return (
-    <FavContext.Provider value={{ favContext, fav, userId }}>
+    <FavContext.Provider value={{ favContext, fav, userId, setFav }}>
         {children}
     </FavContext.Provider>
   )

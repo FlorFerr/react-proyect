@@ -41,6 +41,13 @@ const CartProvider = ({ userId, children }) => {
     }
     const clearCartHandler = () => {
         axios.delete(`http://localhost:8080/api/cart/deletecart/${userId}`)
+        .then(function (response) {
+            
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        
         setCart([])
     }
 

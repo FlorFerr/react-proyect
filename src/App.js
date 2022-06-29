@@ -25,7 +25,7 @@ function App() {
   return (
     <CartProvider userId={userId}>
       <FavProvider userId={userId}>
-      <Header userLogin={loginHandler} logStatus={isLoggedIn}/>
+      <Header userLogin={loginHandler} logStatus={isLoggedIn} userId={userId}/>
       <Switch>
           <Route path='/login'>
             <Login userLogin={loginHandler} logStatus={isLoggedIn}/>
