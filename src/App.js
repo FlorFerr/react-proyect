@@ -11,7 +11,7 @@ import Login from './Components/Pages/Login';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem('isLoggedIn')) || false)
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem('user')) || '')
 
   function loginHandler(logStatus, userId) {
     setIsLoggedIn(logStatus);

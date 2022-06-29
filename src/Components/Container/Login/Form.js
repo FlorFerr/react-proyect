@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './Form.css';
+import { localStorageService } from '../../../Services/localStorage';
 
 const Form = ({ onLogin, logStatus}) => {
     const [userStatus, setUserStatus] = useState(false)
@@ -22,6 +23,7 @@ const Form = ({ onLogin, logStatus}) => {
       .then(function (response) {
         userId = (response.data.id)
         onLogin(true, userId)
+        localStorageService('user', userId)
         if(response.status === 200){
           setBtnDisabled(false)
           history.push('/')
