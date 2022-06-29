@@ -13,7 +13,8 @@ const CartProvider = ({ userId, children }) => {
         axios.post(`http://localhost:8080/api/cart/${userId}?productId=${item.id}&category=${item.category}`, {
             productId: item.id,
             category: item.category,
-            quantity: amount
+            quantity: amount,
+            userId: userId
           })
           .then(function (response) {
             

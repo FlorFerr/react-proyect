@@ -13,6 +13,7 @@ const FavProvider = ({userId, children}) => {
         axios.post(`http://localhost:8080/api/favorites/${userId}?productId=${item.id}&category=${item.category}`, {
             productId: item.id,
             category: item.category,
+            userId: userId
             
           })
           .then(function (response) {
