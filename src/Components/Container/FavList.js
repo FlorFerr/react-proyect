@@ -8,20 +8,10 @@ import './FavList.css';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 const FavList = () => {
+  const { fav, isLoading } = useContext(FavContext)
     
-    
-
-    const { fav, loadProducts, isLoading } = useContext(FavContext)
-  
-
-    useEffect(()=>{
-      loadProducts()
-    },[])
-
-   
   return (
     <div>
-      
       {fav.length === 0 ? 
       <div className='fav-noResults'> 
         <p>No hay favoritos</p> 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { getProducts } from '../Services/Index';
 import BurgerImg from '../Images/burger.png'
 import FavContext from './FavContext';
+import { useEffect } from 'react';
 
 const FavProvider = ({userId, children}) => {
     const [fav, setFav] = useState([]);
@@ -75,6 +76,9 @@ const FavProvider = ({userId, children}) => {
     setIsLoading(false)
   }
 
+    useEffect(()=>{
+      loadProducts()
+    },[])
 
 
     const getFavorites = (items) => {
@@ -91,6 +95,8 @@ const FavProvider = ({userId, children}) => {
         addItem: addFavHandler,
         removeItem: removeFavHandler,
     }
+
+    
     
   return (
     <FavContext.Provider value={{ favContext, fav, userId, loadProducts, isLoading}}>
