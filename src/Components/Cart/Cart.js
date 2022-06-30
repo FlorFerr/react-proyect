@@ -9,19 +9,24 @@ const Cart = () => {
   const [order, setOrder] = useState(false)
   const [numOrder, setNumOrder] = useState()
     
-    const {cartContext, cart, userId, isLoading} = useContext(CartContext)
+    const {cartContext, cart, userId, isLoading, clearCartDB} = useContext(CartContext)
 
     const orderHandler = () => {
       setOrder(true)
       axios.post(`http://localhost:8080/api/order/${userId}`, cart)
       .then(function (response) {
         setNumOrder(response.data)
-
       })
       .catch(function (error) {
         console.log(error)
       });
       cartContext.clearCart()
+      clearCartDB()
+    }
+
+    const removeCart = () => {
+      cartContext.clearCart()
+      clearCartDB()
     }
     
   return (
@@ -39,7 +44,7 @@ const Cart = () => {
                 )
               })
             }
-            <button className='cart-btn_clear' onClick={cartContext.clearCart}>Vaciar carrito</button>
+            <button className='cart-btn_clear' onClick={removeCart}>Vaciar carrito</button>
             <button className='cart-btn_confirm' onClick={orderHandler}>Comprar</button>
           </div>
         }

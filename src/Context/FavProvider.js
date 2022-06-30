@@ -73,11 +73,15 @@ const FavProvider = ({userId, children}) => {
 
     useEffect(()=>{
       loadProducts()
-    },[userId])
+    },[])
 
     const removeFavHandler = (name) => {
         const favItems = fav.filter(item => item.name !== name)
         setFav(favItems)
+    }
+
+    const clearFavorites = () => {
+      setFav([])
     }
 
     const favContext = {
@@ -87,7 +91,7 @@ const FavProvider = ({userId, children}) => {
     }
 
   return (
-    <FavContext.Provider value={{ favContext, fav, userId, loadProducts, isLoading}}>
+    <FavContext.Provider value={{ favContext, fav, userId, loadProducts, isLoading, clearFavorites}}>
         {children}
     </FavContext.Provider>
   )

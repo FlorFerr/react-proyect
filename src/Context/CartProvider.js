@@ -42,16 +42,17 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
         axios.delete(`http://localhost:8080/api/cart/${userId}?productId=${id}&category=${category}`)
         setCart(newCart)
     }
-    const clearCartHandler = () => {
+    const clearCartHandler = () => {        
+        setCart([])
+    }
+
+    const clearCartDB = () => {
         axios.delete(`http://localhost:8080/api/cart/deletecart/${userId}`)
         .then(function (response) {
-            
         })
         .catch(function (error) {
           console.log(error);
         });
-        
-        setCart([])
     }
 
     const amountItemHandler = (item, amount) => {
@@ -107,7 +108,10 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
     }
 
     useEffect(()=>{
-      loadProducts()
+        if(userId > 0){
+            loadProducts()
+        }
+     
     },[userId])
     
     const cartContext = {
@@ -119,7 +123,7 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
     }
 
   return (
-    <CartContext.Provider value={{cartContext, cart, userId, isLoading}}>
+    <CartContext.Provider value={{cartContext, cart, userId, isLoading, clearCartDB}}>
         {children}
     </CartContext.Provider>
   )
