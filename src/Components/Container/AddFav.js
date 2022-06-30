@@ -19,7 +19,6 @@ const AddFav = ({item, clase}) => {
   
   const addFavItemsHandler = () => {
     favContext.addItem(item)
-    
     setIsFav(prevState => !prevState)
   }
   
