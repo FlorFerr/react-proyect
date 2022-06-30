@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import FavContext from '../../Context/FavContext';
@@ -8,6 +8,7 @@ import './FavList.css';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 const FavList = () => {
+
   const { fav, isLoading } = useContext(FavContext)
     
   return (

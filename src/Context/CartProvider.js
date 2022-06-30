@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { localStorageService } from '../Services/localStorage';
+import { getProducts } from '../Services/Index';
+import BurgerImg from '../Images/burger.png'
 import CartContext from './CartContext';
 import axios from 'axios';
 
-const CartProvider = ({ userId, children }) => {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || [])
+const CartProvider = ({ userId, isLoggedIn, children }) => {
+    const [cart, setCart] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
     
     const addItemHandler = (item, amount) => {
         const isInCart = cart.find(product => product.name === item.name)
@@ -60,6 +63,52 @@ const CartProvider = ({ userId, children }) => {
         }))
         setCart(cartAuxiliar)
     }
+
+    let cartItems = []
+    async function loadProducts (){   
+      let responseProducts = []
+      responseProducts = await getProducts(`http://localhost:8080/api/cart/${userId}`, 'GET')          
+      for (let i = 0; i < responseProducts.data.length; i++){
+        const element = responseProducts.data[i];
+        if(element.category === "beer") {
+          const response = await getProducts(`https://api.punkapi.com/v2/beers/${element.productId}`, 'GET');
+          const dataBeers = response.data.map((product) => {
+            return {
+              id: product.id,
+              name: product.name,
+              description: product.description,
+              image_url: product.image_url ? product.image_url : 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Botella-de-cerveza.png/800px-Botella-de-cerveza.png',
+              ibu: product.ibu ? product.ibu : 'S/D',
+              abv: product.abv,
+              category: 'beer',
+              amount: element.quantity
+            }
+          })
+          cartItems = cartItems.concat(dataBeers);
+        }else{
+          const response = await getProducts(`https://my-burger-api.herokuapp.com/burgers/${element.productId}`, 'GET');
+          const burgers= []
+          burgers.push(response.data)
+          const dataBurguers = burgers.map((product) => {
+            return {
+              id: product.id,
+              name: product.name,
+              ingredients: product.ingredients,
+              image_url: BurgerImg,
+              category: 'burger',
+              amount: element.quantity
+            }
+          })
+          cartItems = cartItems.concat(dataBurguers);
+        }
+        setCart(cartItems)
+      }
+      setIsLoading(false)
+    }
+
+    useEffect(()=>{
+      loadProducts()
+    },[userId])
     
     const cartContext = {
         items: [],
@@ -69,12 +118,8 @@ const CartProvider = ({ userId, children }) => {
         clearCart: clearCartHandler,
     }
 
-    useEffect(()=> {
-        localStorageService('cart', cart)
-    }, [cart])
-
   return (
-    <CartContext.Provider value={{cartContext, cart, userId}}>
+    <CartContext.Provider value={{cartContext, cart, userId, isLoading}}>
         {children}
     </CartContext.Provider>
   )

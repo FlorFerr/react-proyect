@@ -3,12 +3,13 @@ import axios from 'axios';
 import CartContext from '../../Context/CartContext';
 import CartItem from './CartItem';
 import './CartItem.css';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 const Cart = () => {
   const [order, setOrder] = useState(false)
   const [numOrder, setNumOrder] = useState()
     
-    const {cartContext, cart, userId} = useContext(CartContext)
+    const {cartContext, cart, userId, isLoading} = useContext(CartContext)
 
     const orderHandler = () => {
       setOrder(true)
@@ -28,6 +29,7 @@ const Cart = () => {
       <h1>Carrito</h1>
         {order ? <p>Compra realizada! N° de Orden: {numOrder}</p> :
          <div>
+          {isLoading && <div className='loading'><LoadingSpinner /></div>}
           {cart.length === 0 ? <p>No hay productos en el carrito</p> :
           <div className='table-container'>
             {

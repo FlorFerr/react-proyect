@@ -34,7 +34,7 @@ const FavProvider = ({userId, children}) => {
     let favoritesItems = []
     async function loadProducts (){   
       let responseProducts = []
-      responseProducts = await getProducts(`http://localhost:8080/api/favorites/1`, 'GET')          
+      responseProducts = await getProducts(`http://localhost:8080/api/favorites/${userId}`, 'GET')          
       for (let i = 0; i < responseProducts.data.length; i++){
         const element = responseProducts.data[i];
         if(element.category === "beer") {
@@ -53,12 +53,8 @@ const FavProvider = ({userId, children}) => {
           favoritesItems = favoritesItems.concat(dataBeers);
         }else{
           const response = await getProducts(`https://my-burger-api.herokuapp.com/burgers/${element.productId}`, 'GET');
-      
-          
           const burgers= []
           burgers.push(response.data)
-       
-
           const dataBurguers = burgers.map((product) => {
             return {
               id: product.id,
@@ -70,21 +66,15 @@ const FavProvider = ({userId, children}) => {
           })
           favoritesItems = favoritesItems.concat(dataBurguers);
         }
-        getFavorites(favoritesItems)
         setFav(favoritesItems)
+      }
+      setIsLoading(false)
     }
-    setIsLoading(false)
-  }
 
     useEffect(()=>{
       loadProducts()
-    },[])
+    },[userId])
 
-
-    const getFavorites = (items) => {
-      setFav(items)
-    }
-    
     const removeFavHandler = (name) => {
         const favItems = fav.filter(item => item.name !== name)
         setFav(favItems)
@@ -96,8 +86,6 @@ const FavProvider = ({userId, children}) => {
         removeItem: removeFavHandler,
     }
 
-    
-    
   return (
     <FavContext.Provider value={{ favContext, fav, userId, loadProducts, isLoading}}>
         {children}

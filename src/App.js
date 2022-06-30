@@ -23,7 +23,7 @@ function App() {
   }, [isLoggedIn])
 
   return (
-    <CartProvider userId={userId}>
+    <CartProvider userId={userId} isLoggedIn={isLoggedIn}>
       <FavProvider userId={userId}>
       <Header userLogin={loginHandler} logStatus={isLoggedIn} userId={userId}/>
       <Switch>
