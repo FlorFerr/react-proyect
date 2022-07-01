@@ -72,8 +72,11 @@ const FavProvider = ({userId, children}) => {
     }
 
     useEffect(()=>{
-      loadProducts()
-    },[])
+      if(userId > 0){
+          loadProducts()
+      }
+   
+  },[userId])
 
     const removeFavHandler = (name) => {
         const favItems = fav.filter(item => item.name !== name)
