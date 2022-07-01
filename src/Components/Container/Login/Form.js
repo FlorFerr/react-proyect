@@ -99,7 +99,7 @@ const Form = ({ onLogin, logStatus}) => {
           </form>
         }
         {logStatus && 
-          <div>
+          <div className='logged'>
             <h2>Ya iniciaste sesión</h2>
             <button className='btn-form' type='submit' onClick={logoutHandler}>Cerrar sesión</button>
           </div>

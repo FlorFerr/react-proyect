@@ -11,8 +11,10 @@ const Input = (props) => {
         setAmount(e.target.value)
     }
     
-    const addItemCart = () =>{       
+    const addItemCart = () =>{     
+      if(amount > 0){  
         cartContext.addItem({id: props.data.id, name: props.data.name, image_url: props.data.image_url, description: props.data.description, ingredients: props.data.ingredients, category: props.data.category}, amount)
+     }
     }
 
   return (

@@ -5,7 +5,9 @@ import './Filter.css';
 const Filter = ({onFilter, value, onParam}) => {
 
     const onFilterHandler = (e) =>{
+        if(e.target.value >= 0){
         onFilter(e.target.value)
+    }
     }
 
     const onLessHandler = () => {
