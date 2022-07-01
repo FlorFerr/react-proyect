@@ -13,7 +13,7 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
         const isInCart = cart.find(product => product.name === item.name)
         if(!isInCart){
         setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount, category: item.category}]) 
-        axios.post(`http://localhost:8080/api/cart/${userId}?productId=${item.id}&category=${item.category}`, {
+        axios.post(`http://localhost:8080/api/cart/${userId}`, {
             productId: item.id,
             category: item.category,
             quantity: amount,
@@ -31,6 +31,11 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
                 axios.put(`http://localhost:8080/api/cart/${userId}?quantity=${product.amount}&productId=${product.id}&category=${item.category}`)
+                .then(function (response) {
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
             }
             return product
         }))
@@ -40,6 +45,12 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
     const removeItemHandler = (name, id, category) => {
         const newCart = cart.filter(item => item.name !== name)
         axios.delete(`http://localhost:8080/api/cart/${userId}?productId=${id}&category=${category}`)
+        .then(function (response) {
+            
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
         setCart(newCart)
     }
     const clearCartHandler = () => {        
