@@ -111,6 +111,12 @@
     background-color: #F9F6F6;
 }
 
+.cart-empty{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 @media (max-width: 768px) {
     .cart-container{
       margin: 1rem;

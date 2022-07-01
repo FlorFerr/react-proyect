@@ -4,6 +4,8 @@ import CartContext from '../../Context/CartContext';
 import CartItem from './CartItem';
 import './CartItem.css';
 import LoadingSpinner from '../UI/LoadingSpinner';
+import { Link } from 'react-router-dom';
+import { GrLinkPrevious } from 'react-icons/gr';
 
 const Cart = () => {
   const [order, setOrder] = useState(false)
@@ -35,7 +37,12 @@ const Cart = () => {
         {order ? <p>Compra realizada! N° de Orden: {numOrder}</p> :
          <div>
           {isLoading && <div className='loading'><LoadingSpinner /></div>}
-          {cart.length === 0 ? <p>No hay productos en el carrito</p> :
+          {cart.length === 0 ? 
+          <div className='cart-empty'> 
+            <p>No hay productos en el carrito</p> 
+            <Link to='/'><button className='fav-btn_back'><GrLinkPrevious />  Ver productos</button></Link>
+          </div>
+          :
           <div className='table-container'>
             {
               cart.map(product=> {
