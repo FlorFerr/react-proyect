@@ -11,6 +11,7 @@ const Form = ({ onLogin, logStatus}) => {
     const [emailTouched, setEmailTouched] = useState(false)
     const [passwordTouched, setPasswordTouched] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(false)
+    const [formIsValid, setFormIsValid] = useState(false)
 
     const history = useHistory()
     let userId = 0;
@@ -25,7 +26,8 @@ const Form = ({ onLogin, logStatus}) => {
         onLogin(true, userId)
         localStorageService('user', userId)
         if(response.status === 200){
-          setBtnDisabled(false)
+          setFormIsValid(true)
+          setBtnDisabled(true)
           history.push('/')
         }
       })
@@ -63,6 +65,7 @@ const Form = ({ onLogin, logStatus}) => {
         setPasswordTouched(true)  
         if(!userStatus) {
         setBtnDisabled(true)
+        setFormIsValid(false)
         return;
         } 
         setEnteredEmail('')
@@ -91,7 +94,7 @@ const Form = ({ onLogin, logStatus}) => {
           </div>
           <div className='form-actions'>
             <button className='btn-form' type='submit' disabled={btnDisabled}>Iniciar sesión</button>
-            {btnDisabled && !userStatus && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
+            {formIsValid && !userStatus && emailTouched && passwordTouched && <p className='error-text'>Usuario o password incorrectos</p>}
           </div>
           </form>
         }
