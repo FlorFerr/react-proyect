@@ -34,7 +34,11 @@ const Cart = () => {
   return (
     <div className='cart-container'>
       <h1>Carrito</h1>
-        {order ? <p>Compra realizada! N° de Orden: {numOrder}</p> :
+        {order ? 
+        <div>
+          <p>Compra realizada!</p>
+          <p>N° de Orden: {numOrder}</p>
+        </div> :
          <div>
           {isLoading && <div className='loading'><LoadingSpinner /></div>}
           {cart.length === 0 ? 
