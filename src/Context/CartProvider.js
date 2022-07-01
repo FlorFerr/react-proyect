@@ -30,7 +30,12 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
         const cartAux = cart.map((product=>{
             if(product.name === item.name){
                 product.amount = Number(product.amount) + Number(amount)
-                axios.put(`http://localhost:8080/api/cart/${userId}?quantity=${product.amount}&productId=${product.id}&category=${item.category}`)
+                axios.put(`http://localhost:8080/api/cart/${userId}`,{
+                  productId: product.id,
+                  category: product.category,
+                  quantity: product.amount,
+                  userId: userId
+                })
                 .then(function (response) {
                 })
                 .catch(function (error) {
