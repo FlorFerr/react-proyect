@@ -4,15 +4,17 @@ import BurgerImg from '../Images/burger.png'
 import CartContext from './CartContext';
 import axios from 'axios';
 
-const CartProvider = ({ userId, isLoggedIn, children }) => {
+const CartProvider = ({ userId, children }) => {
     const [cart, setCart] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    
     const addItemHandler = (item, amount) => {
+      //Validarion CartItem exist, boolean
         const isInCart = cart.find(product => product.name === item.name)
         if(!isInCart){
+        //Add to Cart
         setCart([...cart,{id: item.id, name: item.name, image_url: item.image_url, description: item.description, ingredients: item.ingredients, amount: amount, category: item.category}]) 
+        //Add to DB
         axios.post(`http://localhost:8080/api/cart/${userId}`, {
             productId: item.id,
             category: item.category,
@@ -20,7 +22,6 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
             userId: userId
           })
           .then(function (response) {
-            
           })
           .catch(function (error) {
             console.log(error);
@@ -28,8 +29,11 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
 
         }else{
         const cartAux = cart.map((product=>{
+            //Validation CartItem exist
             if(product.name === item.name){
+                //Change quantity to Cart
                 product.amount = Number(product.amount) + Number(amount)
+                //Change quantity to DB
                 axios.put(`http://localhost:8080/api/cart/${userId}`,{
                   productId: product.id,
                   category: product.category,
@@ -51,7 +55,6 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
         const newCart = cart.filter(item => item.name !== name)
         axios.delete(`http://localhost:8080/api/cart/${userId}?productId=${id}&category=${category}`)
         .then(function (response) {
-            
         })
         .catch(function (error) {
           console.log(error);
@@ -74,7 +77,7 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
     const amountItemHandler = (item, amount) => {
         const cartAuxiliar = cart.map((product=>{
             if(product.id === item.id){
-                product.amount = Number(product.amount) + Number(amount)
+                product.amount = Number(amount)
             }
             return product
         }))
@@ -84,9 +87,12 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
     let cartItems = []
     async function loadProducts (){   
       let responseProducts = []
+      //Get data from DB
       responseProducts = await getProducts(`http://localhost:8080/api/cart/${userId}`, 'GET')          
       for (let i = 0; i < responseProducts.data.length; i++){
         const element = responseProducts.data[i];
+
+        //Get Products from API
         if(element.category === "beer") {
           const response = await getProducts(`https://api.punkapi.com/v2/beers/${element.productId}`, 'GET');
           const dataBeers = response.data.map((product) => {
@@ -127,7 +133,6 @@ const CartProvider = ({ userId, isLoggedIn, children }) => {
         if(userId > 0){
             loadProducts()
         }
-     
     },[userId])
     
     const cartContext = {

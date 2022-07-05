@@ -15,6 +15,7 @@ const NavBar = ({userLogin, logStatus}) => {
 
   const { cart } = useContext(CartContext);
 
+  //Quantity cartItems
   useEffect(() => {
     setTotalCart(cart.reduce((a, b) => parseInt(a) + parseInt(b.amount), 0));
   }, [cart]);

@@ -16,6 +16,7 @@ const Form = ({ onLogin, logStatus}) => {
     const history = useHistory()
     let userId = 0;
   
+    //User validation
     const sendRequest = () => {
       axios.post('http://localhost:8080/api/login', {
         email: enteredEmail,

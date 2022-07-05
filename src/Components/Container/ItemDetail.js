@@ -6,7 +6,7 @@ import './ItemDetail.css';
 const ItemDetail = ({detail, onHide}) => {
   return (
     <Modal onClose={onHide}>
-      <AddFav item={detail} clase={'favItem-detail'}/>
+      <AddFav item={detail} classItem={'favItem-detail'}/>
       <div className='itemDetail-container'>
         <div className='item-flex'>
         <img className='img-detail' src={detail.image_url} alt={detail.name} />

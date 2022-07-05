@@ -4,26 +4,28 @@ import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import './AddFav.css';
 
 
-const AddFav = ({item, clase}) => {
+const AddFav = ({item, classItem}) => {
 
-  const { favContext, fav } = useContext(FavContext)
-  const iconState = fav.find(ele => ele.name === item.name)
-  
+  const { favContext, favorites } = useContext(FavContext)
+  //Boolean, true => FavoriteItem exists
+  const iconState = favorites.find(ele => ele.name === item.name)
   const [isFav, setIsFav] = useState(false)
 
   useEffect(() => {
-    
       setIsFav(iconState)
-  
   },[iconState])
   
+
   const addFavItemsHandler = () => {
+    //Add Favorite
     favContext.addItem(item)
+
+    //Change State icon
     setIsFav(prevState => !prevState)
   }
   
   return (
-      <div className={clase} onClick={addFavItemsHandler}>
+      <div className={classItem} onClick={addFavItemsHandler}>
         {isFav && <HiHeart size='30px'/>}
         {!isFav && <HiOutlineHeart size='30px'/>}
       </div>

@@ -12,6 +12,7 @@ const Header = ({ userLogin, logStatus}) => {
   const {cartContext} = useContext(CartContext)
   const {clearFavorites} = useContext(FavContext)
 
+  //Logout
   function loginHandler(){
     userLogin(false)
     cartContext.clearCart()

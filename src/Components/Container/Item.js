@@ -13,18 +13,15 @@ const Item = ({data}) => {
       const hideModalHandler = () =>{
         setModalShown(false)
         body.classList.remove('noScroll')
-        
-       
       }
       const showModalHandler = () => {     
         setModalShown(true)
         body.classList.add('noScroll')      
-      
       }
     
   return (
     <Card>
-      <AddFav item={data} clase={'favItem'}/>
+      <AddFav item={data} classItem={'favItem'}/>
       <div className='item-container' onClick={showModalHandler}>
         <img src={data.image_url} alt={data.name} className='img'/>
         <h4 className='item-title'>{data.name}</h4>

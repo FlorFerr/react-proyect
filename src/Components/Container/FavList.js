@@ -15,23 +15,25 @@ const FavList = () => {
   const [categoryParam, setCategoryParam] = useState('')
   const [noResultSearch, setNoResultaSearch] = useState(false)
 
-  const { fav, isLoading } = useContext(FavContext)
+  const { favorites, isLoading } = useContext(FavContext)
 
+  //Filter by name
   const onSearch = (value) => {
     setValueSearch(value)
     setNoResultaSearch(false)
   }
 
   useEffect(()=>{
-    setSearch(fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase())))
+    setSearch(favorites.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase())))
     if(search.length === 0){
       setNoResultaSearch(true)
     }
     if(showCategory){
-       setSearch(fav.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()) && ele.category === categoryParam))
+       setSearch(favorites.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()) && ele.category === categoryParam))
     }
-  },[showCategory, valueSearch, fav, search.length, categoryParam])
+  },[showCategory, valueSearch, favorites, search.length, categoryParam])
 
+  //Filter by category
   const categoriaHandler = (category) => {
     setShowCategory(true)
     setCategoryParam(category)
@@ -44,7 +46,7 @@ const FavList = () => {
 
 return (
   <div>
-    {fav.length === 0 ? 
+    {favorites.length === 0 ? 
     <div className='fav-noResults'> 
       <p>No hay favoritos</p> 
       <Link to='/'><button className='fav-btn_back'><GrLinkPrevious />  Ver productos</button></Link>
@@ -76,7 +78,7 @@ return (
         )
       })}
       {!showCategory && !valueSearch && 
-        fav.map((item) =>{
+        favorites.map((item) =>{
           return(
             <Item key={item.name} data={item}/>
           )

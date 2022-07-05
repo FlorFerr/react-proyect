@@ -47,7 +47,7 @@ const BurgersContainer = () => {
                   category: 'burger'
                 }
             })
-            
+            //Filter by name
             const burgersFiltered = trasformData.filter(ele => ele.name.toLowerCase().includes(valueSearch.toLowerCase()))
             setBurgers(burgersFiltered) 
             if(burgersFiltered.length === 0){

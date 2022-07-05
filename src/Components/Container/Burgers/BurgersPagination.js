@@ -6,16 +6,17 @@ const BurgersPagination = ({onPaginationChange, valuePage}) => {
   const itemsPerPage = 10
   const pages = []
 
+  //30 => total number of burgers/API
   for(let i = 1; i <= Math.ceil(30 / itemsPerPage); i++){
     pages.push(i)
   }
 
-  const inicioHandler = () => {
+  const firstPageHandler = () => {
     onPaginationChange(pages[0])
     setCurrentPage(pages[0])
   }
 
-  const finalHandler = () => {
+  const lastPageHandler = () => {
     onPaginationChange(pages.length)
     setCurrentPage(pages.length)
   }
@@ -37,7 +38,7 @@ const BurgersPagination = ({onPaginationChange, valuePage}) => {
   return (
     <div>
         <ul className='pagination'>
-            <li onClick={inicioHandler}><button className='pagination-btn' disabled={currentPage === 1} >&lt;&lt;</button></li>
+            <li onClick={firstPageHandler}><button className='pagination-btn' disabled={currentPage === 1} >&lt;&lt;</button></li>
             <li onClick={prevHandler}>
               <button className='pagination-btn' disabled={currentPage === 1}>&lt;</button></li>
             {pages.map(number => {
@@ -46,7 +47,7 @@ const BurgersPagination = ({onPaginationChange, valuePage}) => {
             })}
             <li onClick={nextHandler}>
               <button className='pagination-btn' disabled={currentPage === pages.length}>&gt;	</button></li>
-            <li onClick={finalHandler}><button className='pagination-btn' disabled={currentPage === pages.length}>&gt;&gt;</button></li>
+            <li onClick={lastPageHandler}><button className='pagination-btn' disabled={currentPage === pages.length}>&gt;&gt;</button></li>
         </ul>
     </div>
   )

@@ -10,10 +10,12 @@ const Filter = ({onFilter, value, onParam}) => {
         }
     }
 
+    //Search param => API
     const onLessHandler = () => {
         onParam('lt')
     }
 
+    //Search param => API
     const onGreaterHandler = () =>{
         onParam('gt')
     }

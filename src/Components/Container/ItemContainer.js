@@ -20,19 +20,22 @@ const ItemContainer = () => {
     const [ibuFilter, setIbuFilter] = useState(false)
     const [noResultSearch, setNoResultaSearch] = useState(false)
 
+    //Ibu value => Number
     const ibuHandler = (ibu) => {
       setIbuValue(ibu)
       setIbuFilter(false)
       setNoResultaSearch(false)
     }
 
+    //IbuParam => String("lt"/"gt")
     const ibuParamHandler = (param) =>{
       setIbuParam(param)
       setIbuFilter(true)
       setNoResultaSearch(false)
     }
 
-    const paginationHandler = (page, max, min) => {
+    //Page => Number
+    const paginationHandler = (page) => {
       setPagePagination(page) 
       localStorage.setItem('pageBeer', page)
       setNoResultaSearch(false)
@@ -41,6 +44,8 @@ const ItemContainer = () => {
       setIbuValue('')
       }
       
+      //Search By name
+      //Value => String
       const onSearch = (value) => {
         setValueSearch(value)
         setNoResultaSearch(false)
